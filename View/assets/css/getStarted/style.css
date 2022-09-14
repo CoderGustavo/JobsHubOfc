@@ -1,0 +1,15 @@
+.getStarted {
+    width: 100%;
+    height: 100vh;
+}
+
+.getStarted p{
+    font-size: 65pt;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 100px;
+    color: var(--light2);
+    text-shadow: 4px 9px 4px rgba(0, 0, 0, 0.4);
+}

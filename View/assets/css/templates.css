@@ -1,0 +1,90 @@
+:root{
+    --dark1: #121212;
+    --dark2: #222222;
+    --dark3: #666666;
+    --dark4: #999999;
+    --light1: #ffffff;
+    --light2: #fefefe;
+    --light3: #ccc;
+    --color1: #7800D7;
+    --color2: #E02FF9;
+    --color3: #1A002F;
+    --color4: #2B004D;
+    --color5: #4F3365;
+}
+
+/* Background colors */
+.bg-dark1{
+    background-color: var(--dark1);
+}
+.bg-dark2{
+    background-color: var(--dark2);
+}
+.bg-dark3{
+    background-color: var(--dark3);
+}
+.bg-dark4{
+    background-color: var(--dark4);
+}
+.bg-light1{
+    background-color: var(--light1);
+}
+.bg-light2{
+    background-color: var(--light2);
+}
+.bg-light3{
+    background-color: var(--light3);
+}
+.bg-color1{
+    background-color: var(--color1);
+}
+.bg-color2{
+    background-color: var(--color2);
+}
+.bg-color3{
+    background-color: var(--color3);
+}
+.bg-color4{
+    background-color: var(--color4);
+}
+.bg-color5{
+    background-color: var(--color5);
+}
+
+/* Text colors */
+.txt-dark1{
+    background-color: var(--dark1);
+}
+.txt-dark2{
+    background-color: var(--dark2);
+}
+.txt-dark3{
+    background-color: var(--dark3);
+}
+.txt-dark4{
+    background-color: var(--dark4);
+}
+.txt-light1{
+    background-color: var(--light1);
+}
+.txt-light2{
+    background-color: var(--light2);
+}
+.txt-light3{
+    background-color: var(--light3);
+}
+.txt-color1{
+    background-color: var(--color1);
+}
+.txt-color2{
+    background-color: var(--color2);
+}
+.txt-color3{
+    background-color: var(--color3);
+}
+.txt-color4{
+    background-color: var(--color4);
+}
+.txt-color5{
+    background-color: var(--color5);
+}
