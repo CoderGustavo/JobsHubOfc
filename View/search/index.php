@@ -3,6 +3,12 @@
 <head>
     <?php include_once("../assets/templates/head.html"); ?>
     <title>Buscando por ...</title>
+    <link rel="stylesheet" type="text/css" href="/View/assets/css/style.css">
+    <style>
+        body{
+            background-image: url(../assets/img/fundocolorido.png);
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid">
@@ -16,7 +22,7 @@
                 </div>
             </header>
         </div>
-        
     </div>
+    <div class="fundo"></div>
 </body>
 </html>
