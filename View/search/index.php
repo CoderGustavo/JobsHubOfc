@@ -23,6 +23,5 @@
             </header>
         </div>
     </div>
-    <div class="fundo"></div>
 </body>
 </html>
