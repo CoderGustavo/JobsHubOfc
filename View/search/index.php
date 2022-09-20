@@ -6,16 +6,6 @@
     <script src="../assets/js/search/main.js"></script>
 </head>
 <body>
-    <div class="hero">
-        <header class="container d-flex justify-content-center align-items-center">
-            <div>
-                <img src="/View/assets/img/logo.png" alt="logo">
-            </div>
-        </header>
-        <div class="input-buscar">
-            <input type="text" name="buscar" pattern="\S+*"> 
-            <span class="placeholder">Buscar</span>
-        </div>
-    </div>
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/hero.php"); ?>
 </body>
 </html>

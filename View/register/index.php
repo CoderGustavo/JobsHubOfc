@@ -3,8 +3,8 @@
 <head>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/head.html"); ?>
     <title>cadastro</title>
-    <link rel="stylesheet" href="View/assets/css/cadastro/style.css">
-    <script src="View/assets/js/cadastro/main.js"></script>
+    <link rel="stylesheet" href="View/assets/css/register/style.css">
+    <script src="View/assets/js/register/main.js"></script>
 </head>
 <body>
     <div class="getStarted bg-color4">
@@ -19,7 +19,7 @@
         <div class="blur3"></div>
     </div>
 
-    <div class="container-fluid bg-color3 register-page">
+    <div class="container-fluid register-page">
             <h2>BEM-VINDO</h2>
             <h3>Aqui sua experiência será diferente,
                 crie sua conta para começar!</h3>
