@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include_once("../assets/templates/head.html"); ?>
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/head.html"); ?>
     <title>Buscando por ...</title>
     <script src="../assets/js/search/main.js"></script>
 </head>

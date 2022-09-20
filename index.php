@@ -7,6 +7,9 @@ switch ($request) {
     case '' :
         require __DIR__ . '/View/inicio/index.php';
         break;
+    case '/logar' :
+        require __DIR__ . '/View/register/index.php';
+        break;
     case '/cadastro' :
         require __DIR__ . '/View/register/index.php';
         break;

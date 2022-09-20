@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include_once("templates/head.html"); ?>
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/head.html"); ?>
     <title>cadastro</title>
     <link rel="stylesheet" href="View/assets/css/cadastro/style.css">
     <script src="View/assets/js/cadastro/main.js"></script>
