@@ -3,24 +3,18 @@
 <head>
     <?php include_once("../assets/templates/head.html"); ?>
     <title>Buscando por ...</title>
-    <link rel="stylesheet" type="text/css" href="/View/assets/css/style.css">
-    <style>
-        body{
-            background-image: url(../assets/img/fundocolorido.png);
-        }
-    </style>
+    <script src="../assets/js/search/main.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="hero">
-            <header class="container d-flex justify-content-between align-items-center">
-                <div>
-                    <img src="/View/assets/img/logo.png" alt="logo">
-                </div>
-                <div>
-                    <i class="fas fa-align-left"></i>
-                </div>
-            </header>
+    <div class="hero">
+        <header class="container d-flex justify-content-center align-items-center">
+            <div>
+                <img src="/View/assets/img/logo.png" alt="logo">
+            </div>
+        </header>
+        <div class="input-buscar">
+            <input type="text" name="buscar" pattern="\S+*"> 
+            <span class="placeholder">Buscar</span>
         </div>
     </div>
 </body>

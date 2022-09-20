@@ -9,12 +9,44 @@ body{
     color:rgb(0, 0, 0);
     background-repeat: no-repeat;
     background-size: cover;
+    background-image: url(../img/fundocolorido.png);
 }
 
 .hero{
-    background-image: url(../img/fundo.png);
-    height: 50vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url(../img/fundo.png);
+    height: 60vh;
     width: 100%;
+    background-size: cover;
+    background-position: right -120px bottom 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
-body{background:#000 !important}
+.input-buscar{
+    position: relative;
+}
+
+.input-buscar input{
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var(--light1);
+    color: var(--light1);
+    z-index: 999;
+    position: relative;
+    outline: none;
+    padding: .5rem 1rem;
+}
+
+.input-buscar span{
+    color: var(--light1);
+    position: absolute;
+    bottom: .5rem;
+    left: 1rem;
+    transition: .5s all;
+}
