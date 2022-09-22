@@ -7,5 +7,6 @@
 </head>
 <body>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/hero.php"); ?>
+    <a class="btn-style1">Comecar</a>
 </body>
 </html>
