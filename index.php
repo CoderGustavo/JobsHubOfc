@@ -1,19 +1,21 @@
 <?php
 
-$request = $_SERVER['REQUEST_URI'];
+$path = explode("/", $_SERVER['REQUEST_URI']);
+$request_method = $_SERVER['REQUEST_METHOD'];
+$GLOBALS["path"] = $path;
 
-switch ($request) {
+switch ($path[1]) {
     case '/' :
     case '' :
-        require __DIR__ . '/View/inicio/index.php';
+        require __DIR__ . '/View/home/index.php';
         break;
-    case '/logar' :
+    case 'logar' :
         require __DIR__ . '/View/register/index.php';
         break;
-    case '/cadastro' :
+    case 'cadastro' :
         require __DIR__ . '/View/register/index.php';
         break;
-    case '/buscando' :
+    case 'buscando' :
         require __DIR__ . '/View/search/index.php';
         break;
     default:

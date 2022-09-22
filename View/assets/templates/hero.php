@@ -5,7 +5,7 @@
         </div>
     </header>
     <div class="input-buscar">
-        <input type="text" name="buscar" pattern="\S+*"> 
+        <input type="text" name="buscar" value="<?php echo $GLOBALS["path"][2]?>"> 
         <span class="placeholder">Buscar</span>
     </div>
 </div>
