@@ -5,7 +5,7 @@
         </div>
     </header>
     <div class="input-buscar">
-        <input type="text" name="buscar" value="<?php echo $GLOBALS["path"][2]?>"> 
+        <input type="text" name="buscar"> 
         <span class="placeholder">Buscar</span>
     </div>
 </div>
