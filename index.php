@@ -16,7 +16,8 @@ switch ($path[1]) {
         require __DIR__ . '/View/register/index.php';
         break;
     case 'buscando' :
-        require __DIR__ . '/View/search/index.php';
+        if($path[2]) require __DIR__ . '/View/search/index.php';
+        else header('Location: /');
         break;
     default:
         http_response_code(404);
