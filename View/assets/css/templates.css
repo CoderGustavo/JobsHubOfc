@@ -7,7 +7,7 @@
     --light2: #fefefe;
     --light3: #cccccc;
     --color1: #7800D7;
-    --color2: #E02FF9;
+    --color2: #9917ff;
     --color3: #1A002F;
     --color4: #2B004D;
     --color5: #4F3365;
@@ -20,10 +20,13 @@
     --light2op8: #fefefecc;
     --light3op8: #cccccccc;
     --color1op8: #7800D7cc;
-    --color2op8: #E02FF9cc;
+    --color2op8: #9917ffcc;
     --color3op8: #1A002Fcc;
     --color4op8: #2B004Dcc;
     --color5op8: #4F3365cc;
+
+    --degrade1: linear-gradient(125deg, var(--color1) 30%, var(--color2) 60%, var(--color2) 100%);
+
 }
 
 /* Background colors */
@@ -62,6 +65,10 @@
 }
 .bg-color5{
     background-color: var(--color5);
+}
+
+.bg-degrade1{
+    background: var(--degrade1);
 }
 
 /* Text colors */
@@ -174,55 +181,6 @@
 .btn-color5{
     color: var(--light1);
     background-color: var(--color5);
-}
-
-.btn-dark1op8{
-    color: var(--light1);
-    background-color: var(--dark1op8);
-}
-.btn-dark2op8{
-    color: var(--light1);
-    background-color: var(--dark2op8);
-}
-.btn-dark3op8{
-    color: var(--light1);
-    background-color: var(--dark3op8);
-}
-.btn-dark4op8{
-    color: var(--light1);
-    background-color: var(--dark4op8);
-}
-.btn-light1op8{
-    color: var(--dark);
-    background-color: var(--light1op8);
-}
-.btn-light2op8{
-    color: var(--dark);
-    background-color: var(--light2op8);
-}
-.btn-light3op8{
-    color: var(--dark);
-    background-color: var(--light3op8);
-}
-.btn-color1op8{
-    color: var(--light1);
-    background-color: var(--color1op8);
-}
-.btn-color2op8{
-    color: var(--light1);
-    background-color: var(--color2op8);
-}
-.btn-color3op8{
-    color: var(--light1);
-    background-color: var(--color3op8);
-}
-.btn-color4op8{
-    color: var(--light1);
-    background-color: var(--color4op8);
-}
-.btn-color5op8{
-    color: var(--light1);
-    background-color: var(--color5op8);
 }
 
 /* Buttons hovers */
