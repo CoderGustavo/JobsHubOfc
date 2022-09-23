@@ -3,6 +3,15 @@
 $path = explode("/", $_SERVER['REQUEST_URI']);
 $request_method = $_SERVER['REQUEST_METHOD'];
 $GLOBALS["path"] = $path;
+define("ROOT", $_SERVER['DOCUMENT_ROOT']);
+
+// include classes below:
+require_once(__DIR__ . '/Controller/HomeController.php');
+// require_once(__DIR__ . '/Controller/UserController.php');
+
+// initialize classes below:
+$home = new HomeController();
+// $user = new UserController();
 
 switch ($path[1]) {
     case '/' :
@@ -13,7 +22,21 @@ switch ($path[1]) {
         require __DIR__ . '/View/register/index.php';
         break;
     case 'cadastro' :
-        require __DIR__ . '/View/register/index.php';
+        switch ($request_method){
+            case 'GET' :
+                $home->showRegisterPage();
+                break;
+            case 'POST' :
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $con_password = $_POST['con_password'];
+                // $user->register($email, $password, $con_password);
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
         break;
     case 'buscando' :
         if($path[2]) require __DIR__ . '/View/search/index.php';
