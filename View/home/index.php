@@ -6,5 +6,6 @@
 </head>
 <body>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/hero.php");?>
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
 </body>
 </html>
