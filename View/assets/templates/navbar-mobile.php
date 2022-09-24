@@ -19,7 +19,7 @@
                 <li class="nav_itens">
                     <a href="#Tinder" class="nav_link_main">
                         <i class='bx bx-carousel'></i>  
-                        <span>Tinder</span>
+                        <span>HUB</span>
                     </a>
                 </li>
                 <li class="nav_itens">
