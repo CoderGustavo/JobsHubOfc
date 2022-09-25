@@ -29,7 +29,7 @@ switch ($path[1]) {
             case 'POST' :
                 $email = $_POST['email'];
                 $password = $_POST['password'];
-                $con_password = $_POST['con_password'];
+                $conf_password = $_POST['con_password'];
                 // $user->register($email, $password, $con_password);
                 break;
             default :
