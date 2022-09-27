@@ -7,6 +7,22 @@
 </head>
 <body>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/hero.php"); ?>
-    <a class="btn-style1">Comecar</a>
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php"); ?>
+    <div class="container-fluid topo">
+        <h3>Buscando por: ...</h3>
+        <div class="btn btn-style1 btn-filtro">
+            <img src="/View/assets/img/filtro.svg" alt="Filtro">
+        </div>
+    </div>
+    <div class="container-fluid centro">
+        <div class="vagas">
+            <div class="bg-color5 cor">
+                <div class="hab">
+                    <h3>Vaga para front-end</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
