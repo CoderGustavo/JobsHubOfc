@@ -43,6 +43,12 @@
                 <img src="/View/assets/img/icons/iconemalta.svg">
             </div>
         </div>
+        <div class="bg-color5 area">
+            <h4>Front-end</h4>
+            <div>
+                <img src="/View/assets/img/icons/iconemalta.svg">
+            </div>
+        </div>
     </div>
 </body>
 </html>
