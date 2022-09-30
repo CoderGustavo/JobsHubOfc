@@ -13,41 +13,61 @@
         <img src="/View/assets/img/icons/homeemalta.svg">
     </div>
     <div class="slideemalta">
-        <div class="bg-color5 area">
-            <h4>Front-end</h4>
-            <div>
-                <img src="/View/assets/img/icons/iconemalta.svg">
+        <div class="element_slide">
+            <div class="bg-color5 area">
+                <div>
+                    <img src="/View/assets/img/icons/iconemalta.svg">
+                </div>
             </div>
+            <h4 class="titleslide">FRONT-END</h4>
         </div>
-        <div class="bg-color5 area">
-            <h4>Front-end</h4>
-            <div>
-                <img src="/View/assets/img/icons/iconemalta.svg">
+        <div class="element_slide">
+            <div class="bg-color5 area">
+                <div>
+                    <img src="/View/assets/img/icons/iconemalta.svg">
+                </div>
             </div>
+            <h4 class="titleslide">FRONT-END</h4>
         </div>
-        <div class="bg-color5 area">
-            <h4>Front-end</h4>
-            <div>
-                <img src="/View/assets/img/icons/iconemalta.svg">
+        <div class="element_slide">
+            <div class="bg-color5 area">
+                <div>
+                    <img src="/View/assets/img/icons/iconemalta.svg">
+                </div>
             </div>
+            <h4 class="titleslide">FRONT-END</h4>
         </div>
-        <div class="bg-color5 area">
-            <h4>Front-end</h4>
-            <div>
-                <img src="/View/assets/img/icons/iconemalta.svg">
+        <div class="element_slide">
+            <div class="bg-color5 area">
+                <div>
+                    <img src="/View/assets/img/icons/iconemalta.svg">
+                </div>
             </div>
+            <h4 class="titleslide">FRONT-END</h4>
         </div>
-        <div class="bg-color5 area">
-            <h4>Front-end</h4>
-            <div>
-                <img src="/View/assets/img/icons/iconemalta.svg">
+        <div class="element_slide">
+            <div class="bg-color5 area">
+                <div>
+                    <img src="/View/assets/img/icons/iconemalta.svg">
+                </div>
             </div>
+            <h4 class="titleslide">FRONT-END</h4>
         </div>
-        <div class="bg-color5 area">
-            <h4>Front-end</h4>
-            <div>
-                <img src="/View/assets/img/icons/iconemalta.svg">
+        <div class="element_slide">
+            <div class="bg-color5 area">
+                <div>
+                    <img src="/View/assets/img/icons/iconemalta.svg">
+                </div>
             </div>
+            <h4 class="titleslide">FRONT-END</h4>
+        </div>
+        <div class="element_slide">
+            <div class="bg-color5 area">
+                <div>
+                    <img src="/View/assets/img/icons/iconemalta.svg">
+                </div>
+            </div>
+            <h4 class="titleslide">FRONT-END</h4>
         </div>
     </div>
 </body>

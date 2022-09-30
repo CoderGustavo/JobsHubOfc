@@ -19,22 +19,27 @@
     gap: 15px;
     overflow-x: auto;
 }
+.slideemalta::-webkit-scrollbar{
+    background: transparent;
+}
 
 .area{
-    width: 6rem;
-    height: 6rem;
+    width: 4rem;
+    height: 3.5rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     gap: .8rem;
     padding: .8rem;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
-.area h4{
-    font-size: 10pt;
-    font-weight: 400;
+.titleslide{
+    font-size: 8pt;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 5px;
 }
 
 .area div{
