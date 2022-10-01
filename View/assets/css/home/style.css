@@ -1,0 +1,49 @@
+.homeemalta{
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: .5rem;
+}
+
+.homeemalta h3{
+    font-weight: 400;
+    position: relative;
+    top: 3px;
+}
+
+.slideemalta{
+    padding-left: 2rem;
+    display: flex;
+    flex-flow: nowrap;
+    gap: 15px;
+    overflow-x: auto;
+}
+.slideemalta::-webkit-scrollbar{
+    background: transparent;
+}
+
+.area{
+    width: 4rem;
+    height: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: .8rem;
+    padding: .8rem;
+    border-radius: 10px;
+}
+
+.titleslide{
+    font-size: 8pt;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.area div{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
