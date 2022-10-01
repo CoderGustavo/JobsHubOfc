@@ -19,7 +19,7 @@ switch ($path[1]) {
         require __DIR__ . '/View/home/index.php';
         break;
     case 'logar' :
-        require __DIR__ . '/View/register/index.php';
+        require __DIR__ . '/View/login/index.php';
         break;
     case 'cadastro' :
         switch ($request_method){
