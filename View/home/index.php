@@ -70,5 +70,6 @@
             <h4 class="titleslide">FRONT-END</h4>
         </div>
     </div>
+    
 </body>
 </html>
