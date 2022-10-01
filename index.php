@@ -19,7 +19,7 @@ switch ($path[1]) {
         require __DIR__ . '/View/home/index.php';
         break;
     case 'logar' :
-        require __DIR__ . '/View/register/index.php';
+        require __DIR__ . '/View/login/index.php';
         break;
     case 'cadastro' :
         switch ($request_method){
@@ -29,7 +29,7 @@ switch ($path[1]) {
             case 'POST' :
                 $email = $_POST['email'];
                 $password = $_POST['password'];
-                $con_password = $_POST['con_password'];
+                $conf_password = $_POST['con_password'];
                 // $user->register($email, $password, $con_password);
                 break;
             default :

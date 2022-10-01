@@ -7,12 +7,6 @@
     <script src="View/assets/js/register/main.js"></script>
 </head>
 <body>
-    <?php include_once("getStarted.html")?>
     <?php include_once("form.html")?>
-    <?php include_once("getName.html")?>
-    <?php include_once("getPhone.html")?>
-    <?php include_once("confirm_email.html")?>
-    <?php include_once("getCep.html")?>
-    <?php include_once("finished.html")?>
 </body>
 </html>
