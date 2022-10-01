@@ -138,20 +138,25 @@ body{
     padding: 0.5rem 0 0 0.8rem;
 }
 
+.hab h3{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+
 .hab1 h3{
+    align-items: flex-start;
+    display: flex;
     font-weight: 400;
     font-size: xx-small;
-    padding: 0 0 0 18rem;
+    padding: 2rem 0 0 0.8rem;
 }
 
-.hab2 h3{
-    font-weight: 400;
-    font-size: xx-small;
-    padding: 3.5rem 2rem 0 0.8rem;
+.teste{
+    width: 40%;
 }
 
-.hab3 h3{
-    font-weight: 400;
-    font-size: xx-small;
-    padding: 0 0 0 12rem;
+.geral{
+    display: flex;
+    flex-direction: row;
 }

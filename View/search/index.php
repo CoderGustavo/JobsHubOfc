@@ -19,15 +19,22 @@
             <div class="bg-color5 cor">
                 <div class="hab">
                     <h3>Vaga para front-end</h3>
-                </div>
-                <div class="hab1">
                     <h3>5/10</h3>
                 </div>
-                <div class="hab2">
+                <div class="hab1">
                     <h3>Habilidades obrigatórias:</h3>
-                    <div class="hab3">
-                        <h3>Combina 95% com seu perfil</h3>
+                    <div class="geral">
+                        <div class="teste">
+                            <h3>HTML</h3>
+                        </div>
+                        <div class="teste">
+                            <h3>CSS</h3>
+                        </div>
+                        <div class="teste">
+                            <h3>JS</h3>
+                        </div>
                     </div>
+                    <h3>Combina 95% com seu perfil</h3>
                 </div> 
             </div>
         </div>
