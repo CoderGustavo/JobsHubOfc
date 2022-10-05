@@ -124,39 +124,48 @@ body{
 .vagas{
     display: flex; 
     padding: 1rem 2rem;
-}
-
-.cor{
     width: 100%;
-    height: 7rem;
+}
+
+.card-vaga{
+    display: flex;
     border-radius: 25px;
-}
-
-.centro h3{
-    font-weight: 400;
-    font-size: small;
-    padding: 0.5rem 0 0 0.8rem;
-}
-
-.hab h3{
-    align-items: flex-start;
-    display: flex;
+    height: 7rem;
     flex-direction: column;
+    width: 100%;
+    padding: 1rem;
 }
 
-.hab1 h3{
-    align-items: flex-start;
-    display: flex;
+.vagas h2{
     font-weight: 400;
-    font-size: xx-small;
-    padding: 2rem 0 0 0.8rem;
+    font-size: 10pt;
 }
 
-.teste{
-    width: 40%;
+.vagas span{
+    font-weight: 400;
+    font-size: 8pt;
 }
 
-.geral{
+.vagas h4{
+    font-weight: 400;
+    font-size: 8pt;
+}
+
+.vaga-line-one{
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+}
+
+.vaga-line-two{
+    display: flex;
+    justify-content: space-between;
+    padding: ;
+}
+
+.vaga-line-two .vaga-hab{
+
+}
+
+.vaga-line-two .vaga-hab .vaga-habs{
+    
 }
