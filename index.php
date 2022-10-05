@@ -42,6 +42,9 @@ switch ($path[1]) {
         if($path[2]) require __DIR__ . '/View/search/index.php';
         else header('Location: /');
         break;
+    case 'hub' :
+        require __DIR__ . '/View/hub/index.php';
+        break;
     default:
         http_response_code(404);
         // require __DIR__ . '/View/404.php';

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/head.html");?>
-    <title>Document</title>
+    <title>JobsHub</title>
     <link rel="stylesheet" href="/View/assets/css/home/style.css">
 </head>
 <body>
