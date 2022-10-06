@@ -159,7 +159,7 @@ body{
 .vaga-line-two{
     display: flex;
     justify-content: space-between;
-    padding: ;
+    padding: 1rem;
 }
 
 .vaga-line-two .vaga-hab{
