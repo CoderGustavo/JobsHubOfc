@@ -8,11 +8,11 @@
 <body>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/hero.php");?>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
-    <div class="container-fluid homeemalta">
+    <div class="container homeemalta">
         <h3>Áreas em alta</h3>
         <img src="/View/assets/img/icons/homeemalta.svg">
     </div>
-    <div class="slideemalta">
+    <div class="container slideemalta">
         <div class="element_slide">
             <div class="bg-color5 area">
                 <div>

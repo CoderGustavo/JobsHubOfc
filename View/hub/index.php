@@ -6,14 +6,18 @@
     <link rel="stylesheet" href="/View/assets/css/hub/style.css">
 </head>
 <body>
-    <div class="bg-dark1">
-        <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header.html");?>
-        <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
-    </div>
-    <div class="bg-color5 hub">
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.html");?>
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
+    <div class="hub">
         <div class="title">
             <h1>Vaga para front-end</h1>
         </div>
+    </div>
+    <div class="card-like">
+
+    </div>
+    <div class="card-unlike">
+
     </div>
 </body>
 </html>
