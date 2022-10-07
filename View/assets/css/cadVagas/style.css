@@ -1,0 +1,10 @@
+.title-page h1 {
+    font-weight: 400;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-size: 20pt;
+}
+.title-page h2 {
+    font-weight: 400;
+    padding-top: 2.5rem;
+}

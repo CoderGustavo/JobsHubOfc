@@ -45,6 +45,8 @@ switch ($path[1]) {
     case 'hub' :
         require __DIR__ . '/View/hub/index.php';
         break;
+    case 'cadastrovagas' :
+        require __DIR__ . '/View/cadVaga/cadastro.php';
     default:
         http_response_code(404);
         // require __DIR__ . '/View/404.php';
