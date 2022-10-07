@@ -6,9 +6,14 @@
 }
 
 body{
-    color: var(--light1);
-    background-color: var(--color3);
+    color: var(--light1);   
+    background: linear-gradient(180deg, #110718 0%, #2D143F 80%);
     overflow: hidden;
+}
+
+.header{
+    position: fixed;
+    top: 1rem;
 }
 
 .hero{
@@ -54,8 +59,8 @@ body{
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 64dp;
-    background-color: var(--color4);
+    height: 64px;
+    background-color: #240f33;
     display: flex;
     align-items: center;
     border-top-left-radius: 20px;
@@ -124,34 +129,48 @@ body{
 .vagas{
     display: flex; 
     padding: 1rem 2rem;
-}
-
-.cor{
     width: 100%;
-    height: 7rem;
+}
+
+.card-vaga{
+    display: flex;
     border-radius: 25px;
+    height: 7rem;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
 }
 
-.centro h3{
+.vagas h2{
     font-weight: 400;
-    font-size: small;
-    padding: 0.5rem 0 0 0.8rem;
+    font-size: 10pt;
 }
 
-.hab1 h3{
+.vagas span{
     font-weight: 400;
-    font-size: xx-small;
-    padding: 0 0 0 18rem;
+    font-size: 8pt;
 }
 
-.hab2 h3{
+.vagas h4{
     font-weight: 400;
-    font-size: xx-small;
-    padding: 3.5rem 2rem 0 0.8rem;
+    font-size: 8pt;
 }
 
-.hab3 h3{
-    font-weight: 400;
-    font-size: xx-small;
-    padding: 0 0 0 12rem;
+.vaga-line-one{
+    display: flex;
+    justify-content: space-between;
+}
+
+.vaga-line-two{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.vaga-line-two .vaga-hab{
+
+}
+
+.vaga-line-two .vaga-hab .vaga-habs{
+    
 }

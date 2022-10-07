@@ -14,21 +14,22 @@
             <img src="/View/assets/img/filtro.svg" alt="Filtro">
         </div>
     </div>
-    <div class="container-fluid centro">
-        <div class="vagas">
-            <div class="bg-color5 cor">
-                <div class="hab">
-                    <h3>Vaga para front-end</h3>
-                </div>
-                <div class="hab1">
-                    <h3>5/10</h3>
-                </div>
-                <div class="hab2">
-                    <h3>Habilidades obrigatórias:</h3>
-                    <div class="hab3">
-                        <h3>Combina 95% com seu perfil</h3>
+    <div class="container-fluid vagas">
+        <div class="bg-color5 card-vaga">
+            <div class="vaga-line-one">
+                <h2>Vaga para front-end</h2>
+                <span>5/10</span>
+            </div>
+            <div class="vaga-line-two">
+                <div class="vaga-hab">
+                    <h4>Habilidades obrigatórias:</h4>
+                    <div class="vaga-habs">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JS</span>
                     </div>
-                </div> 
+                </div>
+                <h4>Combina 95% com seu perfil</h4>
             </div>
         </div>
     </div>
