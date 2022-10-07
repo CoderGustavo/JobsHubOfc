@@ -14,13 +14,13 @@ body{
 .hero{
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
     url(../img/fundo_hero.png);
-    height: 60vh;
+    height: 8vh;
     width: 100%;
     background-size: cover;
     background-position: right -120px bottom 0;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     padding: 2rem;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
