@@ -1,4 +1,4 @@
-<div class="hero">
+<div class="container hero">
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header.html");?>
     <div class="input-buscar">
         <input type="text" name="buscar"> 

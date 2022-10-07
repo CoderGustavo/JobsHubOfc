@@ -21,7 +21,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2rem;
+    padding-bottom: 2rem;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 }
@@ -105,7 +105,7 @@ body{
 .topo{
     display: flex;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding-top: 1rem;
     align-items: center;
 }
 
@@ -123,32 +123,32 @@ body{
 
 .vagas{
     display: flex; 
-    padding: 1rem 2rem;
+    padding-top: 1rem;
     width: 100%;
 }
 
 .card-vaga{
     display: flex;
     border-radius: 25px;
-    height: 7rem;
     flex-direction: column;
     width: 100%;
     padding: 1rem;
+    background-color: var(--color5op4);
 }
 
 .vagas h2{
     font-weight: 400;
-    font-size: 10pt;
+    font-size: 12pt;
 }
 
 .vagas span{
     font-weight: 400;
-    font-size: 8pt;
+    font-size: 10pt;
 }
 
 .vagas h4{
     font-weight: 400;
-    font-size: 8pt;
+    font-size: 10pt;
 }
 
 .vaga-line-one{
@@ -159,7 +159,7 @@ body{
 .vaga-line-two{
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding-top: 2.5rem;
 }
 
 .vaga-line-two .vaga-hab{
@@ -168,4 +168,17 @@ body{
 
 .vaga-line-two .vaga-hab .vaga-habs{
     
+}
+
+.vaga-habs{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0 0 0;
+    
+}
+
+.vaga-habs span{
+    background-color: var(--dark2);
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
 }

@@ -24,6 +24,7 @@
     --color3op8: #1A002Fcc;
     --color4op8: #2B004Dcc;
     --color5op8: #4F3365cc;
+    --color5op4: rgba(79, 51, 101, 0.4);
 
     --degrade1: linear-gradient(125deg, var(--color1) 30%, var(--color2) 60%, var(--color2) 100%);
 

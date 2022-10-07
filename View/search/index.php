@@ -8,14 +8,14 @@
 <body>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/hero.php"); ?>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php"); ?>
-    <div class="container-fluid topo">
+    <div class="container topo">
         <h3>Buscando por: ...</h3>
         <div class="btn btn-style1 btn-filtro">
             <img src="/View/assets/img/filtro.svg" alt="Filtro">
         </div>
     </div>
-    <div class="container-fluid vagas">
-        <div class="bg-color5 card-vaga">
+    <div class="container vagas">
+        <div class="card-vaga">
             <div class="vaga-line-one">
                 <h2>Vaga para front-end</h2>
                 <span>5/10</span>
@@ -25,7 +25,7 @@
                     <h4>Habilidades obrigatórias:</h4>
                     <div class="vaga-habs">
                         <span>HTML</span>
-                        <span>CSS</span>
+                        <span>CSS</span>                        
                         <span>JS</span>
                     </div>
                 </div>
