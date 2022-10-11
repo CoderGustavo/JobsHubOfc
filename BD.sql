@@ -181,6 +181,31 @@ CREATE TABLE `feedback_profile` (
 	PRIMARY KEY (`id_feedback_profile`)
 );
 
+CREATE TABLE `courses` (
+	`id_course` int NOT NULL AUTO_INCREMENT,
+	`thema` varchar(255) NOT NULL,
+	`description` varchar(255) NOT NULL,
+	`duration` TIME NOT NULL,
+	`price` FLOAT NOT NULL,
+	`id_class` int NOT NULL,
+	PRIMARY KEY (`id_course`)
+);
+
+CREATE TABLE `class` (
+	`id_class` int NOT NULL AUTO_INCREMENT,
+	`numer_class` int NOT NULL,
+	`topic_name` varchar(255) NOT NULL,
+	`description` varchar(255) NOT NULL,
+	`link_youtube` varchar(255) NOT NULL,
+	PRIMARY KEY (`id_class`)
+);
+
+CREATE TABLE `users_courses` (
+	`id_users_courses` int NOT NULL AUTO_INCREMENT,
+	`id_user` int NOT NULL,
+	`id_course` int NOT NULL,
+	PRIMARY KEY (`id_users_courses`)
+);
 
 ALTER TABLE `feedback_company` ADD CONSTRAINT `feedback_company_fk0` FOREIGN KEY (`id_feedback`) REFERENCES `feedback`(`id_feedback`);
 
@@ -221,3 +246,9 @@ ALTER TABLE `integration` ADD CONSTRAINT `intregration_fk01` FOREIGN KEY (`id_us
 ALTER TABLE `integration` ADD CONSTRAINT `intregration_fk02` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
 
 ALTER TABLE `integration` ADD CONSTRAINT `intregration_fk03` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
+ALTER TABLE `courses` ADD CONSTRAINT `courses_fk0` FOREIGN KEY (`id_class`) REFERENCES `class`(`id_class`);
+
+ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk0` FOREIGN KEY (`id_course`) REFERENCES `courses`(`id_course`);
+
+ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
