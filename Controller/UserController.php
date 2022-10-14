@@ -10,26 +10,29 @@ class userController{
         $this->table = $this->user->getTable();
     }
 
-    public function login($username, $password){
+    public function login($email, $password){
         $password = md5(sha1(md5(sha1($password))));
 
-        $query = $this->conn->prepare("SELECT * FROM $this->table where name = :name AND password = :pass");
-        $query->bindParam(":name", $username);
+        $query = $this->conn->prepare("SELECT * FROM $this->table where email = :email AND password = :pass");
+        $query->bindParam(":email", $email);
         $query->bindParam(":pass", $password);
         $query->execute();
         $user = $query->fetch();
         if(Empty($user)){
             $res = array("error" => "Credenciais incorretas");
-            return json_encode($res);
+            echo json_encode($res);
         }else{
-            return json_encode($user);
+            $_SESSION["user"] = $user;
+            $res = array("success" => "Usuário logado");
+            echo json_encode($res);
         }
 
     }
 
     public function register($email, $password, $confirm_password){
         if($password != $confirm_password){
-            return "As senhas não coincidem!";
+            $res = array("error" => "As senhas não coincidem!");
+            echo json_encode($res);
         }
 
         $password = md5(sha1(md5(sha1($password))));
@@ -37,14 +40,24 @@ class userController{
         $query = $this->conn->prepare("INSERT INTO $this->table (email, password) VALUES (:email, :pass)");
         $query->bindParam(":email", $email);
         $query->bindParam(":pass", $password);
-        $sucesso = $query->execute();
-        if(!$sucesso){
-            $res = array("error" => $query->errorInfo()[2]);
-            return json_encode($res);
-        }else{
-            $res = array("success" => "Usuário criado com sucesso!");
-            return json_encode($res);
+
+        $queryLogin = $this->conn->prepare("SELECT * FROM $this->table where email = :email AND password = :pass");
+        $queryLogin->bindParam(":email", $email);
+        $queryLogin->bindParam(":pass", $password);
+        
+        try {
+            $query->execute();
+        } catch (Throwable $th) {
+            $res = array("error" => $th->errorInfo[2]);
+            echo json_encode($res);
+            return;
         }
+
+        $queryLogin->execute();
+        $_SESSION["user"] = $queryLogin->fetch();
+
+        $res = array("success" => "Usuário criado com sucesso!");
+        echo json_encode($res);
     }
 
     public function editAccount($userlogged ,$username, $email, $phone, $password){
@@ -90,6 +103,36 @@ class userController{
             $res = array("success" => "Alterações realizadas com sucesso!");
             return json_encode($res);
         }
+    }
+
+
+    public function updateInfos($userlogged, $infos){
+        $a = "";
+        $index = 1;
+
+        foreach ($infos as $key => $info) {
+            count($infos) != $index ? $a .= "$key = :$key, " : $a .= "$key = :$key";
+            $index++;
+        }
+
+        $query = $this->conn->prepare("UPDATE users SET ". $a ." WHERE id_user = :id");
+        $query->bindParam(":id", $userlogged["id_user"]);
+        $index = 1;
+        foreach ($infos as $key => $info) {
+            $query->bindParam(":$key", $infos[$key]);
+            $index++;
+        }
+        try {
+            $query->execute();
+            $res = array("success" => "Alterações realizadas com sucesso!");
+            echo json_encode($res);
+            return;
+        } catch (Throwable $th) {
+            $res = array("error" => $th);
+            echo json_encode($res);
+            return;
+        }
+        
     }
 
 }

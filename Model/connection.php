@@ -5,7 +5,7 @@ class Connection{
 
     public function __construct(){
         $this->urldb = "localhost";
-        $this->dbname = "dbjobshub";
+        $this->dbname = "jobshub";
         $this->usernamedb = "root";
         $this->passworddb = "";
     }

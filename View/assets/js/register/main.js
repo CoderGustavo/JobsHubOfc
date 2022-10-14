@@ -8,65 +8,84 @@ $(()=>{
     // Send form data to the server to create a new account
     $("button[type='submit']#create_account").on("click", (e)=>{
         e.preventDefault();
+
         let data = {
             email: $("input[name='email']").val(),
             password: $("input[name='password']").val(),
             con_password: $("input[name='con_password']").val()
         }
-        $(".register-page").css("transform", "translateX(-100%)")
-        $(".getName").css("transform", "translateX(0)")
-        // $.post("/cadastro", data)
-        // .done((response)=>{
-        //     console.log(response)
-        // })
-        // .fail((response)=>{
-        //     console.log("Fail")
-        //     $(".error_message").html(response.error)
-        // });
+
+        let creating_account = $.post("/cadastro", data, 'json');
+
+        creating_account.done(function(response) {
+            response = JSON.parse(response);
+            if(response.error){
+                $(".error_message").html(response.error);
+            }else{
+                $(".register-page").css("transform", "translateX(-100%)")
+                $(".getName").css("transform", "translateX(0)")
+            }
+        });
+
     });
-    
     
     $("button[type='submit']#save_name").on("click", (e)=>{
         e.preventDefault();
-        let data = {
-            email: $("input[name='email']").val(),
-            password: $("input[name='password']").val(),
-            con_password: $("input[name='con_password']").val()
-        }
-        $(".getName").css("transform", "translateX(-100%)")
-        $(".getPhone").css("transform", "translateX(0)")
+        $(".name_user").html($("input[name='name']").val());
+        $(".getName").css("transform", "translateX(-100%)");
+        $(".getPhone").css("transform", "translateX(0)");
     });
 
     $("button[type='submit']#save_phone").on("click", (e)=>{
         e.preventDefault();
+
         let data = {
-            email: $("input[name='email']").val(),
-            password: $("input[name='password']").val(),
-            con_password: $("input[name='con_password']").val()
+            name: $("input[name='name']").val(),
+            phone_number: $("input[name='phone_number']").val()
         }
-        $(".getPhone").css("transform", "translateX(-100%)")
-        $(".confirmEmail").css("transform", "translateX(0)")
+
+        let addInfosToAccount = $.post("/atualizar_conta", data, 'json');
+
+        addInfosToAccount.done(function(response) {
+            response = JSON.parse(response);
+            if(response.error){
+                $(".error_message").html(response.error);
+            }else{
+                $(".getPhone").css("transform", "translateX(-100%)")
+                $(".confirmEmail").css("transform", "translateX(0)")
+            }
+        });
     });
 
     $("button[type='submit']#save_email").on("click", (e)=>{
         e.preventDefault();
         let data = {
-            email: $("input[name='email']").val(),
-            password: $("input[name='password']").val(),
-            con_password: $("input[name='con_password']").val()
+            name: $("input[name='name']").val(),
+            phone_number: $("input[name='phone_number']").val()
         }
-        $(".confirmEmail").css("transform", "translateX(-100%)")
-        $(".getCep").css("transform", "translateX(0)")
+
+        let addInfosToAccount = $.post("/cadastro", data, 'json');
+
+        addInfosToAccount.done(function(response) {
+            response = JSON.parse(response);
+            if(response.error){
+                $(".error_message").html(response.error);
+            }else{
+                $(".confirmEmail").css("transform", "translateX(-100%)")
+                $(".getCep").css("transform", "translateX(0)")
+            }
+        });
+
     });
 
     $("button[type='submit']#save_end").on("click", (e)=>{
         e.preventDefault();
-        let data = {
-            email: $("input[name='email']").val(),
-            password: $("input[name='password']").val(),
-            con_password: $("input[name='con_password']").val()
-        }
+
         $(".getCep").css("transform", "translateX(-100%)")
         $(".finishedCad").css("transform", "translateX(0)")
+
+        setTimeout(() => {
+            window.location = "/";
+        }, 2000);
     });
 });
