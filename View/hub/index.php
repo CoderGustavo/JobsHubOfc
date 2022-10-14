@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/View/assets/css/hub/style.css">
 </head>
 <body>
-    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header.html");?>
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.html");?>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
     <div class="hub">
         <div class="title">
