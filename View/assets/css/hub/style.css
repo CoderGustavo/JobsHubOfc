@@ -13,12 +13,12 @@
 
 .card-like{
     position: fixed;
-    /* left: 98%; */
+    left: 98%;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #00ff38;
-    border-radius: 20px;
+    /* left: 50%; */
+    transform: translateY(-50%);
+    background-color: #00ff3786;
+    border-radius: 30px;
     width: 150px;
     height: 150px;
 }
@@ -28,21 +28,74 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateY(50%, -50%);
-    width: 10px;
-    height: 10px;
+    transform: translate(-100%, -40%) rotate(130deg);
+    width: 25px;
+    height: 85px;
     background-color: #ffff;
-    
+    border-radius: 5px;
+    box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.697);
+}
+
+.card-like::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(160%, -63%) rotate(-140deg);
+    width: 25px;
+    height: 150px;
+    background-color: #ffff;
+    border-radius: 5px;
+    box-shadow: -11px -11px 10px rgba(0, 0, 0, 0.697);
 }
 
 .card-unlike{
     position: fixed;
-    right: 98%;
+    /* right: 98%; */
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
-    background-color:   #ff5e5e;
+    transform: translate(-50%, -50%);
+    background-color:   #ff5e5eda;
     border-radius: 20px;
     width: 150px;
     height: 150px;
 }
 
+.card-unlike::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 25px;
+    height: 150px;
+    background-color: #ffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px #000000;
+}
+
+.card-unlike::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 25px;
+    height: 220px;
+    background-color: #ffff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px #000000;
+}
+
+.card-unlike span{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 25px;
+    height: 150px;
+    background-color: #ffff;
+    border-radius: 8px;
+    z-index: 9;
+}

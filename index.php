@@ -1,25 +1,46 @@
 <?php
-
+session_start();
 $path = explode("/", $_SERVER['REQUEST_URI']);
 $request_method = $_SERVER['REQUEST_METHOD'];
-$GLOBALS["path"] = $path;
+define("PATH", $path);
 define("ROOT", $_SERVER['DOCUMENT_ROOT']);
 
 // include classes below:
 require_once(__DIR__ . '/Controller/HomeController.php');
-// require_once(__DIR__ . '/Controller/UserController.php');
+require_once(__DIR__ . '/Controller/UserController.php');
 
 // initialize classes below:
 $home = new HomeController();
-// $user = new UserController();
+$user = new UserController();
+switch (PATH[1]) {
+    case "login" :
+    case "cadastro" :
+        if($_SESSION['user']){
+            header("Location: /");
+        }
+        break;
+}
 
-switch ($path[1]) {
+switch (PATH[1]) {
     case '/' :
     case '' :
         require __DIR__ . '/View/home/index.php';
         break;
     case 'logar' :
-        require __DIR__ . '/View/login/index.php';
+        switch ($request_method){
+            case 'GET' :
+                $home->showLoginPage();
+                break;
+            case 'POST' :
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                $user->login($email, $password);
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
         break;
     case 'cadastro' :
         switch ($request_method){
@@ -29,8 +50,8 @@ switch ($path[1]) {
             case 'POST' :
                 $email = $_POST['email'];
                 $password = $_POST['password'];
-                $conf_password = $_POST['con_password'];
-                // $user->register($email, $password, $con_password);
+                $con_password = $_POST['con_password'];
+                $user->register($email, $password, $con_password);
                 break;
             default :
                 http_response_code(405);
@@ -46,7 +67,12 @@ switch ($path[1]) {
         require __DIR__ . '/View/hub/index.php';
         break;
     case 'cadastrovagas' :
-        require __DIR__ . '/View/cadVaga/cadastro.php';
+        require __DIR__ . '/View/cadVaga/cadvaga.php';
+        break;
+    case 'atualizar_conta' :
+        // print_r($_SESSION['user']);
+        $user->updateInfos($_SESSION["user"], $_POST);
+        break;
     default:
         http_response_code(404);
         // require __DIR__ . '/View/404.php';

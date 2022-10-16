@@ -9,5 +9,65 @@
     padding-top: 2.5rem;
 }
 .cad-vaga {
-    padding-top: 5rem;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    justify-content: center;
+    height: 100vh;
+}
+.cadastro {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    overflow: hidden;
+    transition: .6s all;
+    transform: translateX(0);
+}
+#salary {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
+#vecancy-type {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
+#date {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
+#vecancy-finish {
+    transform: translateX(100%);
+    transition: .6s all;
 }
