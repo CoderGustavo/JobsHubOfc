@@ -213,6 +213,16 @@ ALTER TABLE `feedback_vacancy` ADD CONSTRAINT `feedback_vacancy_fk0` FOREIGN KEY
 
 ALTER TABLE `feedback_profile` ADD CONSTRAINT `feedback_profile_fk0` FOREIGN KEY (`id_feedback`) REFERENCES `feedback`(`id_feedback`);
 
+ALTER TABLE `feedback_vacancy` ADD CONSTRAINT `feedback_vacancy_fk1` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `feedback_company` ADD CONSTRAINT `feedback_company_fk2` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
+ALTER TABLE `feedback_profile` ADD CONSTRAINT `feedback_profile_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+
+ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+
+ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk2` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
 ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
 
 ALTER TABLE `companies` ADD CONSTRAINT `companies_fk0` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
