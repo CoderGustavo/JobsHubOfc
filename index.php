@@ -73,6 +73,17 @@ switch (PATH[1]) {
         // print_r($_SESSION['user']);
         $user->updateInfos($_SESSION["user"], $_POST);
         break;
+    case 'empresa' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/company/index.php';
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
     default:
         http_response_code(404);
         // require __DIR__ . '/View/404.php';
