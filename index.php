@@ -88,6 +88,26 @@ switch (PATH[1]) {
         // print_r($_SESSION['user']);
         $user->updateInfos($_SESSION["user"], $_POST);
         break;
+    case 'empresa' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/company/index.php';
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+    case 'perfil' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/profile/index.php';
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
     case 'teste':
         $buscando = "";
         $vacancies->selectInfos($buscando);

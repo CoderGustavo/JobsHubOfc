@@ -2,25 +2,21 @@
 <html lang="en">
 <head>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/head.html"); ?>
-    <link rel="stylesheet" href="/View/assets/css/company/style.css">
+    <link rel="stylesheet" href="/View/assets/css/profile/style.css">
 </head>
 <body>
-    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php"); ?>
-    <div class="hero hero-empresa">
-        <div class="img-empresa">
-            <img src="/View/assets/img/nome-empresa.png" alt="Logo Empresa">
-            <img class="verificado" src="/View/assets/img/verificado.svg" alt="Verificado">
-        </div>
+<?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php"); ?>
+    <div class="hero hero-usuario">
         <div class="perfil-informacao">
             <img class="perfil" src="/View/assets/img/julios.png" alt="Foto Perfil">
             <div class="container-informacoes">
-                <span>Funcionários: 1000</span>
-                <span>Vagas abertas</span>
-                <span>Avaliações: 5 estrelas</span>
-                <span>Salário médio: R$3.200</span>
+                <span>Jacutinga - MG/Brasil</span>
+                <span>Experiências: 2</span>
+                <span>Habilidades: 10</span>
+                <span>Avaliação: 5 estrelas</span>
             </div>
         </div>        
-        <h1>Nome - CEO</h1>
+        <h1>Nome</h1>
         <div class="card-seguir">
             <span>Seguir</span>
             <div class="card-seguidores">
@@ -31,8 +27,9 @@
     </div>
     <div class="cards">
         <span>Informações Gerais</span>
-        <span>Vagas abertas</span>
-        <span>Salários por área</span>      
+        <span>Cursos</span>
+        <span>Experiências</span>
+        <span>Projetos</span>      
     </div>
     <div class="text">
         <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Se
@@ -46,23 +43,6 @@
         <span id="span2">Cras dui neque, interdum ac aliquet vitae, dapibus vel quam
         Nullam neque nisi, sollicitudin ut metus a, efficitur ultrices
         elit. Integer mauris sapien, porta molestie sollicitudin vel </span>
-    </div>
-    <div class="card-vaga">
-        <div class="vaga-line-one">
-            <h2>Vaga para front-end</h2>
-            <span>5/10</span>
-        </div>
-        <div class="vaga-line-two">
-            <div class="vaga-hab">
-                <h4>Habilidades obrigatórias:</h4>
-                <div class="vaga-habs">
-                    <span>HTML</span>
-                    <span>CSS</span>                        
-                    <span>JS</span>
-                </div>
-            </div>
-            <h4>Combina 95% com seu perfil</h4>
-        </div>
     </div>
 </body>
 </html>
