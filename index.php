@@ -16,14 +16,14 @@ $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
 
-switch (PATH[1]) {
-    case "login" :
-    case "cadastro" :
-        if($_SESSION['user']){
-            header("Location: /");
-        }
-        break;
-}
+// switch (PATH[1]) {
+//     case "login" :
+//     case "cadastro" :
+//         if($_SESSION['user']){
+//             header("Location: /");
+//         }
+//         break;
+// }
 
 switch (PATH[1]) {
     case '/' :
@@ -98,6 +98,7 @@ switch (PATH[1]) {
                 $home->showError(405);
                 break;
         }
+        break;
     case 'perfil' :
         switch ($request_method){
             case 'GET' :
