@@ -76,7 +76,8 @@ switch (PATH[1]) {
                 require __DIR__ . '/View/cadVaga/cadvaga.php';
                 break;
             case 'POST' :
-                $vacancies->createInfos($email, $infos);
+
+                $vacancies->createInfos($_POST);
                 break;
             default :
                 http_response_code(405);

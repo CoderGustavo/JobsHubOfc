@@ -44,7 +44,7 @@ class VacancyController{
         
     }
 
-    public function createInfos($userlogged, $infos){
+    public function createInfos($infos){
         $a = "";
         $b = "";
         $index = 1;
@@ -60,8 +60,8 @@ class VacancyController{
             $index++;
         }
 
-        $query = $this->conn->prepare("insert into $this->table ($a) values ($b)");
-        $query->bindParam(":id", $userlogged["id_user"]);
+        $query = $this->conn->prepare("INSERT INTO $this->table ($a) VALUES ($b)");
+        // $query->bindParam(":id", $userlogged["id_user"]);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);

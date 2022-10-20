@@ -15,7 +15,7 @@ class Vacancy{
     }
 
 
-    public function getTable(){
+    public function getTable(){ 
         return $this->table;
     }
 
