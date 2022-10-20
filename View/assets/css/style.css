@@ -8,8 +8,8 @@
 body{
     color: var(--light1);   
     background: linear-gradient(180deg, #110718 0%, #2D143F 80%);
-    overflow: hidden;
     min-height: 100vh;
+    padding-bottom: 74px;
 }
 
 .header{
@@ -69,6 +69,7 @@ body{
     align-items: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    z-index: 99999999;
 }
 
 .nav_lista {
@@ -131,16 +132,17 @@ body{
 }
 
 .vagas{
-    display: flex; 
     padding-top: 1rem;
-    width: 100%;
+}
+
+.vagas > div{
+    padding-bottom: 1rem;
 }
 
 .card-vaga{
     display: flex;
     border-radius: 25px;
     flex-direction: column;
-    width: 100%;
     padding: 1rem;
     background-color: var(--color5op4);
 }
@@ -172,13 +174,6 @@ body{
     align-items: flex-end;
 }
 
-.vaga-line-two .vaga-hab{
-
-}
-
-.vaga-line-two .vaga-hab .vaga-habs{
-    
-}
 .inputs{
     display: flex;
     flex-direction: column;

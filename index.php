@@ -28,7 +28,7 @@ switch (PATH[1]) {
 switch (PATH[1]) {
     case '/' :
     case '' :
-        require __DIR__ . '/View/home/index.php';
+        $home->showHomePage();
         break;
     case 'logar' :
         switch ($request_method){

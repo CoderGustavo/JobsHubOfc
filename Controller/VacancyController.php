@@ -4,7 +4,7 @@ class VacancyController{
     protected $vacancy, $table;
 
     public function __construct(){
-        include ROOT."/Model/vacancy.php";
+        include_once ROOT."/Model/vacancy.php";
         $this->vacancy = new Vacancy();
         $this->conn = $this->vacancy->getConnection();
         $this->table = $this->vacancy->getTable();
@@ -80,24 +80,32 @@ class VacancyController{
         
     }
     
-    public function selectInfos($buscando){
+    public function selectInfos($re = true, $buscando = "", $campos = "*"){
         $where = "";
 
         if($buscando) $where = "where name LIKE :buscando OR short_desc LIKE :buscando OR full_desc LIKE :buscando OR salary_min == :buscando OR salary_max == :buscando OR salary_defined == :buscando OR vacancy_type LIKE :buscando OR required_abilities LIKE :buscando OR difference_abilities LIKE :buscando OR workload LIKE :buscando OR activity LIKE :buscando OR qtd_max_cand == :buscando OR qtd_min_cand == :buscando OR open_date == :buscando OR close_date == :buscando";
 
-        $query = $this->conn->prepare("SELECT * FROM $this->table $where");
+        $query = $this->conn->prepare("SELECT $campos FROM $this->table $where");
 
         if($buscando) $query->bindParam(":buscando", $buscando);
 
         try {
             $query->execute();
             $res = $query->fetchAll();
-            echo json_encode($res);
-            return;
+            if($re){
+                return $res;
+            }else{
+                echo json_encode($res);
+                return;
+            }
         } catch (Throwable $th) {
             $res = array("error" => $th);
-            echo json_encode($res);
-            return;
+            if($re){
+                return $res;
+            }else{
+                echo json_encode($res);
+                return;
+            }
         }
         
     }

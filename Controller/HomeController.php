@@ -1,6 +1,13 @@
 <?php
 
 class HomeController{
+
+    function showHomePage(){
+        $vagas = new VacancyController();
+        $vagas = $vagas->selectInfos();
+        require ROOT . '/View/home/index.php';
+    }
+
     function showRegisterPage(){
         require ROOT . '/View/register/index.php';
     }
