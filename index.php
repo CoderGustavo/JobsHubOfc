@@ -16,19 +16,19 @@ $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
 
-switch (PATH[1]) {
-    case "login" :
-    case "cadastro" :
-        if($_SESSION['user']){
-            header("Location: /");
-        }
-        break;
-}
+// switch (PATH[1]) {
+//     case "login" :
+//     case "cadastro" :
+//         if($_SESSION['user']){
+//             header("Location: /");
+//         }
+//         break;
+// }
 
 switch (PATH[1]) {
     case '/' :
     case '' :
-        require __DIR__ . '/View/home/index.php';
+        $home->showHomePage();
         break;
     case 'logar' :
         switch ($request_method){
@@ -89,6 +89,27 @@ switch (PATH[1]) {
         // print_r($_SESSION['user']);
         $user->updateInfos($_SESSION["user"], $_POST);
         break;
+    case 'empresa' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/company/index.php';
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
+    case 'perfil' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/profile/index.php';
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
     case 'teste':
         $buscando = "";
         $vacancies->selectInfos($buscando);

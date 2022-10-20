@@ -8,24 +8,18 @@
 body{
     color: var(--light1);
     background: linear-gradient(180deg, #110718 0%, #2D143F 80%);
+    overflow: hidden;
     min-height: 100vh;
 }
 
-.hero-empresa{
+.hero-usuario{
     height: 45vh;
     justify-content: flex-start;
 }
 
-.hero-empresa h1{
+.hero-usuario h1{
     padding: 0 12.8rem 0 0;    
     font-weight: 400;
-}
-
-.verificado{
-    background-image: url("/View/assets/img/circulo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-position: 0.9rem;
 }
 
 .perfil{
@@ -60,10 +54,11 @@ body{
     background-color: var(--color1);
     margin: -1.5rem 0 0 4rem;
     border-radius: 2rem;
+    width: 5.5rem;
 }
 
 .card-seguir span{
-    padding: 0.6rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 1rem 1.3rem;
     display: flex;
 }
 
@@ -115,27 +110,3 @@ body{
 #span2{
     padding: 0rem 2rem 2rem 2rem;
 }
-
-.card-vaga{
-    display: flex;
-    border-radius: 25px;
-    flex-direction: column;
-    width: 100%;
-    padding: 1rem;
-    background-color: var(--color5 );
-}
-
-.vaga-habs{
-    display: flex;
-    justify-content: space-between;
-    padding: 0.3rem 0 0 0;
-}
-
-.vaga-habs span{
-    background-color: var(--dark2);
-    padding: 0.3rem 0.6rem;
-    border-radius: 10px;
-
-}
-
-

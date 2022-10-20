@@ -4,7 +4,7 @@ class userController{
     protected $user, $table;
 
     public function __construct(){
-        include ROOT."/Model/user.php";
+        include_once ROOT."/Model/user.php";
         $this->user = new User();
         $this->conn = $this->user->getConnection();
         $this->table = $this->user->getTable();
