@@ -53,13 +53,12 @@ body{
     display: flex;
     background-color: var(--color1);
     margin: -1.5rem 0 0 4rem;
-    width: 20%;
-    height: 12%;
-    border-radius: 35%;
+    border-radius: 2rem;
+    width: 5.5rem;
 }
 
 .card-seguir span{
-    padding: 0.6rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 1rem 1.3rem;
     display: flex;
 }
 
