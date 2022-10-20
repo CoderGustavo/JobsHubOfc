@@ -8,10 +8,14 @@ define("ROOT", $_SERVER['DOCUMENT_ROOT']);
 // include classes below:
 require_once(__DIR__ . '/Controller/HomeController.php');
 require_once(__DIR__ . '/Controller/UserController.php');
+require_once(__DIR__ . '/Controller/VacancyController.php');
+
 
 // initialize classes below:
 $home = new HomeController();
 $user = new UserController();
+$vacancies = new VacancyController();
+
 switch (PATH[1]) {
     case "login" :
     case "cadastro" :
@@ -67,7 +71,18 @@ switch (PATH[1]) {
         require __DIR__ . '/View/hub/index.php';
         break;
     case 'cadastrovagas' :
-        require __DIR__ . '/View/cadVaga/cadvaga.php';
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/cadVaga/cadvaga.php';
+                break;
+            case 'POST' :
+                $vacancies->createInfos($email, $infos);
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
         break;
     case 'atualizar_conta' :
         // print_r($_SESSION['user']);
@@ -83,6 +98,19 @@ switch (PATH[1]) {
                 $home->showError(405);
                 break;
         }
+    case 'perfil' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/profile/index.php';
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+    case 'teste':
+        $buscando = "";
+        $vacancies->selectInfos($buscando);
         break;
     default:
         http_response_code(404);

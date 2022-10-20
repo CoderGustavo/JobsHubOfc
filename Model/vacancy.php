@@ -1,11 +1,11 @@
 <?php
 
-class User{
-    protected $conn, $url, $table, $user, $pass;
+class Vacancy{
+    protected $conn, $table;
 
     public function __construct(){
         include_once "connection.php";
-        $this->table = "users";
+        $this->table = "vacancies";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
     }

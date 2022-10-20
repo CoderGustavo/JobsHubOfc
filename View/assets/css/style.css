@@ -8,7 +8,6 @@
 body{
     color: var(--light1);   
     background: linear-gradient(180deg, #110718 0%, #2D143F 80%);
-    overflow: hidden;
     min-height: 100vh;
 }
 
@@ -218,11 +217,10 @@ body{
     display: flex;
     justify-content: space-between;
     padding: 0.3rem 0 0 0;
-    
 }
 
 .vaga-habs span{
     background-color: var(--dark2);
     padding: 0.3rem 0.6rem;
-    border-radius: 20px;
+    border-radius: 10px;
 }
