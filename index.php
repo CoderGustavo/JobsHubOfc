@@ -68,7 +68,8 @@ switch (PATH[1]) {
         else header('Location: /');
         break;
     case 'hub' :
-        require __DIR__ . '/View/hub/index.php';
+        $home->showHubPage($path[2]);
+
         break;
     case 'cadastrovagas' :
         switch ($request_method){
