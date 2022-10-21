@@ -4,6 +4,7 @@
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/head.html");?>
     <title>Hub</title>
     <link rel="stylesheet" href="/View/assets/css/hub/style.css">
+    <script src="/View/assets/js/hub/main.js"></script>
 </head>
 <body>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.html");?>

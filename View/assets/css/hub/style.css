@@ -6,7 +6,7 @@
     width: 100%;
     height: 100rem;
     border-radius: 25px;
-    padding-top: 15rem;
+    padding-top: 7rem;
 }
 
 .title{
@@ -57,26 +57,26 @@
 
 .title-combinacao{
     width: 100%;
-    position: fixed;
-    bottom: 8rem;
+    position: relative;
+    bottom: -13vh;
     text-align: center;
     left: 0;
 }
 
 .bar-combinacao{
-    position: fixed;
+    position: relative;
     width: 18rem;
     height: 0.3rem;
     border-radius: 20px;
     background-color: var(--light1);
     left: 50%;
-    bottom: 12vh;
+    bottom: -15vh;
     transform: translate(-50%);
 }
 
 .bar-combinacao::before{
     content: '';
-    position: fixed;
+    position: absolute;
     width: 95%;
     height: 0.3rem;
     border-radius: 20px;
@@ -89,10 +89,12 @@
     top: 50%;
     /* left: 50%; */
     transform: translateY(-50%);
-    background-color: #00ff3786;
+    background-color: #00ff3787;
     border-radius: 30px;
     width: 150px;
     height: 150px;
+    transition: all 0.30s;
+    z-index: 9999999999999;
 }
 
 .card-like::before{
@@ -102,10 +104,16 @@
     left: 50%;
     transform: translate(-100%, -40%) rotate(130deg);
     width: 25px;
-    height: 85px;
+    height: 0;
     background-color: #ffff;
     border-radius: 5px;
     box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.697);
+    transition: all 0.30s;
+}
+
+.card-like-active::before{
+    height: 85px;
+    transition: all 0.30s;
 }
 
 .card-like::after{
@@ -115,22 +123,30 @@
     left: 50%;
     transform: translate(160%, -63%) rotate(-140deg);
     width: 25px;
-    height: 150px;
+    height: 0;
     background-color: #ffff;
     border-radius: 5px;
     box-shadow: -11px -11px 10px rgba(0, 0, 0, 0.697);
+    transition: all 0.30s;
+}
+
+.card-like-active::after{
+    height: 150px;
+    transition: all 0.30s;
 }
 
 .card-unlike{
     position: fixed;
-    right: 98%;
+    left: -34%;
     /* left: 50%; */
     top: 50%;
     transform: translateY(-50%);
-    background-color:   #ff5e5eda;
+    background-color: #ff5e5eda;
     border-radius: 20px;
     width: 150px;
     height: 150px;
+    transition: all 0.30s;
+    z-index: 9999999;
 }
 
 .card-unlike::before{
@@ -140,10 +156,16 @@
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
     width: 25px;
-    height: 150px;
+    height: 0px;
     background-color: #ffff;
     border-radius: 8px;
     box-shadow: 0px 0px 20px #000000;
+    transition: all 0.30s;
+}
+
+.card-unlike-active::before{
+    height: 150px;
+    transition: all 0.30s;
 }
 
 .card-unlike::after{
@@ -153,10 +175,16 @@
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     width: 25px;
-    height: 220px;
+    height: 0px;
     background-color: #ffff;
     border-radius: 8px;
     box-shadow: 0px 0px 20px #000000;
+    transition: all 0.30s;
+}
+
+.card-unlike-active::after{
+    height: 220px;
+    transition: all 0.30s;
 }
 
 .card-unlike span{
@@ -166,8 +194,14 @@
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
     width: 25px;
-    height: 150px;
+    height: 0px;
     background-color: #ffff;
     border-radius: 8px;
     z-index: 9;
+    transition: all 0.30s;
+}
+
+.card-unlike-active span{
+    height: 150px;
+    transition: all 0.30s;
 }

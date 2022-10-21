@@ -80,15 +80,17 @@ class VacancyController{
         
     }
     
-    public function selectInfos($re = true, $buscando = "", $campos = "*"){
+    public function selectInfos($re = true, $buscando = "", $campos = "*", $id = ""){
         $where = "";
 
-        if($buscando) $where = "where name LIKE :buscando OR short_desc LIKE :buscando OR full_desc LIKE :buscando OR salary_min == :buscando OR salary_max == :buscando OR salary_defined == :buscando OR vacancy_type LIKE :buscando OR required_abilities LIKE :buscando OR difference_abilities LIKE :buscando OR workload LIKE :buscando OR activity LIKE :buscando OR qtd_max_cand == :buscando OR qtd_min_cand == :buscando OR open_date == :buscando OR close_date == :buscando";
+        if($buscando && !$id) $where = "where name LIKE :buscando OR short_desc LIKE :buscando OR full_desc LIKE :buscando OR salary_min == :buscando OR salary_max == :buscando OR salary_defined == :buscando OR vacancy_type LIKE :buscando OR required_abilities LIKE :buscando OR difference_abilities LIKE :buscando OR workload LIKE :buscando OR activity LIKE :buscando OR qtd_max_cand == :buscando OR qtd_min_cand == :buscando OR open_date == :buscando OR close_date == :buscando";
+        else if($id) $where = "where id_vacancy = :id_vacancy";
 
         $query = $this->conn->prepare("SELECT $campos FROM $this->table $where");
 
-        if($buscando) $query->bindParam(":buscando", $buscando);
-
+        if($buscando && !$id) $query->bindParam(":buscando", $buscando);
+        else if($id) $query->bindParam(":id_vacancy", $id);
+        
         try {
             $query->execute();
             $res = $query->fetchAll();
