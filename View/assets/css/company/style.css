@@ -3,16 +3,20 @@
     justify-content: flex-start;
 }
 
-.hero-empresa h1{
-    padding: 0 12.8rem 0 0;    
+.hero-empresa h1{  
     font-weight: 400;
 }
 
-.verificado{
-    background-image: url("/View/assets/img/circulo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-position: 0.9rem;
+.img-empresa{
+    justify-content: space-between;
+    gap: 1rem;
+    text-align:justify;
+}
+
+.img-empresa i{
+    background-color: var(--color1);
+    border-radius: 50%;
+    height: 1.5vh;
 }
 
 .perfil{
@@ -21,11 +25,11 @@
 }
 
 .container-informacoes{
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 240, 255, 0.5);
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
+    padding: 2rem;
     border-radius: 10%;
 }
 
@@ -33,63 +37,84 @@
     font-weight: 400;
 }
 
-.perfil-informacao{
+.usuario-informacao{
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     width: 100%;
     margin: 2rem 0 0 0;
+    gap: 3rem;
+}
+
+.nome-foto{
+    flex-direction: column;
+    display: flex;
+    gap: 1rem;
+}
+
+.nome-foto img{
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+}
+
+.nome-foto h1{
+    text-align: center;
+}
+
+.cards-right{
+    display: flex;
+    flex-direction: column;
 }
 
 .card-seguir{
     justify-content: space-between;
     display: flex;
-    background-color: var(--color1);
-    margin: -1.5rem 0 0 4rem;
-    border-radius: 2rem;
 }
 
-.card-seguir span{
-    padding: 0.6rem 1rem 1rem 1rem;
-    display: flex;
+.card-seguir > span{
+    padding: 1rem 1rem 1rem 1rem;
+    background-color: var(--color1);
+    border-radius: 2rem;
+    margin: 0.5rem 0 0 1rem;
 }
 
 .card-seguidores{
     display: flex;
-    background-color: var(--dark1);
+    background-color:var(--color5);
     width: 100%;
     height: 5vh;
-    margin: 0 0 0 1rem;
-    border-radius: 20%;
+    margin: 0.5rem 0 0 1rem;
+    border-radius: 2rem;
 }
 
-.card-seguidores img{
+.card-seguidores i{
     display: flex;
     height: 1vh;
     width: 100%;
-    margin: 0.5rem 0 0 3rem;
+    margin: 1rem 0 0 5rem;
 }
 
 .card-seguidores span{
     margin: 0 1rem 0 -5rem;
     display: flex;
+    padding: 1rem 3.5rem 0 0;
 }
 
 .cards{
     display: flex;
     justify-content: space-between; 
-    margin: 1rem 0.5rem 0 0.5rem; 
+    margin: 1rem 30rem 0 0.5rem;
+    overflow-x: auto;
 }
 
 .cards span{
     background-color: var(--color5);
-    width: 80%;
     height: 5vh;
     border-radius: 2rem;
     font-size: 9pt;
     text-align: center;
-    margin: 0 0.5rem;
-    padding-top: 0.9rem;
+    padding: 1rem 1rem;
 }
 
 .text span{
@@ -125,4 +150,9 @@
 
 }
 
+@media (max-width: 425px){
+    .container-informacoes{
+        padding: 2rem;
+    }
+}
 
