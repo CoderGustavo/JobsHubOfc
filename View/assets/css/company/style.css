@@ -1,16 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'arial';
-}
-
-body{
-    color: var(--light1);
-    background: linear-gradient(180deg, #110718 0%, #2D143F 80%);
-    min-height: 100vh;
-}
-
 .hero-empresa{
     height: 45vh;
     justify-content: flex-start;

@@ -12,7 +12,7 @@
             <img class="verificado" src="/View/assets/img/verificado.svg" alt="Verificado">
         </div>
         <div class="perfil-informacao">
-            <img class="perfil" src="/View/assets/img/julios.png" alt="Foto Perfil">
+            <img class="perfil" src="/View/assets/img/paisagem.png" alt="Foto Perfil">
             <div class="container-informacoes">
                 <span>Funcionários: 1000</span>
                 <span>Vagas abertas</span>

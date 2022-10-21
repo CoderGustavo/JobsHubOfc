@@ -11,7 +11,7 @@
     <div class="container topo">
         <h3>Buscando por: <?php echo explode("/", $_SERVER['REQUEST_URI'])[2]; ?></h3>
         <div class="btn btn-style1 btn-filtro">
-            <img src="/View/assets/img/filtro.svg" alt="Filtro">
+            <i class="fal fa-filter"></i>
         </div>
     </div>
     <div class="container">
