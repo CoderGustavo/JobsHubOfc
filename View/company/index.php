@@ -52,22 +52,28 @@
             Nullam neque nisi, sollicitudin ut metus a, efficitur ultrices
             elit. Integer mauris sapien, porta molestie sollicitudin vel </span>
         </div>
-        <div class="card-vaga">
-            <div class="vaga-line-one">
-                <h2>Vaga para front-end</h2>
-                <span>5/10</span>
-            </div>
-            <div class="vaga-line-two">
-                <div class="vaga-hab">
-                    <h4>Habilidades obrigatórias:</h4>
-                    <div class="vaga-habs">
-                        <span>HTML</span>
-                        <span>CSS</span>                        
-                        <span>JS</span>
+        <div class="row vagas pt-0">
+            <?php foreach ($vagas as $key => $vaga): ?>
+            <div class="col-12 col-md-3">
+                <div class="card-vaga">
+                    <div class="vaga-line-one">
+                        <h2><?php echo $vaga["name"]; ?></h2>
+                        <span>1/<?php echo $vaga["qtd_max_cand"]; ?></span>
+                    </div>
+                    <div class="vaga-line-two">
+                        <div class="vaga-hab">
+                            <h4>Habilidades obrigatórias:</h4>
+                            <div class="vaga-habs">
+                                <?php foreach (explode(";", $vaga["required_abilities"]) as $key => $ability): ?>
+                                    <span><?php echo $ability?></span>
+                                <?php endforeach?>
+                            </div>
+                        </div>
+                        <h4>95%</h4>
                     </div>
                 </div>
-                <h4>Combina 95% com seu perfil</h4>
             </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </body>
