@@ -15,6 +15,7 @@ require_once(__DIR__ . '/Controller/VacancyController.php');
 $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
+$users_vancancies = new VacancyController();
 
 // switch (PATH[1]) {
 //     case "login" :
@@ -71,6 +72,19 @@ switch (PATH[1]) {
         $home->showHubPage($path[2]);
 
         break;
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/hub/index.php';
+                break;
+            case 'POST' :
+
+                $users_vancancies->createInfos($_POST);
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
     case 'cadastrovagas' :
         switch ($request_method){
             case 'GET' :

@@ -19,12 +19,11 @@ class HomeController{
     function showHubPage($idvaga=""){
         
         if($idvaga){
-            $vagas=new VacancyController();
-            $vagas=$vagas->selectInfos(true,"","*",$idvaga);
-            print_r($vagas);
+            $vaga=new VacancyController();
+            $vaga=$vaga->selectInfos(true,"","*",$idvaga);
         }
 
-        // require ROOT . '/View/hub/index.php';
+        require ROOT . '/View/hub/index.php';
     }
 
     function showError($error_code){
