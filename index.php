@@ -86,6 +86,21 @@ switch (PATH[1]) {
                 break;
         }
         break;
+    case 'editevagas' :
+            switch ($request_method){
+                case 'GET' :
+                    require __DIR__ . '/View/editVaga/editVaga.php';
+                    break;
+                case 'POST' :
+    
+                    $vacancies->createInfos($_POST);
+                    break;
+                default :
+                    http_response_code(405);
+                    $home->showError(405);
+                    break;
+            }
+            break;
     case 'atualizar_conta' :
         // print_r($_SESSION['user']);
         $user->updateInfos($_SESSION["user"], $_POST);
