@@ -21,10 +21,22 @@ class HomeController{
         if($idvaga){
             $vagas=new VacancyController();
             $vagas=$vagas->selectInfos(true,"","*",$idvaga);
-            print_r($vagas);
+            // print_r($vagas);
         }
 
         // require ROOT . '/View/hub/index.php';
+    }
+
+    function showCompanyPage(){
+        $vagas = new VacancyController();
+        $vagas = $vagas->selectInfos();
+        require ROOT . '/View/company/index.php';
+    }
+
+    function showProfilePage(){
+        $user = $_SESSION["user"];
+        
+        require ROOT . '/View/profile/index.php';
     }
 
     function showError($error_code){

@@ -10,7 +10,7 @@
         <div class="perfil-informacao container">
             <div class="nome-foto">
                 <img src="/View/assets/img/paisagem.png" alt="Foto Perfil">
-                <h1>Nome</h1>
+                <h1><?php echo $user["name"]; ?></h1>
             </div>
             <div class="cards-right">
                 <div class="container-informacoes">

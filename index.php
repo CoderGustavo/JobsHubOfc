@@ -108,7 +108,7 @@ switch (PATH[1]) {
     case 'empresa' :
         switch ($request_method){
             case 'GET' :
-                require __DIR__ . '/View/company/index.php';
+                $home->showCompanyPage();
                 break;
             default :
                 http_response_code(405);
@@ -119,13 +119,14 @@ switch (PATH[1]) {
     case 'perfil' :
         switch ($request_method){
             case 'GET' :
-                require __DIR__ . '/View/profile/index.php';
+                $home->showProfilePage();
                 break;
             default :
                 http_response_code(405);
                 $home->showError(405);
                 break;
         }
+        break;
     case 'teste':
         $buscando = "";
         $vacancies->selectInfos($buscando);

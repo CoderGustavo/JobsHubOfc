@@ -1,12 +1,12 @@
 <?php
 
-class Vacancy{
+class Companies{
     protected $conn, $table, $pk;
 
     public function __construct(){
         include_once "connection.php";
-        $this->table = "vacancies";
-        $this->pk = "id_vancancy";
+        $this->table = "companies";
+        $this->pk = "id_company";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
     }
