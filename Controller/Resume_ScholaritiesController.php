@@ -1,17 +1,17 @@
 <?php
 
-class Resume_ScholarityController{
-    protected $resume_scholarity, $table, $conn, $pk;
+class Resume_ScholaritiesController{
+    protected $resume_scholarities, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/resume_scholarity.php";
-        $this->resume_scholarity = new Resume_Scholarity();
-        $this->conn = $this->resume_scholarity->getConnection();
-        $this->table = $this->resume_scholarity->getTable();
-        $this->pk = $this->resume_scholarity->getPk();
+        include_once ROOT."/Model/resume_scholarities.php";
+        $this->resume_scholarities = new Resume_Scholarities();
+        $this->conn = $this->resume_scholarities->getConnection();
+        $this->table = $this->resume_scholarities->getTable();
+        $this->pk = $this->resume_scholarities->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_resume_scholarity){
+    public function updateInfos($userlogged, $infos, $id_resume_scholarities){
         $a = "";
         $index = 1;
 
