@@ -1,6 +1,6 @@
 <?php
 
-class userController{
+class UserController{
     protected $user, $table;
 
     public function __construct(){

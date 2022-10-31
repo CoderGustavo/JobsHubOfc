@@ -15,7 +15,7 @@ require_once(__DIR__ . '/Controller/VacancyController.php');
 $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
-$users_vancancies = new VacancyController();
+$users_vancancies = new Users_VacanciesController();
 
 // switch (PATH[1]) {
 //     case "login" :
@@ -107,7 +107,7 @@ switch (PATH[1]) {
     case 'empresa' :
         switch ($request_method){
             case 'GET' :
-                require __DIR__ . '/View/company/index.php';
+                $home->showCompanyPage();
                 break;
             default :
                 http_response_code(405);
@@ -118,13 +118,14 @@ switch (PATH[1]) {
     case 'perfil' :
         switch ($request_method){
             case 'GET' :
-                require __DIR__ . '/View/profile/index.php';
+                $home->showProfilePage();
                 break;
             default :
                 http_response_code(405);
                 $home->showError(405);
                 break;
         }
+        break;
     case 'teste':
         $buscando = "";
         $vacancies->selectInfos($buscando);
