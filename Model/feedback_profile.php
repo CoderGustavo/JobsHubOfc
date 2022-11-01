@@ -20,7 +20,7 @@ class Feedback_Profile{
     }
 
     public function getPk(){ 
-        return $this->table;
+        return $this->pk;
     }
 
 }

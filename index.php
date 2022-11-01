@@ -7,16 +7,28 @@ define("ROOT", $_SERVER['DOCUMENT_ROOT']);
 
 // include classes below:
 require_once(__DIR__ . '/Controller/HomeController.php');
+<<<<<<< HEAD
 require_once(__DIR__ . '/Controller/UsersController.php');
 require_once(__DIR__ . '/Controller/VacanciesController.php');
+=======
+require_once(__DIR__ . '/Controller/UserController.php');
+require_once(__DIR__ . '/Controller/VacancyController.php');
+require_once(__DIR__ . '/Controller/Users_VacanciesController.php');
+>>>>>>> bb7f12542d1637400cfd8155a60d4fbd6a77b866
 
 
 // initialize classes below:
 $home = new HomeController();
+<<<<<<< HEAD
 $user = new UsersController();
 $vacancies = new VacanciesController();
+=======
+$user = new UserController();
+$vacancies = new VacancyController();
+$users_vancancies = new Users_VacanciesController();
+>>>>>>> bb7f12542d1637400cfd8155a60d4fbd6a77b866
 
-// switch (PATH[1]) {
+// switch (PATH[1]) 
 //     case "login" :
 //     case "cadastro" :
 //         if($_SESSION['user']){
@@ -64,12 +76,38 @@ switch (PATH[1]) {
         }
         break;
     case 'buscando' :
-        if($path[2]) require __DIR__ . '/View/search/index.php';
+        if(PATH[2]) require __DIR__ . '/View/search/index.php';
         else header('Location: /');
         break;
     case 'hub' :
-        $home->showHubPage($path[2]);
+        switch ($request_method){
+            case 'GET' :
+                if(PATH[2]){
+                    $home->showHubPage(PATH[2]);
+                }
+                else{
+                    $home->showHubPage();
+                }
+                break;
+            case 'POST' :
+                if(PATH[2]){
+                    if(PATH[2]=='like'){
+                        $_POST["id_user"]=$_SESSION["user"]["id_user"];
+                        $users_vancancies->createInfos($_POST);
+                    }
+                    else{
 
+                    }
+                }
+                else{
+
+                }
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
         break;
     case 'cadastrovagas' :
         switch ($request_method){
@@ -105,6 +143,17 @@ switch (PATH[1]) {
         switch ($request_method){
             case 'GET' :
                 $home->showProfilePage();
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
+    case 'removerVaga' :
+        switch ($request_method){
+            case 'POST' :
+                $vacancies->removeVacancy($_POST["id_vacancy"]);
                 break;
             default :
                 http_response_code(405);

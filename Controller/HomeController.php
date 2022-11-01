@@ -2,6 +2,7 @@
 
 class HomeController{
 
+
     function showHomePage(){
         $vagas = new VacanciesController();
         $vagas = $vagas->selectInfos();
@@ -17,14 +18,22 @@ class HomeController{
     }
 
     function showHubPage($idvaga=""){
+
+        $path= PATH;
         
         if($idvaga){
+<<<<<<< HEAD
             $vagas=new VacanciesController();
             $vagas=$vagas->selectInfos(true,"","*",$idvaga);
             // print_r($vagas);
+=======
+            $vaga=new VacancyController();
+            $vaga=$vaga->selectInfos(true,"","*",$idvaga);
+>>>>>>> bb7f12542d1637400cfd8155a60d4fbd6a77b866
         }
 
-        // require ROOT . '/View/hub/index.php';
+
+        require ROOT . '/View/hub/index.php';
     }
 
     function showCompanyPage(){

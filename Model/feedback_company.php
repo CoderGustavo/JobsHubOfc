@@ -20,7 +20,7 @@ class Feedback_Company{
     }
 
     public function getPk(){ 
-        return $this->table;
+        return $this->pk;
     }
 
 }

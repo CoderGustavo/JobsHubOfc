@@ -1,17 +1,17 @@
 <?php
 
-class VacanciesController{
-    protected $vacancy, $table, $conn, $pk;
+class Users_VacanciesController{
+    protected $users_vacancies, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/vacancies.php";
-        $this->vacancy = new Vacancies();
-        $this->conn = $this->vacancies->getConnection();
-        $this->table = $this->vacancies->getTable();
-        $this->pk = $this->vacancies->getPk();
+        include_once ROOT."/Model/users_vacancies.php";
+        $this->users_vacancies= new Users_Vacancies();
+        $this->conn = $this->users_vacancies->getConnection();
+        $this->table = $this->users_vacancies->getTable();
+        $this->pk = $this->users_vacancies->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_vacancy){
+    public function updateInfos($userlogged, $infos, $id_users_vacancies){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class VacanciesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_vacancy);
+        $query->bindParam(":$this->pk", $id_users_vacancies);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -81,16 +81,14 @@ class VacanciesController{
         
     }
     
-    public function selectInfos($re = true, $buscando = "", $campos = "*", $id = ""){
+    public function selectInfos($re = true, $campos = "*", $id = ""){
         $where = "";
 
-        if($buscando && !$id) $where = "where name LIKE :buscando OR short_desc LIKE :buscando OR full_desc LIKE :buscando OR salary_min == :buscando OR salary_max == :buscando OR salary_defined == :buscando OR vacancy_type LIKE :buscando OR required_abilities LIKE :buscando OR difference_abilities LIKE :buscando OR workload LIKE :buscando OR activity LIKE :buscando OR qtd_max_cand == :buscando OR qtd_min_cand == :buscando OR open_date == :buscando OR close_date == :buscando";
-        else if($id) $where = "where $this->pk = :$this->pk";
+        if($id) $where = "where $this->pk = :$this->pk";
 
         $query = $this->conn->prepare("SELECT $campos FROM $this->table $where");
 
-        if($buscando && !$id) $query->bindParam(":buscando", $buscando);
-        else if($id) $query->bindParam(":$this->pk", $id);
+        if($id) $query->bindParam(":$this->pk", $id);
         
         try {
             $query->execute();
@@ -114,5 +112,3 @@ class VacanciesController{
     }
 
 }
-
-

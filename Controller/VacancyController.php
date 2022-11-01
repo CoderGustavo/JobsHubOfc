@@ -1,17 +1,17 @@
 <?php
 
-class Selective_ProcessController{
-    protected $selective_process, $table, $conn, $pk;
+class VacancyController{
+    protected $vacancies, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/selective_process.php";
-        $this->selective_process= new Selective_Process();
-        $this->conn = $this->selective_process->getConnection();
-        $this->table = $this->selective_process->getTable();
-        $this->pk = $this->selective_process->getPk();
+        include_once ROOT."/Model/vacancies.php";
+        $this->vacancies = new Vacancies();
+        $this->conn = $this->vacancies->getConnection();
+        $this->table = $this->vacancies->getTable();
+        $this->pk = $this->vacancies->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_selective_process){
+    public function updateInfos($userlogged, $infos, $id_vacancy){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class Selective_ProcessController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_selective_process);
+        $query->bindParam(":$this->pk", $id_vacancy);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -81,14 +81,16 @@ class Selective_ProcessController{
         
     }
     
-    public function selectInfos($re = true, $campos = "*", $id = ""){
+    public function selectInfos($re = true, $buscando = "", $campos = "*", $id = ""){
         $where = "";
 
-        if($id) $where = "where $this->pk = :$this->pk";
+        if($buscando && !$id) $where = "where name LIKE :buscando OR short_desc LIKE :buscando OR full_desc LIKE :buscando OR salary_min == :buscando OR salary_max == :buscando OR salary_defined == :buscando OR vacancy_type LIKE :buscando OR required_abilities LIKE :buscando OR difference_abilities LIKE :buscando OR workload LIKE :buscando OR activity LIKE :buscando OR qtd_max_cand == :buscando OR qtd_min_cand == :buscando OR open_date == :buscando OR close_date == :buscando";
+        else if($id) $where = "where $this->pk = :$this->pk";
 
         $query = $this->conn->prepare("SELECT $campos FROM $this->table $where");
 
-        if($id) $query->bindParam(":$this->pk", $id);
+        if($buscando && !$id) $query->bindParam(":buscando", $buscando);
+        else if($id) $query->bindParam(":$this->pk", $id);
         
         try {
             $query->execute();
@@ -111,4 +113,31 @@ class Selective_ProcessController{
         
     }
 
+    public function removeVacancy($id, $re = false){
+        $query = $this->conn->prepare("DELETE FROM $this->table WHERE id_vacancy = :id");
+        $query->bindParam(":id", $id);
+        try {
+            $query->execute();
+            $res = array("success" => "Vaga removida com sucesso!");
+            if($re){
+                return $res;
+            }else{
+                echo json_encode($res);
+                return;
+            }
+        }catch(Throwable $th){
+            $res = array("error" => $th);
+            if($re){
+                return $res;
+            }else{
+                echo json_encode($res);
+                return;
+            }
+        }
+
+
+    }
+
 }
+
+
