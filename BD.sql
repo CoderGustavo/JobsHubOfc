@@ -219,7 +219,7 @@ CREATE TABLE `abilities` (
 
 CREATE TABLE `vacancy_difference_abilities` (
 	`id_difference_ability` int AUTO_INCREMENT,
-	`id_vacancy` int NOT NULL,
+	`id_vacancy` int,
 	`id_ability` int,
 	PRIMARY KEY (`id_difference_ability`)
 );
