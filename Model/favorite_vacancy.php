@@ -21,7 +21,7 @@ class Favorite_vacancy{
     }
 
     public function getPk(){ 
-        return $this->table;
+        return $this->pk;
     }
 
 }

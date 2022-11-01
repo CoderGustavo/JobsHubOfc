@@ -1,7 +1,7 @@
 <?php
 
 class IntegrationController{
-    protected $hability, $table, $conn, $pk;
+    protected $integration, $table, $conn, $pk;
 
     public function __construct(){
         include_once ROOT."/Model/integration.php";

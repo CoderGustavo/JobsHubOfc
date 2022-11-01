@@ -20,7 +20,7 @@ class Integration{
     }
 
     public function getPk(){ 
-        return $this->table;
+        return $this->pk;
     }
 
 }

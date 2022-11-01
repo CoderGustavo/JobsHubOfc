@@ -1,14 +1,14 @@
 <?php
 
 class VacancyController{
-    protected $vacancy, $table, $conn, $pk;
+    protected $vacancies, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/vacancy.php";
-        $this->vacancy = new Vacancy();
-        $this->conn = $this->vacancy->getConnection();
-        $this->table = $this->vacancy->getTable();
-        $this->pk = $this->vacancy->getPk();
+        include_once ROOT."/Model/vacancies.php";
+        $this->vacancies = new Vacancies();
+        $this->conn = $this->vacancies->getConnection();
+        $this->table = $this->vacancies->getTable();
+        $this->pk = $this->vacancies->getPk();
     }
     
     public function updateInfos($userlogged, $infos, $id_vacancy){

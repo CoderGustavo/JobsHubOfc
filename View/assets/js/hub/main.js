@@ -18,12 +18,28 @@ $(document).on('touchend', function(e){
         setTimeout(() => {
             $(".card-like").css({"width":"100vw", "height":"110vh"})
         }, 300);
-        setTimeout(() => {
-            $(".card-like").removeClass('card-like-active')
-        }, 1500);
-        setTimeout(() => {
-            $(".card-like").css({"with": "", "height": "", "left": "", "transform": ""})
-        }, 2000);
+        
+        let data = {
+            id_vacancy: $("input[name='id_vacancy']").val(),
+        }
+        let user_vacancy = $.post("/hub/like", data, 'json')
+        user_vacancy.done(function(response){
+            response = JSON.parse(response);
+
+            setTimeout(() => {
+                $(".card-like").removeClass('card-like-active')
+            }, 1500);
+            setTimeout(() => {
+                $(".card-like").css({"with": "", "height": "", "left": "", "transform": ""})
+            }, 2000);
+
+            if(response.error){
+
+            }
+            else{
+
+            }
+        });
     }
     else{
         if(positionend>positionstart){
