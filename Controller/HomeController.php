@@ -3,7 +3,7 @@
 class HomeController{
 
     function showHomePage(){
-        $vagas = new VacancyController();
+        $vagas = new VacanciesController();
         $vagas = $vagas->selectInfos();
         require ROOT . '/View/home/index.php';
     }
@@ -19,7 +19,7 @@ class HomeController{
     function showHubPage($idvaga=""){
         
         if($idvaga){
-            $vagas=new VacancyController();
+            $vagas=new VacanciesController();
             $vagas=$vagas->selectInfos(true,"","*",$idvaga);
             // print_r($vagas);
         }
@@ -28,7 +28,7 @@ class HomeController{
     }
 
     function showCompanyPage(){
-        $vagas = new VacancyController();
+        $vagas = new VacanciesController();
         $vagas = $vagas->selectInfos();
         require ROOT . '/View/company/index.php';
     }

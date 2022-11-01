@@ -7,14 +7,14 @@ define("ROOT", $_SERVER['DOCUMENT_ROOT']);
 
 // include classes below:
 require_once(__DIR__ . '/Controller/HomeController.php');
-require_once(__DIR__ . '/Controller/UserController.php');
-require_once(__DIR__ . '/Controller/VacancyController.php');
+require_once(__DIR__ . '/Controller/UsersController.php');
+require_once(__DIR__ . '/Controller/VacanciesController.php');
 
 
 // initialize classes below:
 $home = new HomeController();
-$user = new UserController();
-$vacancies = new VacancyController();
+$user = new UsersController();
+$vacancies = new VacanciesController();
 
 // switch (PATH[1]) {
 //     case "login" :

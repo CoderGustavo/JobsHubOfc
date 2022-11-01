@@ -1,7 +1,7 @@
 <?php
 
 class ClassrController{
-    protected $class, $table, $conn, $pk;
+    protected $classr, $table, $conn, $pk;
 
     public function __construct(){
         include_once ROOT."/Model/class.php";
@@ -70,7 +70,7 @@ class ClassrController{
         }
         try {
             $query->execute();
-            $res = array("success" => "Alterações realizadas com sucesso!");
+            $res = array("success" => "Dados criados com sucesso!");
             echo json_encode($res);
             return;
         } catch (Throwable $th) {
