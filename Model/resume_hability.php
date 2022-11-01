@@ -20,7 +20,7 @@ class Resume_Hability{
     }
 
     public function getPk(){ 
-        return $this->table;
+        return $this->pk;
     }
 
 }

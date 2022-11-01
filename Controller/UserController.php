@@ -1,13 +1,13 @@
 <?php
 
 class UserController{
-    protected $user, $table;
+    protected $users, $table;
 
     public function __construct(){
-        include_once ROOT."/Model/user.php";
-        $this->user = new User();
-        $this->conn = $this->user->getConnection();
-        $this->table = $this->user->getTable();
+        include_once ROOT."/Model/users.php";
+        $this->users = new Users();
+        $this->conn = $this->users->getConnection();
+        $this->table = $this->users->getTable();
     }
 
     public function login($email, $password){
@@ -33,6 +33,7 @@ class UserController{
         if($password != $confirm_password){
             $res = array("error" => "As senhas não coincidem!");
             echo json_encode($res);
+            return;
         }
 
         $password = md5(sha1(md5(sha1($password))));
@@ -60,27 +61,6 @@ class UserController{
         echo json_encode($res);
     }
 
-    public function editAccount($userlogged ,$username, $email, $phone, $password){
-        $userlogged = json_decode($userlogged);
-        $pass = md5(sha1(md5(sha1($password))));
-
-        if($userlogged->password != $pass){
-            $res = array("error" => "Senha digitada não coincide com sua senha atual!");
-            return json_encode($res);
-        }
-
-        $query = $this->conn->prepare("UPDATE users SET name = :name, email = :email, phone = :phone WHERE id = :id");
-        $query->bindParam(":id", $userlogged->id);
-        $query->bindParam(":name", $username);
-        $query->bindParam(":email", $email);
-        $query->bindParam(":phone", $phone);
-        $id = $query->execute();
-        if($id){
-            $res = array("success" => "Alterações realizadas com sucesso!");
-            return json_encode($res);
-        }
-    }
-
     public function editPass($userlogged, $current_password, $new_password, $new_password_confirmation){
         $userlogged = json_decode($userlogged);
         $pass = md5(sha1(md5(sha1($current_password))));
@@ -104,7 +84,6 @@ class UserController{
             return json_encode($res);
         }
     }
-
 
     public function updateInfos($userlogged, $infos){
         $a = "";

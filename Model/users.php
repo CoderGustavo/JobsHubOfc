@@ -1,12 +1,11 @@
 <?php
 
-class Resume_Scholarity{
-    protected $conn, $table, $pk;
+class Users{
+    protected $conn, $url, $table, $user, $pass;
 
     public function __construct(){
         include_once "connection.php";
-        $this->table = "resume_scholarity";
-        $this->pk = "id_resume_scholarity";
+        $this->table = "users";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
     }
@@ -15,11 +14,8 @@ class Resume_Scholarity{
         return $this->conn;
     }
 
-    public function getTable(){ 
-        return $this->table;
-    }
 
-    public function getPk(){ 
+    public function getTable(){
         return $this->table;
     }
 
