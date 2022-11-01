@@ -9,6 +9,7 @@
 <body>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.html");?>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
+    <input type="hidden" name="id_vacancy" value="<?php echo $path[2]?>">
     <div class="hub">
         <div class="container container-hub">
             <div class="title">

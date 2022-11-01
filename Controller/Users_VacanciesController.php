@@ -1,17 +1,17 @@
 <?php
 
 class Users_VacanciesController{
-    protected $selective_process, $table, $conn, $pk;
+    protected $users_vacancies, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/selective_process.php";
-        $this->selective_process= new Selective_Process();
-        $this->conn = $this->selective_process->getConnection();
-        $this->table = $this->selective_process->getTable();
-        $this->pk = $this->selective_process->getPk();
+        include_once ROOT."/Model/users_vacancies.php";
+        $this->users_vacancies= new Users_Vacancies();
+        $this->conn = $this->users_vacancies->getConnection();
+        $this->table = $this->users_vacancies->getTable();
+        $this->pk = $this->users_vacancies->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_selective_process){
+    public function updateInfos($userlogged, $infos, $id_users_vacancies){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class Users_VacanciesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_selective_process);
+        $query->bindParam(":$this->pk", $id_users_vacancies);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);

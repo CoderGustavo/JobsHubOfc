@@ -20,7 +20,7 @@ class  Work_Experiences{
     }
 
     public function getPk(){ 
-        return $this->table;
+        return $this->pk;
     }
 
 }

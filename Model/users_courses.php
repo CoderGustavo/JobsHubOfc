@@ -20,7 +20,7 @@ class  Users_Courses{
     }
 
     public function getPk(){ 
-        return $this->table;
+        return $this->pk;
     }
 
 }

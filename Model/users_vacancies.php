@@ -1,12 +1,12 @@
 <?php
 
-class  Selective_Process{
+class  Users_Vacancies{
     protected $conn, $table, $pk;
 
     public function __construct(){
         include_once "connection.php";
-        $this->table = "selective_process";
-        $this->pk = "id_selective_process";
+        $this->table = "users_vacancies";
+        $this->pk = "id_users_vacancies";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
     }
@@ -20,7 +20,7 @@ class  Selective_Process{
     }
 
     public function getPk(){ 
-        return $this->table;
+        return $this->pk;
     }
 
 }

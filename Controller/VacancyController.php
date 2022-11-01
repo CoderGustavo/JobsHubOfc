@@ -1,11 +1,11 @@
 <?php
 
-class VacanciesController{
-    protected $vacancy, $table, $conn, $pk;
+class VacancyController{
+    protected $vacancies, $table, $conn, $pk;
 
     public function __construct(){
         include_once ROOT."/Model/vacancies.php";
-        $this->vacancy = new Vacancies();
+        $this->vacancies = new Vacancies();
         $this->conn = $this->vacancies->getConnection();
         $this->table = $this->vacancies->getTable();
         $this->pk = $this->vacancies->getPk();
