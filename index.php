@@ -112,6 +112,17 @@ switch (PATH[1]) {
                 break;
         }
         break;
+    case 'removerVaga' :
+        switch ($request_method){
+            case 'POST' :
+                $vacancies->removeVacancy($_POST["id_vacancy"]);
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
     case 'teste':
         $buscando = "";
         $vacancies->selectInfos($buscando);

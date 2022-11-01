@@ -113,6 +113,31 @@ class VacancyController{
         
     }
 
+    public function removeVacancy($id, $re = false){
+        $query = $this->conn->prepare("DELETE FROM $this->table WHERE id_vacancy = :id");
+        $query->bindParam(":id", $id);
+        try {
+            $query->execute();
+            $res = array("success" => "Vaga removida com sucesso!");
+            if($re){
+                return $res;
+            }else{
+                echo json_encode($res);
+                return;
+            }
+        }catch(Throwable $th){
+            $res = array("error" => $th);
+            if($re){
+                return $res;
+            }else{
+                echo json_encode($res);
+                return;
+            }
+        }
+
+
+    }
+
 }
 
 

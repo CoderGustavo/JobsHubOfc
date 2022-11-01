@@ -3,6 +3,7 @@
 <head>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/head.html"); ?>
     <link rel="stylesheet" href="/View/assets/css/company/style.css">
+    <script src="/View/assets/js/company/main.js"></script>
 </head>
 <body>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php"); ?>
@@ -59,6 +60,9 @@
                     <div class="vaga-line-one">
                         <h2><?php echo $vaga["name"]; ?></h2>
                         <span>1/<?php echo $vaga["qtd_max_cand"]; ?></span>
+                        <?php if($_SESSION['user']): ?>
+                            <a href="" class="removerVaga" id="<?php echo $vaga["id_vacancy"]?>"><i class="far fa-trash txt-light1"></i></a>
+                        <?php endif ?>
                     </div>
                     <div class="vaga-line-two">
                         <div class="vaga-hab">
