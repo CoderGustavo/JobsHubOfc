@@ -4,7 +4,7 @@ class HomeController{
 
 
     function showHomePage(){
-        $vagas = new VacanciesController();
+        $vagas = new VacancyController();
         $vagas = $vagas->selectInfos();
         require ROOT . '/View/home/index.php';
     }
@@ -22,14 +22,9 @@ class HomeController{
         $path= PATH;
         
         if($idvaga){
-<<<<<<< HEAD
-            $vagas=new VacanciesController();
+            $vagas=new VacancyController();
             $vagas=$vagas->selectInfos(true,"","*",$idvaga);
             // print_r($vagas);
-=======
-            $vaga=new VacancyController();
-            $vaga=$vaga->selectInfos(true,"","*",$idvaga);
->>>>>>> bb7f12542d1637400cfd8155a60d4fbd6a77b866
         }
 
 
@@ -37,7 +32,7 @@ class HomeController{
     }
 
     function showCompanyPage(){
-        $vagas = new VacanciesController();
+        $vagas = new VacancyController();
         $vagas = $vagas->selectInfos();
         require ROOT . '/View/company/index.php';
     }

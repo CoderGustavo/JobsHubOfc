@@ -7,26 +7,14 @@ define("ROOT", $_SERVER['DOCUMENT_ROOT']);
 
 // include classes below:
 require_once(__DIR__ . '/Controller/HomeController.php');
-<<<<<<< HEAD
-require_once(__DIR__ . '/Controller/UsersController.php');
-require_once(__DIR__ . '/Controller/VacanciesController.php');
-=======
 require_once(__DIR__ . '/Controller/UserController.php');
 require_once(__DIR__ . '/Controller/VacancyController.php');
-require_once(__DIR__ . '/Controller/Users_VacanciesController.php');
->>>>>>> bb7f12542d1637400cfd8155a60d4fbd6a77b866
 
 
 // initialize classes below:
 $home = new HomeController();
-<<<<<<< HEAD
-$user = new UsersController();
-$vacancies = new VacanciesController();
-=======
 $user = new UserController();
 $vacancies = new VacancyController();
-$users_vancancies = new Users_VacanciesController();
->>>>>>> bb7f12542d1637400cfd8155a60d4fbd6a77b866
 
 // switch (PATH[1]) 
 //     case "login" :
@@ -35,7 +23,7 @@ $users_vancancies = new Users_VacanciesController();
 //             header("Location: /");
 //         }
 //         break;
-// }
+// 
 
 switch (PATH[1]) {
     case '/' :
@@ -132,6 +120,20 @@ switch (PATH[1]) {
         switch ($request_method){
             case 'GET' :
                 $home->showCompanyPage();
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
+    case 'mostrarvagas' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/mosVaga/index.php';
+                break;
+            case 'POST' :
+                $vacancies->createInfos($_POST);
                 break;
             default :
                 http_response_code(405);
