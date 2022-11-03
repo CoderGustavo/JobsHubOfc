@@ -9,13 +9,16 @@
         <script src="/View/assets/js/cadVagas/main.js"></script>
     </head>
     <body>
-
+        
         <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.html");?>
         <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
-        <?php include_once("cadastro.html");?>
-        <?php include_once("salary.html");?>
-        <?php include_once("vecancy-type.html");?>
-        <?php include_once("date.html");?>
-        <?php include_once("vecancy-finish.html");?>
+        <?php foreach ($vagas as $key => $vaga): ?>
+        <?php include_once("cadastro.php");?>
+        <?php include_once("salary.php");?>
+        <?php include_once("vecancy-type.php");?>
+        <?php include_once("date.php");?>
+        <?php include_once("vecancy-finish.php");?>
+        <?php endforeach ?>
+
     </body>
 </html>

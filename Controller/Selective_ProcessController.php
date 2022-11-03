@@ -83,7 +83,7 @@ class Selective_ProcessController{
     
     public function selectInfos($re = true, $campos = "*", $id = ""){
         $where = "";
-
+        
         if($id) $where = "where $this->pk = :$this->pk";
 
         $query = $this->conn->prepare("SELECT $campos FROM $this->table $where");
