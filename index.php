@@ -23,7 +23,7 @@ $vacancies = new VacancyController();
 //             header("Location: /");
 //         }
 //         break;
-// }
+// 
 
 switch (PATH[1]) {
     case '/' :
@@ -112,6 +112,19 @@ switch (PATH[1]) {
                 break;
         }
         break;
+    case'editarvaga' :
+        switch($request_method){
+            case 'GET' :
+                $home->showEditVacancies();
+                break;
+            case 'POST' :
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
     case 'atualizar_conta' :
         // print_r($_SESSION['user']);
         $user->updateInfos($_SESSION["user"], $_POST);
@@ -120,6 +133,20 @@ switch (PATH[1]) {
         switch ($request_method){
             case 'GET' :
                 $home->showCompanyPage();
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
+    case 'mostrarvagas' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/mosVaga/index.php';
+                break;
+            case 'POST' :
+                $vacancies->createInfos($_POST);
                 break;
             default :
                 http_response_code(405);

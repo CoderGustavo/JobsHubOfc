@@ -29,7 +29,6 @@ CREATE TABLE `companies` (
 	`ceo` varchar(255),
 	`date_foundation` DATE ,
 	`link` varchar(255) ,
-	`id_vacancy` int,
 	`create_date` DATE, 
 	PRIMARY KEY (`id_company`)
 );
@@ -53,7 +52,7 @@ CREATE TABLE `vacancies` (
 	`open_date` DATE ,
 	`close_date` DATE,
 	`create_date` DATE,
-	`status` varchar(20),
+	`id_ vacancy_status` int NOT NULL,
 	PRIMARY KEY (`id_vacancy`)
 );
 
@@ -62,13 +61,13 @@ CREATE TABLE `resumes` (
 	`id_scholarity` int,
 	`id_work_experiences` int,
 	`id_hability` int,
-	`create_date` DATE, 
+	`create_date` DATE,
 	PRIMARY KEY (`id_resume`)
 );
 
 CREATE TABLE `scholarities` (
 	`id_scholarity` int NOT NULL AUTO_INCREMENT,
-	`education_level` varchar(255) NOT NULL,
+	`id_education_level` INT,
 	`study_field` varchar(255) NOT NULL,
 	`school_name` varchar(255) NOT NULL,
 	`country` varchar(255) NOT NULL,
@@ -190,7 +189,7 @@ CREATE TABLE `courses` (
 
 
 CREATE TABLE `class` (
-	`id_class` int NOT NULL AUTO_INCREMENT,
+	`id_class` int AUTO_INCREMENT,
 	`numer_class` int NOT NULL,
 	`topic_name` varchar(255) NOT NULL,
 	`description` varchar(255) NOT NULL,
@@ -205,37 +204,93 @@ CREATE TABLE `users_courses` (
 	PRIMARY KEY (`id_users_courses`)
 );
 
-CREATE TABLE `vacancy_abilities_required` (
-	`id_vacancy_abilities` int NOT NULL AUTO_INCREMENT,
-	`vacancy_abilities_required` int NOT NULL,
-	PRIMARY KEY (`id_vacancy_abilities`)
+CREATE TABLE `vacancy_required_abilities` (
+	`id_required_ability` int AUTO_INCREMENT,
+	`id_vacancy` int,
+	`id_ability` int,
+	PRIMARY KEY (`id_required_ability`)
 );
 
-CREATE TABLE `abilities_required` (
-	`id_vacancy_abilities_required` int NOT NULL AUTO_INCREMENT,
-	`required_abilities` varchar(255) NOT NULL,
-	PRIMARY KEY (`id_vacancy_abilities_required`)
+CREATE TABLE `abilities` (
+	`id_ability` int AUTO_INCREMENT,
+	`ability` varchar(255),
+	PRIMARY KEY (`id_ability`)
 );
 
 CREATE TABLE `vacancy_difference_abilities` (
-	`id_vacancy_difference_abilities` int NOT NULL AUTO_INCREMENT,
-	`id_difference_abilities` INT NOT NULL,
-	PRIMARY KEY (`id_vacancy_difference_abilities`)
+	`id_difference_ability` int AUTO_INCREMENT,
+	`id_vacancy` int ,
+	`id_ability` int,
+	PRIMARY KEY (`id_difference_ability`)
 );
 
-CREATE TABLE `diference_abilities` (
-	`id_deference_abilities` int NOT NULL AUTO_INCREMENT,
-	`deference_abilities` varchar(255) NOT NULL,
-	PRIMARY KEY (`id_deference_abilities`)
+CREATE TABLE `vacancies_status` (
+	`id_vacancy_status` int  AUTO_INCREMENT,
+	`name` varchar(255) ,
+	PRIMARY KEY (`id_vacancy_status`)
 );
 
-ALTER TABLE `vacancy_abilities_required` ADD CONSTRAINT `vacancy_abilities_required_fk0` FOREIGN KEY (`vacancy_abilities_required`) REFERENCES `abilities_required`(`id_vacancy_abilities_required`);
+CREATE TABLE `companies_vacancies` (
+	`id_companies_vacancies` int AUTO_INCREMENT,
+	`id_company` int ,
+	`id_vacancy` int ,
+	PRIMARY KEY (`id_companies_vacancies`)
+);
 
-ALTER TABLE `vacancy_difference_abilities` ADD CONSTRAINT `vacancy_difference_abilities_fk0` FOREIGN KEY (`id_difference_abilities`) REFERENCES `diference_abilities`(`id_deference_abilities`);
+CREATE TABLE `education_level`(
+	`id_education_level` INT AUTO_INCREMENT,
+	`name` VARCHAR(255),
+	PRIMARY KEY (`id_education_level`)
+);
 
-ALTER TABLE `vacancies` ADD CONSTRAINT `vacancies_fk0` FOREIGN KEY (`id_vacancy_required_abilities`) REFERENCES `vacancy_abilities_required`(`id_vacancy_abilities`);
+CREATE TABLE `resumes_scholarities`(
+	`id_resume_scholarity` INT AUTO_INCREMENT,
+	`id_scholarity` INT,
+	`id_resume` INT,
+	PRIMARY KEY(`id_resume_scholarity`)
+);
 
-ALTER TABLE `vacancies` ADD CONSTRAINT `vacancies_fk1` FOREIGN KEY (`id_vacancy_difference_abilities`) REFERENCES `vacancy_difference_abilities`(`id_vacancy_difference_abilities`);
+CREATE TABLE `resumes_work_experiences`(
+	`id_resume_work_experience` INT AUTO_INCREMENT,
+	`id_work_experiences` INT,
+	`id_resume` INT,
+	PRIMARY KEY(`id_resume_work_experience`)
+);
+
+CREATE TABLE `resumes_abilities`(
+	`id_resume_ability` int AUTO_INCREMENT,
+	`id_ability` INT,
+	`id_resume` INT,
+	PRIMARY KEY(`id_resume_ability`)
+);
+
+ALTER TABLE `resumes_scholarities` ADD CONSTRAINT `resumes_scholarities_fk0`  FOREIGN KEY (`id_scholarity`) REFERENCES `scholarities`(`id_scholarity`);
+
+ALTER TABLE `resumes_scholarities` ADD CONSTRAINT `resume_scholarity_fk1`   FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
+
+ALTER TABLE `resumes_work_experiences` ADD CONSTRAINT `resumes_work_experiences_fk0` FOREIGN KEY (`id_resume_work_experience`)  REFERENCES `work_experiences`(`id_work_experiences`);
+
+ALTER TABLE `resumes_work_experiences` ADD CONSTRAINT `resumes_work_experiences_fk1`  FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
+
+ALTER TABLE `resumes_abilities` ADD CONSTRAINT `resumes_abilities_fk0` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
+
+ALTER TABLE `resumes_abilities` ADD CONSTRAINT `resume_ability_fk1`  FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
+
+ALTER TABLE `scholarities` ADD CONSTRAINT `scholaritiesl_fk0` FOREIGN KEY (`id_education_level`) REFERENCES `education_level`(`id_education_level`);
+
+ALTER TABLE `companies_vacancies` ADD CONSTRAINT `companies_vacancies_fk0` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
+ALTER TABLE `companies_vacancies` ADD CONSTRAINT `companies_vacancies_fk1` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `vacancies` ADD CONSTRAINT `vacancies_fk0` FOREIGN KEY (`id_ vacancy_status`) REFERENCES `vacancies_status`(`id_vacancy_status`);
+
+ALTER TABLE `vacancy_required_abilities` ADD CONSTRAINT `vacancy_required_abilities_fk0` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `vacancy_required_abilities` ADD CONSTRAINT `vacancy_required_abilities_fk1` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
+
+ALTER TABLE `vacancy_difference_abilities` ADD CONSTRAINT `vacancy_difference_abilities_fk0` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `vacancy_difference_abilities` ADD CONSTRAINT `vacancy_difference_abilities_fk1` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
 
 ALTER TABLE `feedback_company` ADD CONSTRAINT `feedback_company_fk0` FOREIGN KEY (`id_feedback`) REFERENCES `feedback`(`id_feedback`);
 
@@ -254,8 +309,6 @@ ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk1` FOREIGN KEY (`id_user`) REF
 ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk2` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
 
 ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
-
-ALTER TABLE `companies` ADD CONSTRAINT `companies_fk0` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
 
 ALTER TABLE `resumes` ADD CONSTRAINT `resume_hability_fk1` FOREIGN KEY (`id_hability`) REFERENCES `hability`(`id_hability`);
 
