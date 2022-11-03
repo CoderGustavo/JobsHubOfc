@@ -16,14 +16,14 @@ $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
 
-// switch (PATH[1]) {
+// switch (PATH[1]) 
 //     case "login" :
 //     case "cadastro" :
 //         if($_SESSION['user']){
 //             header("Location: /");
 //         }
 //         break;
-// }
+// 
 
 switch (PATH[1]) {
     case '/' :
@@ -64,12 +64,38 @@ switch (PATH[1]) {
         }
         break;
     case 'buscando' :
-        if($path[2]) require __DIR__ . '/View/search/index.php';
+        if(PATH[2]) require __DIR__ . '/View/search/index.php';
         else header('Location: /');
         break;
     case 'hub' :
-        $home->showHubPage($path[2]);
+        switch ($request_method){
+            case 'GET' :
+                if(PATH[2]){
+                    $home->showHubPage(PATH[2]);
+                }
+                else{
+                    $home->showHubPage();
+                }
+                break;
+            case 'POST' :
+                if(PATH[2]){
+                    if(PATH[2]=='like'){
+                        $_POST["id_user"]=$_SESSION["user"]["id_user"];
+                        $users_vancancies->createInfos($_POST);
+                    }
+                    else{
 
+                    }
+                }
+                else{
+
+                }
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
         break;
     case 'cadastrovagas' :
         switch ($request_method){
@@ -114,10 +140,35 @@ switch (PATH[1]) {
                 break;
         }
         break;
+    case 'mostrarvagas' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/mosVaga/index.php';
+                break;
+            case 'POST' :
+                $vacancies->createInfos($_POST);
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
     case 'perfil' :
         switch ($request_method){
             case 'GET' :
                 $home->showProfilePage();
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
+    case 'removerVaga' :
+        switch ($request_method){
+            case 'POST' :
+                $vacancies->removeVacancy($_POST["id_vacancy"]);
                 break;
             default :
                 http_response_code(405);

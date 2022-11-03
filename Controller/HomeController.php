@@ -2,6 +2,7 @@
 
 class HomeController{
 
+
     function showHomePage(){
         $vagas = new VacancyController();
         $vagas = $vagas->selectInfos();
@@ -17,6 +18,8 @@ class HomeController{
     }
 
     function showHubPage($idvaga=""){
+
+        $path= PATH;
         
         if($idvaga){
             $vagas=new VacancyController();
@@ -24,7 +27,8 @@ class HomeController{
             // print_r($vagas);
         }
 
-        // require ROOT . '/View/hub/index.php';
+
+        require ROOT . '/View/hub/index.php';
     }
 
     function showCompanyPage(){
