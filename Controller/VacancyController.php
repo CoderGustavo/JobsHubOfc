@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 class VacancyController{
     protected $vacancies, $table, $conn, $pk;
 
@@ -95,6 +97,7 @@ class VacancyController{
         try {
             $query->execute();
             $res = $query->fetchAll();
+            print_r($res);
             if($re){
                 return $res;
             }else{
@@ -110,7 +113,6 @@ class VacancyController{
                 return;
             }
         }
-        
     }
 
     public function removeVacancy($id, $re = false){

@@ -112,6 +112,19 @@ switch (PATH[1]) {
                 break;
         }
         break;
+    case'editarvaga' :
+        switch($request_method){
+            case 'GET' :
+                $home->showEditVacancies();
+                break;
+            case 'POST' :
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
     case 'atualizar_conta' :
         // print_r($_SESSION['user']);
         $user->updateInfos($_SESSION["user"], $_POST);
