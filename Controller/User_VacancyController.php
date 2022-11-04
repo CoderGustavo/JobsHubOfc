@@ -1,17 +1,17 @@
 <?php
 
-class ClassrController{
-    protected $classr, $table, $conn, $pk;
+class User_VacancyController{
+    protected $user_vacancy, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/class.php";
-        $this->class = new Classr();
-        $this->conn = $this->class->getConnection();
-        $this->table = $this->class->getTable();
-        $this->pk = $this->class->getPk();
+        include_once ROOT."/Model/user_vacancy.php";
+        $this->user_vacancy= new User_Vacancy();
+        $this->conn = $this->user_vacancy->getConnection();
+        $this->table = $this->user_vacancy->getTable();
+        $this->pk = $this->user_vacancy->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_classr){
+    public function updateInfos($userlogged, $infos, $id_user_vacancy){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class ClassrController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_classr);
+        $query->bindParam(":$this->pk", $id_user_vacancy);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -112,5 +112,3 @@ class ClassrController{
     }
 
 }
-
-

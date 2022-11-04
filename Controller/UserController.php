@@ -1,13 +1,13 @@
 <?php
 
 class UserController{
-    protected $users, $table;
+    protected $user, $table;
 
     public function __construct(){
-        include_once ROOT."/Model/users.php";
-        $this->users = new Users();
-        $this->conn = $this->users->getConnection();
-        $this->table = $this->users->getTable();
+        include_once ROOT."/Model/user.php";
+        $this->user = new Users();
+        $this->conn = $this->user->getConnection();
+        $this->table = $this->user->getTable();
     }
 
     public function login($email, $password){

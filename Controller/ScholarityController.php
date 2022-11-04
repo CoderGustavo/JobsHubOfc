@@ -1,17 +1,17 @@
 <?php
 
-class ScholaritiesController{
-    protected $scholarities, $table, $conn, $pk;
+class ScholarityController{
+    protected $scholarity, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/scholarities.php";
-        $this->scholarities= new Scholarities();
-        $this->conn = $this->scholarities->getConnection();
-        $this->table = $this->scholarities->getTable();
-        $this->pk = $this->scholarities->getPk();
+        include_once ROOT."/Model/scholarity.php";
+        $this->scholarity= new Scholarity();
+        $this->conn = $this->scholarity->getConnection();
+        $this->table = $this->scholarity->getTable();
+        $this->pk = $this->scholarity->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_scholarities){
+    public function updateInfos($userlogged, $infos, $id_scholarity){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class ScholaritiesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_scholarities);
+        $query->bindParam(":$this->pk", $id_scholarity);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);

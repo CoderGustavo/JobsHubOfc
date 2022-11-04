@@ -13,8 +13,6 @@ class User_vacancy{
     public function getConnection(){
         return $this->conn;
     }
-
-
     
     public function getTable(){ 
         return $this->table;

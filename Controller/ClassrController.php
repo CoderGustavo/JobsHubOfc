@@ -1,17 +1,17 @@
 <?php
 
-class ResumesController{
-    protected $resumes, $table, $conn, $pk;
+class ClassrController{
+    protected $classr, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/resumes.php";
-        $this->resumes = new Resumes();
-        $this->conn = $this->resumes->getConnection();
-        $this->table = $this->resumes->getTable();
-        $this->pk = $this->resumes->getPk();
+        include_once ROOT."/Model/classr.php";
+        $this->classr = new Classr();
+        $this->conn = $this->classr->getConnection();
+        $this->table = $this->classr->getTable();
+        $this->pk = $this->classr->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_resumes){
+    public function updateInfos($userlogged, $infos, $id_classr){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class ResumesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_resumes);
+        $query->bindParam(":$this->pk", $id_classr);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -112,3 +112,5 @@ class ResumesController{
     }
 
 }
+
+
