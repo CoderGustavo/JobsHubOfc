@@ -1,17 +1,17 @@
 <?php
 
-class ScholaritiesController{
-    protected $scholarities, $table, $conn, $pk;
+class ClassrController{
+    protected $classr, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/scholarities.php";
-        $this->scholarities= new Scholarities();
-        $this->conn = $this->scholarities->getConnection();
-        $this->table = $this->scholarities->getTable();
-        $this->pk = $this->scholarities->getPk();
+        include_once ROOT."/Model/classr.php";
+        $this->classr = new Classr();
+        $this->conn = $this->classr->getConnection();
+        $this->table = $this->classr->getTable();
+        $this->pk = $this->classr->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_scholarities){
+    public function updateInfos($userlogged, $infos, $id_classr){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class ScholaritiesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_scholarities);
+        $query->bindParam(":$this->pk", $id_classr);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -83,7 +83,7 @@ class ScholaritiesController{
     
     public function selectInfos($re = true, $campos = "*", $id = ""){
         $where = "";
-
+        
         if($id) $where = "where $this->pk = :$this->pk";
 
         $query = $this->conn->prepare("SELECT $campos FROM $this->table $where");
@@ -112,3 +112,5 @@ class ScholaritiesController{
     }
 
 }
+
+

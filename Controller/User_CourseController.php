@@ -1,17 +1,17 @@
 <?php
 
-class CoursesController{
-    protected $courses, $table, $conn, $pk;
+class User_CourseController{
+    protected $user_course, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/courses.php";
-        $this->courses = new Courses();
-        $this->conn = $this->courses->getConnection();
-        $this->table = $this->courses->getTable();
-        $this->pk = $this->courses->getPk();
+        include_once ROOT."/Model/user_course.php";
+        $this->user_courss= new User_Course();
+        $this->conn = $this->user_course->getConnection();
+        $this->table = $this->user_course->getTable();
+        $this->pk = $this->user_course->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_courses){
+    public function updateInfos($userlogged, $infos, $id_user_course){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class CoursesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_courses);
+        $query->bindParam(":$this->pk", $id_user_course);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -112,5 +112,3 @@ class CoursesController{
     }
 
 }
-
-

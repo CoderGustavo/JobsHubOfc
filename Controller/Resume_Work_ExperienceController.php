@@ -1,17 +1,17 @@
 <?php
 
-class ResumesController{
-    protected $resumes, $table, $conn, $pk;
+class Resume_Work_ExperienceController{
+    protected $resume_work_experience, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/resumes.php";
-        $this->resumes = new Resumes();
-        $this->conn = $this->resumes->getConnection();
-        $this->table = $this->resumes->getTable();
-        $this->pk = $this->resumes->getPk();
+        include_once ROOT."/Model/resume_work_experience.php";
+        $this->resume_work_experience= new Resume_Work_Experience();
+        $this->conn = $this->resume_work_experience->getConnection();
+        $this->table = $this->resume_work_experience->getTable();
+        $this->pk = $this->resume_work_experience->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_resumes){
+    public function updateInfos($userlogged, $infos, $id_resume_work_experience){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class ResumesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_resumes);
+        $query->bindParam(":$this->pk", $id_resume_work_experience);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);

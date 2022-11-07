@@ -1,17 +1,17 @@
 <?php
 
-class Resume_ScholaritiesController{
-    protected $resume_scholarities, $table, $conn, $pk;
+class Work_ExperienceController{
+    protected $work_experience, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/resume_scholarities.php";
-        $this->resume_scholarities = new Resume_Scholarities();
-        $this->conn = $this->resume_scholarities->getConnection();
-        $this->table = $this->resume_scholarities->getTable();
-        $this->pk = $this->resume_scholarities->getPk();
+        include_once ROOT."/Model/work_experience.php";
+        $this->work_experience= new Work_Experience();
+        $this->conn = $this->work_experience->getConnection();
+        $this->table = $this->work_experience->getTable();
+        $this->pk = $this->work_experience->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_resume_scholarities){
+    public function updateInfos($userlogged, $infos, $id_work_experience){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class Resume_ScholaritiesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_resume_scholarity);
+        $query->bindParam(":$this->pk", $id_work_experience);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
