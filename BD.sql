@@ -94,12 +94,6 @@ CREATE TABLE `work_experiences` (
 	PRIMARY KEY (`id_work_experiences`)
 );
 
-CREATE TABLE `hability` (
-	`id_hability` int NOT NULL AUTO_INCREMENT,
-	`name` varchar(50) NOT NULL,
-	PRIMARY KEY (`id_hability`)
-);
-
 CREATE TABLE `faq` (
 	`id_faq` int NOT NULL AUTO_INCREMENT,
 	`id_user` int NOT NULL,
@@ -109,13 +103,13 @@ CREATE TABLE `faq` (
 	PRIMARY KEY (`id_faq`)
 );
 
-CREATE TABLE `selective_process` (
-	`id_selective_process` bigint NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users_vacancies` (
+	`id_users_vacancies` bigint NOT NULL AUTO_INCREMENT,
 	`id_user` int NOT NULL,
 	`id_vacancy` int NOT NULL,
 	`result` varchar(255) NOT NULL,
 	`create_date` DATE, 
-	PRIMARY KEY (`id_selective_process`)
+	PRIMARY KEY (`id_users_vacancies`)
 );
 
 CREATE TABLE `favorite_vacancy` (
@@ -237,7 +231,7 @@ CREATE TABLE `companies_vacancies` (
 	PRIMARY KEY (`id_companies_vacancies`)
 );
 
-CREATE TABLE `education_level`(
+CREATE TABLE `education_levels`(
 	`id_education_level` INT AUTO_INCREMENT,
 	`name` VARCHAR(255),
 	PRIMARY KEY (`id_education_level`)
@@ -276,7 +270,7 @@ ALTER TABLE `resumes_abilities` ADD CONSTRAINT `resumes_abilities_fk0` FOREIGN K
 
 ALTER TABLE `resumes_abilities` ADD CONSTRAINT `resume_ability_fk1`  FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
 
-ALTER TABLE `scholarities` ADD CONSTRAINT `scholaritiesl_fk0` FOREIGN KEY (`id_education_level`) REFERENCES `education_level`(`id_education_level`);
+ALTER TABLE `scholarities` ADD CONSTRAINT `scholaritiesl_fk0` FOREIGN KEY (`id_education_level`) REFERENCES `education_levels`(`id_education_level`);
 
 ALTER TABLE `companies_vacancies` ADD CONSTRAINT `companies_vacancies_fk0` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
 
@@ -310,8 +304,6 @@ ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk2` FOREIGN KEY (`id_company`) 
 
 ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
 
-ALTER TABLE `resumes` ADD CONSTRAINT `resume_hability_fk1` FOREIGN KEY (`id_hability`) REFERENCES `hability`(`id_hability`);
-
 ALTER TABLE `resumes` ADD CONSTRAINT `resume_sholarities_fk1` FOREIGN KEY (`id_scholarity`) REFERENCES `scholarities`(`id_scholarity`);
 
 ALTER TABLE `resumes` ADD CONSTRAINT `resume_work_experiences_fk1` FOREIGN KEY (`id_work_experiences`) REFERENCES `work_experiences`(`id_work_experiences`);
@@ -320,9 +312,9 @@ ALTER TABLE `faq` ADD CONSTRAINT `fq_fk01` FOREIGN KEY (`id_user`) REFERENCES `u
 
 ALTER TABLE `faq` ADD CONSTRAINT `faq_fk02` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
 
-ALTER TABLE `selective_process` ADD CONSTRAINT `selective_process_fk01`  FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk01`  FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
 
-ALTER TABLE `selective_process` ADD CONSTRAINT `selective_process_fk02` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk02` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
 
 ALTER TABLE `favorite_vacancy` ADD CONSTRAINT `favorite_vacancy_fk01` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
 
