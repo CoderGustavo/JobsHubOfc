@@ -1,14 +1,16 @@
 <?php
 
+use LDAP\Result;
+
 class VacancyController{
     protected $vacancies, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/vacancies.php";
-        $this->vacancies = new Vacancies();
-        $this->conn = $this->vacancies->getConnection();
-        $this->table = $this->vacancies->getTable();
-        $this->pk = $this->vacancies->getPk();
+        include_once ROOT."/Model/vacancy.php";
+        $this->vacancy = new Vacancy();
+        $this->conn = $this->vacancy->getConnection();
+        $this->table = $this->vacancy->getTable();
+        $this->pk = $this->vacancy->getPk();
     }
     
     public function updateInfos($userlogged, $infos, $id_vacancy){
@@ -70,7 +72,7 @@ class VacancyController{
         }
         try {
             $query->execute();
-            $res = array("success" => "Alterações realizadas com sucesso!");
+            $res = array("success" => "Dados criados com sucesso!");
             echo json_encode($res);
             return;
         } catch (Throwable $th) {
@@ -95,6 +97,7 @@ class VacancyController{
         try {
             $query->execute();
             $res = $query->fetchAll();
+            print_r($res);
             if($re){
                 return $res;
             }else{
@@ -110,7 +113,31 @@ class VacancyController{
                 return;
             }
         }
-        
+    }
+
+    public function removeVacancy($id, $re = false){
+        $query = $this->conn->prepare("DELETE FROM $this->table WHERE id_vacancy = :id");
+        $query->bindParam(":id", $id);
+        try {
+            $query->execute();
+            $res = array("success" => "Vaga removida com sucesso!");
+            if($re){
+                return $res;
+            }else{
+                echo json_encode($res);
+                return;
+            }
+        }catch(Throwable $th){
+            $res = array("error" => $th);
+            if($re){
+                return $res;
+            }else{
+                echo json_encode($res);
+                return;
+            }
+        }
+
+
     }
 
 }

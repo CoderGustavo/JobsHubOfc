@@ -9,14 +9,12 @@ define("ROOT", $_SERVER['DOCUMENT_ROOT']);
 require_once(__DIR__ . '/Controller/HomeController.php');
 require_once(__DIR__ . '/Controller/UserController.php');
 require_once(__DIR__ . '/Controller/VacancyController.php');
-require_once(__DIR__ . '/Controller/Users_VacanciesController.php');
 
 
 // initialize classes below:
 $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
-$users_vancancies = new Users_VacanciesController();
 
 // switch (PATH[1]) 
 //     case "login" :
@@ -25,7 +23,7 @@ $users_vancancies = new Users_VacanciesController();
 //             header("Location: /");
 //         }
 //         break;
-// }
+// 
 
 switch (PATH[1]) {
     case '/' :
@@ -129,6 +127,19 @@ switch (PATH[1]) {
                     break;
             }
             break;
+    case'editarvaga' :
+        switch($request_method){
+            case 'GET' :
+                $home->showEditVacancies();
+                break;
+            case 'POST' :
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
     case 'atualizar_conta' :
         // print_r($_SESSION['user']);
         $user->updateInfos($_SESSION["user"], $_POST);
@@ -144,10 +155,35 @@ switch (PATH[1]) {
                 break;
         }
         break;
+    case 'mostrarvagas' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/mosVaga/index.php';
+                break;
+            case 'POST' :
+                $vacancies->createInfos($_POST);
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
     case 'perfil' :
         switch ($request_method){
             case 'GET' :
                 $home->showProfilePage();
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
+    case 'removerVaga' :
+        switch ($request_method){
+            case 'POST' :
+                $vacancies->removeVacancy($_POST["id_vacancy"]);
                 break;
             default :
                 http_response_code(405);

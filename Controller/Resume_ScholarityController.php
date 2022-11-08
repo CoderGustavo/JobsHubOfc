@@ -1,17 +1,17 @@
 <?php
 
-class CoursesController{
-    protected $courses, $table, $conn, $pk;
+class Resume_ScholarityController{
+    protected $resume_scholarity, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/courses.php";
-        $this->courses = new Courses();
-        $this->conn = $this->courses->getConnection();
-        $this->table = $this->courses->getTable();
-        $this->pk = $this->courses->getPk();
+        include_once ROOT."/Model/resume_scholarity.php";
+        $this->resume_scholarity = new Resume_Scholarity();
+        $this->conn = $this->resume_scholarity->getConnection();
+        $this->table = $this->resume_scholarity->getTable();
+        $this->pk = $this->resume_scholarity->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_courses){
+    public function updateInfos($userlogged, $infos, $id_resume_scholarity){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class CoursesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_courses);
+        $query->bindParam(":$this->pk", $id_resume_scholarity);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -70,7 +70,7 @@ class CoursesController{
         }
         try {
             $query->execute();
-            $res = array("success" => "Alterações realizadas com sucesso!");
+            $res = array("success" => "Dados criados com sucesso!");
             echo json_encode($res);
             return;
         } catch (Throwable $th) {
@@ -112,5 +112,3 @@ class CoursesController{
     }
 
 }
-
-

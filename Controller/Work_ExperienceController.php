@@ -1,17 +1,17 @@
 <?php
 
-class Users_VacanciesController{
-    protected $users_vacancies, $table, $conn, $pk;
+class Work_ExperienceController{
+    protected $work_experience, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/users_vacancies.php";
-        $this->users_vacancies= new Users_Vacancies();
-        $this->conn = $this->users_vacancies->getConnection();
-        $this->table = $this->users_vacancies->getTable();
-        $this->pk = $this->users_vacancies->getPk();
+        include_once ROOT."/Model/work_experience.php";
+        $this->work_experience= new Work_Experience();
+        $this->conn = $this->work_experience->getConnection();
+        $this->table = $this->work_experience->getTable();
+        $this->pk = $this->work_experience->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_users_vacancies){
+    public function updateInfos($userlogged, $infos, $id_work_experience){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class Users_VacanciesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_users_vacancies);
+        $query->bindParam(":$this->pk", $id_work_experience);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -70,7 +70,7 @@ class Users_VacanciesController{
         }
         try {
             $query->execute();
-            $res = array("success" => "Alterações realizadas com sucesso!");
+            $res = array("success" => "Dados criados com sucesso!");
             echo json_encode($res);
             return;
         } catch (Throwable $th) {

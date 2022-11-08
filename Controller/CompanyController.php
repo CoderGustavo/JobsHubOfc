@@ -1,17 +1,17 @@
 <?php
 
-class ScholaritiesController{
-    protected $scholarities, $table, $conn, $pk;
+class CompanyController{
+    protected $company, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/scholarities.php";
-        $this->scholarities= new Scholarities();
-        $this->conn = $this->scholarities->getConnection();
-        $this->table = $this->scholarities->getTable();
-        $this->pk = $this->scholarities->getPk();
+        include_once ROOT."/Model/company.php";
+        $this->company = new Company();
+        $this->conn = $this->company->getConnection();
+        $this->table = $this->company->getTable();
+        $this->pk = $this->company->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_scholarities){
+    public function updateInfos($userlogged, $infos, $id_company){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class ScholaritiesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_scholarities);
+        $query->bindParam(":$this->pk", $id_company);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -70,7 +70,7 @@ class ScholaritiesController{
         }
         try {
             $query->execute();
-            $res = array("success" => "Alterações realizadas com sucesso!");
+            $res = array("success" => "Dados criados com sucesso!");
             echo json_encode($res);
             return;
         } catch (Throwable $th) {
@@ -112,3 +112,5 @@ class ScholaritiesController{
     }
 
 }
+
+
