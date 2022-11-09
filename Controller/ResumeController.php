@@ -1,6 +1,6 @@
 <?php
 
-class ResumesController{
+class ResumeController{
     protected $resumes, $table, $conn, $pk;
 
     public function __construct(){

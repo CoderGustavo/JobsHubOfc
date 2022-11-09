@@ -5,8 +5,8 @@ class Classr{
 
     public function __construct(){
         include_once "connection.php";
-        $this->table = "classr";
-        $this->pk = "id_classr";
+        $this->table = "class";
+        $this->pk = "id_class";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
     }
@@ -14,7 +14,6 @@ class Classr{
     public function getConnection(){
         return $this->conn;
     }
-
 
     public function getTable(){ 
         return $this->table;

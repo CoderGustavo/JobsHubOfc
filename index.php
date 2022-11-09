@@ -9,12 +9,14 @@ define("ROOT", $_SERVER['DOCUMENT_ROOT']);
 require_once(__DIR__ . '/Controller/HomeController.php');
 require_once(__DIR__ . '/Controller/UserController.php');
 require_once(__DIR__ . '/Controller/VacancyController.php');
+require_once(__DIR__ . '/Controller/ResumeController.php');
 
 
 // initialize classes below:
 $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
+$resume = new ResumeController();
 
 // switch (PATH[1]) 
 //     case "login" :
@@ -97,7 +99,7 @@ switch (PATH[1]) {
                 break;
         }
         break;
-    case 'cadastrovagas' :
+    case 'cadastrovaga' :
         switch ($request_method){
             case 'GET' :
                 require __DIR__ . '/View/cadVaga/cadvaga.php';
@@ -112,7 +114,7 @@ switch (PATH[1]) {
                 break;
         }
         break;
-    case'editarvaga' :
+    case 'editarvaga' :
         switch($request_method){
             case 'GET' :
                 $home->showEditVacancies();
@@ -125,7 +127,7 @@ switch (PATH[1]) {
                 break;
         }
         break;
-    case 'atualizar_conta' :
+    case 'atualizarconta' :
         // print_r($_SESSION['user']);
         $user->updateInfos($_SESSION["user"], $_POST);
         break;
@@ -173,6 +175,16 @@ switch (PATH[1]) {
             default :
                 http_response_code(405);
                 $home->showError(405);
+                break;
+        }
+        break;
+    case 'cadastrocurriculo' :
+        switch ($request_method){
+            case 'GET' :
+                $home->showCadastroCurriculo();
+                break;
+            case 'POST' :
+                $resume->createInfos($_POST);
                 break;
         }
         break;
