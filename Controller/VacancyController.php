@@ -7,7 +7,7 @@ class VacancyController{
 
     public function __construct(){
         include_once ROOT."/Model/vacancy.php";
-        $this->vacancy = new Vacancy();
+        $this->vacancy = new Vacancies();
         $this->conn = $this->vacancy->getConnection();
         $this->table = $this->vacancy->getTable();
         $this->pk = $this->vacancy->getPk();
@@ -97,7 +97,6 @@ class VacancyController{
         try {
             $query->execute();
             $res = $query->fetchAll();
-            print_r($res);
             if($re){
                 return $res;
             }else{

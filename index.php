@@ -112,25 +112,14 @@ switch (PATH[1]) {
                 break;
         }
         break;
-    case 'editevagas' :
-            switch ($request_method){
-                case 'GET' :
-                    require __DIR__ . '/View/editVaga/editVaga.php';
-                    break;
-                case 'POST' :
-    
-                    $vacancies->createInfos($_POST);
-                    break;
-                default :
-                    http_response_code(405);
-                    $home->showError(405);
-                    break;
-            }
-            break;
     case'editarvaga' :
         switch($request_method){
             case 'GET' :
-                $home->showEditVacancies();
+                if(PATH[2]){
+                    $home->showEditVacancies(PATH[2]);
+                }else{
+                    $home->redirect("/");
+                }
                 break;
             case 'POST' :
                 break;
@@ -191,6 +180,19 @@ switch (PATH[1]) {
                 break;
         }
         break;
+        case 'resumes' :
+            switch ($request_method){
+                case 'GET' :
+                    require __DIR__ . '/View/resumes/resume.php';
+                    break;
+                case 'POST' :
+                    break;
+                default :
+                    http_response_code(405);
+                    $home->showError(405);
+                    break;
+            }
+            break;
     case 'teste':
         $buscando = "";
         $vacancies->selectInfos($buscando);

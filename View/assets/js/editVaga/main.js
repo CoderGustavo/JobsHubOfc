@@ -51,7 +51,7 @@ $(()=>{
             vacancy_type: $("input[name='vacancy_type']").val(),
             required_abilities: $("input[name='required_abilities']").val(),
             difference_abilities: $("input[name='difference_abilities']").val(),
-            workload: $("input[name='workload']").val(), 
+            workload: $("input[name='workload']").val(),
             activity: $("input[name='activity']").val(),
             qtd_max_cand: $("input[name='qtd_max_cand']").val(),
             qtd_min_cand: $("input[name='qtd_min_cand']").val(),
@@ -59,8 +59,8 @@ $(()=>{
             close_date: close_data,
 
         }
-        let create_vacancy = $.post("/cadastrovagas", data,'json')
-        create_vacancy.done(function(response){
+        let update_vacancy = $.post("/editarVaga", data,'json')
+        update_vacancy.done(function(response){
             response = JSON.parse(response);
             if(response.error){
                 // $(".error_message").html(response.error);

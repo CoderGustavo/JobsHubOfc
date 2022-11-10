@@ -8,7 +8,7 @@
             
             <div class="input-group">
                 <label for="">Nome</label>
-                <input type="text" name="name" value="<?php echo $name; ?>">
+                <input type="text" name="name">
             </div>
             
             <div class="input-group">
