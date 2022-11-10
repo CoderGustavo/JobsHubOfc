@@ -6,11 +6,19 @@ class VacancyController{
     protected $vacancies, $table, $conn, $pk;
 
     public function __construct(){
+<<<<<<< HEAD
         include_once ROOT."/Model/vacancies.php";
         $this->vacancies = new Vacancy();
         $this->conn = $this->vacancies->getConnection();
         $this->table = $this->vacancies->getTable();
         $this->pk = $this->vacancies->getPk();
+=======
+        include_once ROOT."/Model/vacancy.php";
+        $this->vacancy = new Vacancy();
+        $this->conn = $this->vacancy->getConnection();
+        $this->table = $this->vacancy->getTable();
+        $this->pk = $this->vacancy->getPk();
+>>>>>>> b1d4b7ba2621c64d74dbf150c4855f7520216338
     }
     
     public function updateInfos($userlogged, $infos, $id_vacancy){

@@ -1,17 +1,17 @@
 <?php
 
-class CompaniesController{
-    protected $companies, $table, $conn, $pk;
+class Resume_ScholarityController{
+    protected $resume_scholarity, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/companies.php";
-        $this->companies = new Companies();
-        $this->conn = $this->companies->getConnection();
-        $this->table = $this->companies->getTable();
-        $this->pk = $this->companies->getPk();
+        include_once ROOT."/Model/resume_scholarity.php";
+        $this->resume_scholarity = new Resume_Scholarity();
+        $this->conn = $this->resume_scholarity->getConnection();
+        $this->table = $this->resume_scholarity->getTable();
+        $this->pk = $this->resume_scholarity->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_companies){
+    public function updateInfos($userlogged, $infos, $id_resume_scholarity){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class CompaniesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_companies);
+        $query->bindParam(":$this->pk", $id_resume_scholarity);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -112,5 +112,3 @@ class CompaniesController{
     }
 
 }
-
-

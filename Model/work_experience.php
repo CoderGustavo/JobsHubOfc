@@ -1,12 +1,12 @@
 <?php
 
-class  Resume_Work_Experiences{
+class  Work_Experience{
     protected $conn, $table, $pk;
 
     public function __construct(){
         include_once "connection.php";
-        $this->table = "resume_work_experiences";
-        $this->pk = "id_resume_scholarity";
+        $this->table = "work_experience";
+        $this->pk = "id_work_experience";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
     }

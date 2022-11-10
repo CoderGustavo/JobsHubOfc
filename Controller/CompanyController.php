@@ -1,17 +1,17 @@
 <?php
 
-class Work_ExperiencesController{
-    protected $work_experiences, $table, $conn, $pk;
+class CompanyController{
+    protected $company, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/work_experiences.php";
-        $this->work_experiences= new Work_Experiences();
-        $this->conn = $this->work_experiences->getConnection();
-        $this->table = $this->work_experiences->getTable();
-        $this->pk = $this->work_experiences->getPk();
+        include_once ROOT."/Model/company.php";
+        $this->company = new Company();
+        $this->conn = $this->company->getConnection();
+        $this->table = $this->company->getTable();
+        $this->pk = $this->company->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_work_experiences){
+    public function updateInfos($userlogged, $infos, $id_company){
         $a = "";
         $index = 1;
 
@@ -26,7 +26,7 @@ class Work_ExperiencesController{
 
         $query = $this->conn->prepare("UPDATE $this->table SET ". $a ." WHERE $this->pk = :$this->pk");
         // $query->bindParam(":id", $userlogged["id_user"]);
-        $query->bindParam(":$this->pk", $id_work_experiences);
+        $query->bindParam(":$this->pk", $id_company);
         $index = 1;
         foreach ($infos as $key => $info) {
             $query->bindParam(":$key", $infos[$key]);
@@ -112,3 +112,5 @@ class Work_ExperiencesController{
     }
 
 }
+
+

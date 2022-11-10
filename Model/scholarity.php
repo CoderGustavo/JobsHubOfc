@@ -1,12 +1,12 @@
 <?php
 
-class Courses{
+class  Scholarity{
     protected $conn, $table, $pk;
 
     public function __construct(){
         include_once "connection.php";
-        $this->table = "courses";
-        $this->pk = "id_course";
+        $this->table = "scholarity";
+        $this->pk = "id_scholarity";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
     }
@@ -14,7 +14,6 @@ class Courses{
     public function getConnection(){
         return $this->conn;
     }
-
 
     public function getTable(){ 
         return $this->table;
