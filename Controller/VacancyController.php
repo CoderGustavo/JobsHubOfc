@@ -7,7 +7,7 @@ class VacancyController{
 
     public function __construct(){
         include_once ROOT."/Model/vacancies.php";
-        $this->vacancies = new Vacancies();
+        $this->vacancies = new Vacancy();
         $this->conn = $this->vacancies->getConnection();
         $this->table = $this->vacancies->getTable();
         $this->pk = $this->vacancies->getPk();
