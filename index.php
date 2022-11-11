@@ -10,13 +10,14 @@ require_once(__DIR__ . '/Controller/HomeController.php');
 require_once(__DIR__ . '/Controller/UserController.php');
 require_once(__DIR__ . '/Controller/VacancyController.php');
 require_once(__DIR__ . '/Controller/ResumeController.php');
-
+require_once(__DIR__ . '/Controller/CompanyController.php');
 
 // initialize classes below:
 $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
 $resume = new ResumeController();
+$cadEmpresa = new CompanyController();
 
 // switch (PATH[1]) 
 //     case "login" :
@@ -114,26 +115,7 @@ switch (PATH[1]) {
                 break;
         }
         break;
-<<<<<<< HEAD
     case 'editarvaga' :
-=======
-    case 'editevagas' :
-            switch ($request_method){
-                case 'GET' :
-                    require __DIR__ . '/View/editVaga/editVaga.php';
-                    break;
-                case 'POST' :
-    
-                    $vacancies->createInfos($_POST);
-                    break;
-                default :
-                    http_response_code(405);
-                    $home->showError(405);
-                    break;
-            }
-            break;
-    case'editarvaga' :
->>>>>>> 188365aece202e0f718bff5e58236a815a4c4e90
         switch($request_method){
             case 'GET' :
                 $home->showEditVacancies();
@@ -207,11 +189,22 @@ switch (PATH[1]) {
                 break;
         }
         break;
-    case 'teste':
-        $buscando = "";
-        $vacancies->selectInfos($buscando);
+    case 'cadastroempresa' :
+        switch ($request_method){
+            case 'GET' :
+                $home->showCadastroEmpresa();
+                break;
+            case 'POST' :
+                $cadEmpresa->createInfos($_POST);
+                break;
+        }
         break;
-    default:
+    case 'teste':
+    $buscando = "";
+    $vacancies->selectInfos($buscando);
+    break;
+   
+        default:
         http_response_code(404);
         // require __DIR__ . '/View/404.php';
         break;

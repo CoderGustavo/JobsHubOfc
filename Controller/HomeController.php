@@ -54,6 +54,10 @@ class HomeController{
         require_once(ROOT . '/View/home/index.php');
     }
 
+    function showCadastroEmpresa(){
+        require_once(ROOT . '/View/cadEmpresa/index.php');
+    }
+
     function showError($error_code){
         switch($error_code){
             case 404:
