@@ -10,13 +10,14 @@ require_once(__DIR__ . '/Controller/HomeController.php');
 require_once(__DIR__ . '/Controller/UserController.php');
 require_once(__DIR__ . '/Controller/VacancyController.php');
 require_once(__DIR__ . '/Controller/ResumeController.php');
-
+require_once(__DIR__ . '/Controller/CompanyController.php');
 
 // initialize classes below:
 $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
 $resume = new ResumeController();
+$cadEmpresa = new CompanyController();
 
 // switch (PATH[1]) 
 //     case "login" :
@@ -130,6 +131,10 @@ switch (PATH[1]) {
             }
             break;
     case'editarvaga' :
+<<<<<<< HEAD
+=======
+>>>>>>> 371bbbbf032a6c346ddac37feb9985f00f22ae69
+>>>>>>> 386fbf887132c0110767812d24a20bce22297a04
         switch($request_method){
             case 'GET' :
                 if(PATH[2]){
@@ -220,11 +225,22 @@ switch (PATH[1]) {
                 break;
         }
         break;
-    case 'teste':
-        $buscando = "";
-        $vacancies->selectInfos($buscando);
+    case 'cadastroempresa' :
+        switch ($request_method){
+            case 'GET' :
+                $home->showCadastroEmpresa();
+                break;
+            case 'POST' :
+                $cadEmpresa->createInfos($_POST);
+                break;
+        }
         break;
-    default:
+    case 'teste':
+    $buscando = "";
+    $vacancies->selectInfos($buscando);
+    break;
+   
+        default:
         http_response_code(404);
         // require __DIR__ . '/View/404.php';
         break;
