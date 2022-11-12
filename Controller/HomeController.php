@@ -50,6 +50,10 @@ class HomeController{
         require ROOT . '/View/editarVaga/editarVaga.php';
     }
 
+    function showCadastroCurriculo(){
+        require_once(ROOT . '/View/home/index.php');
+    }
+
     function showError($error_code){
         switch($error_code){
             case 404:

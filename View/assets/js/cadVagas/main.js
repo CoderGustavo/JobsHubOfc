@@ -56,10 +56,11 @@ $(()=>{
             qtd_max_cand: $("input[name='qtd_max_cand']").val(),
             qtd_min_cand: $("input[name='qtd_min_cand']").val(),
             open_date: open_data,
-            close_date: close_data,
-
+            close_date: close_data
         }
-        let create_vacancy = $.post("/cadastrovagas", data,'json')
+
+
+        let create_vacancy = $.post("/cadastrovaga", data,'json')
         create_vacancy.done(function(response){
             response = JSON.parse(response);
             if(response.error){

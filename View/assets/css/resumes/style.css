@@ -8,7 +8,7 @@
     font-weight: 400;
     padding-top: 2.5rem;
 }
-.cad-vaga {
+.resume {
     display: flex;
     text-align: center;
     flex-direction: column;
@@ -18,7 +18,7 @@
     height: 100vh;
     width: 100%;
 }
-.cadastro {
+#scholarities {
     position: fixed;
     left: 0;
     top: 0;
@@ -29,7 +29,7 @@
     transition: .6s all;
     transform: translateX(0);
 }
-#salary {
+#work_experiences {
     transform: translateX(100%); 
     text-align: center;
     display: flex;

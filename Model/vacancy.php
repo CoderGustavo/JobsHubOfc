@@ -1,5 +1,5 @@
 <?php
-class Vacancies{
+class Vacancy{
     protected $conn, $table, $pk;
 
     public function __construct(){
