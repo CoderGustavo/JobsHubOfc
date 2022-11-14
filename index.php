@@ -106,7 +106,7 @@ switch (PATH[1]) {
                 break;
             case 'POST' :
 
-                $vacancies->createInfos($_POST);
+                $vacancies->createInfos($_POST,$_POST);
                 break;
             default :
                 http_response_code(405);
@@ -114,13 +114,11 @@ switch (PATH[1]) {
                 break;
         }
         break;
-<<<<<<< HEAD
     case 'editarvaga' :
-=======
     case 'editevagas' :
             switch ($request_method){
                 case 'GET' :
-                    require __DIR__ . '/View/editVaga/editVaga.php';
+                    require __DIR__ . '/View/editarVaga/editarVaga.php';
                     break;
                 case 'POST' :
     
@@ -133,7 +131,6 @@ switch (PATH[1]) {
             }
             break;
     case'editarvaga' :
->>>>>>> 188365aece202e0f718bff5e58236a815a4c4e90
         switch($request_method){
             case 'GET' :
                 $home->showEditVacancies();

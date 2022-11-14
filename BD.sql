@@ -52,7 +52,7 @@ CREATE TABLE `vacancies` (
 	`open_date` DATE ,
 	`close_date` DATE,
 	`create_date` DATE,
-	`id_ vacancy_status` int NOT NULL,
+	`id_vacancy_status` int NOT NULL,
 	PRIMARY KEY (`id_vacancy`)
 );
 
@@ -276,7 +276,7 @@ ALTER TABLE `companies_vacancies` ADD CONSTRAINT `companies_vacancies_fk0` FOREI
 
 ALTER TABLE `companies_vacancies` ADD CONSTRAINT `companies_vacancies_fk1` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
 
-ALTER TABLE `vacancies` ADD CONSTRAINT `vacancies_fk0` FOREIGN KEY (`id_ vacancy_status`) REFERENCES `vacancies_status`(`id_vacancy_status`);
+ALTER TABLE `vacancies` ADD CONSTRAINT `vacancies_fk0` FOREIGN KEY (`id_vacancy_status`) REFERENCES `vacancies_status`(`id_vacancy_status`);
 
 ALTER TABLE `vacancy_required_abilities` ADD CONSTRAINT `vacancy_required_abilities_fk0` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
 
