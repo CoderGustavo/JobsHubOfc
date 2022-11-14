@@ -1,0 +1,74 @@
+.title-page h1 {
+    font-weight: 400;
+    text-align: center;
+    padding-top: 1.5rem;
+    font-size: 20pt;
+}
+.title-page h2 {
+    font-weight: 400;
+    padding-top: 2.5rem;
+}
+.resume {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+}
+#scholarities {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    overflow: hidden;
+    transition: .6s all;
+    transform: translateX(0);
+}
+#work_experiences {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
+#vecancy-type {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
+#date {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
+#vecancy-finish {
+    transform: translateX(100%);
+    transition: .6s all;
+}

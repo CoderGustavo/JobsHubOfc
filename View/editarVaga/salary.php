@@ -14,7 +14,7 @@
 
         <div class="input-group">
             <label for="">Sálario Minimo</label>
-            <input type="text"  id="min-salary" name="salary_min" value="<?php echo $vaga['salary_min']?>n">
+            <input type="text"  id="min-salary" name="salary_min" value="<?php echo $vaga['salary_min']?>">
         </div>
 
         <div class="input-group">

@@ -1,4 +1,4 @@
-<div id="salary" class="cad-vaga">
+<div id="work_experiences" class="resume">
 
     <div class="inputs container">
 
