@@ -97,7 +97,7 @@ class VacancyController{
         try {
             $query->execute();
             $res = $query->fetchAll();
-            print_r($res);
+            ($res);
             if($re){
                 return $res;
             }else{

@@ -13,5 +13,6 @@
         <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
         <?php include_once("cadastro.html");?>
         <?php include_once("informacoes.html");?>
+        <?php include_once("final.html");?>
     </body>
 </html>

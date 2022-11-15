@@ -9,25 +9,62 @@ $(()=>{
     $("button[type='submit']#cad-vaga-btn-button").on("click", (e)=>{
         e.preventDefault();
 
-        $("#cadastro").css("transform", "translateX(100%)")
-        $("#salary").css("transform", "translateX(0)")
+        let name=$('[name="name"]').val()
+        let short=$('[name="short_desc"]').val()
+        let full=$('[name="full_desc"]').val()
 
+        if (name && short&& full){
+            if(name){
+
+            }
+            $("#cadastro").css("transform", "translateX(100%)")
+            $("#salary").css("transform", "translateX(0)")
+        }
+        else{
+            $('.error_message').text("Preencha todos os campos obrigatórios")
+        }
     });
 
     $("button[type='submit']#cad-vaga-btn-button2").on("click", (e)=>{
         e.preventDefault();
 
-        $("#salary").css("transform", "translateX(-100%)")
-        $("#vecancy-type").css("transform", "translateX(0)")
+        let qtd_max=$('[name="qtd_max_cand"]').val()
+        let qtd_min=$('[name="qtd_min_cand"]').val()
+        let sl_min=$('[name="salary_min"]').val()
+        let sl_max=$('[name=salary_max]').val()
+        let sl_def=$('[name=salary_defined]').val()
 
+        if (qtd_max && qtd_min&& sl_min&& sl_max&& sl_def){
+            if(qtd_max){
+
+            }
+            $("#salary").css("transform", "translateX(-100%)")
+            $("#vecancy-type").css("transform", "translateX(0)")
+        }
+        else{
+            $('.error_message').text("Preencha todos os campos obrigatórios")
+        }
     });
 
     $("button[type='submit']#cad-vaga-btn-button3").on("click", (e)=>{
         e.preventDefault();
 
-        $("#vecancy-type").css("transform", "translateX(-100%)")
-        $("#date").css("transform", "translateX(0)")
+        let vacancy=$('[name="vacancy_type"]').val()
+        let required=$('[name="required_abilities"]').val()
+        let difference=$('[name="difference_abilities"]').val()
+        let workload=$('[name=workload]').val()
+        let activity=$('[name=activity]').val()
 
+        if (vacancy && required&& difference&& workload&& activity){
+            if(vacancy){
+
+            }
+            $("#vecancy-type").css("transform", "translateX(-100%)")
+            $("#date").css("transform", "translateX(0)")
+        }
+        else{
+            $('.error_message').text("Preencha todos os campos obrigatórios")
+        }
     });
     
     $("button[type='submit']#cad-vaga-btn-button4").on("click", (e)=>{
