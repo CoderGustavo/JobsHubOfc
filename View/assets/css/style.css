@@ -188,7 +188,7 @@ body{
     color: var(--light3);
 }
 
-.inputs .input-group input, .inputs .input-group textarea{
+.inputs .input-group input, .inputs .input-group textarea, .inputs .input-group select {
     width: 100%;
     background-color: transparent;
     border: none;

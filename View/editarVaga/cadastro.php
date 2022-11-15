@@ -16,7 +16,7 @@
 
             <div class="input-group">
                 <label for="">Descrição Completa</label>
-                <textarea rows="6" name="full_desc" ></textarea>
+                <textarea rows="6" name="full_desc" value=" <?php echo $vaga['full_desc']?>"></textarea>
             </div>
 
             <button type="submit" id="cad-vaga-btn-button" class="btn btn-rounded btn-d-style1">Próximo

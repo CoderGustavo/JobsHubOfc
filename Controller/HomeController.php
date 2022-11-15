@@ -43,10 +43,10 @@ class HomeController{
         require ROOT . '/View/profile/index.php';
     }
     
-    function showEditVacancies(){
-        $id = 1;
+    function showEditVacancies($id){
         $vagas = new VacancyController();
-        $vagas= $vagas->selectInfos($id);
+        $vagas = $vagas->selectInfos($re = true, "", "*", $id);
+        $vaga = $vagas[0];
         require ROOT . '/View/editarVaga/editarVaga.php';
     }
 
@@ -67,5 +67,9 @@ class HomeController{
             default:
                 break;
         }
+    }
+
+    function redirect($local){
+        header("location: $local");
     }
 }

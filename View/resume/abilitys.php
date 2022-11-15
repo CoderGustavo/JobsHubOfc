@@ -3,8 +3,8 @@
     <div class="inputs container">
 
         <div class="input-group">
-            <label for="">Tipo de Vaga</label>
-            <input type="text" name="vacancy_type">
+            <label for="">Campo de Estudo</label>
+            <input type="text" name="scholarities">
         </div>
 
         <div class="input-group">

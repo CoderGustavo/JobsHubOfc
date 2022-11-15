@@ -107,7 +107,7 @@ switch (PATH[1]) {
                 break;
             case 'POST' :
 
-                $vacancies->createInfos($_POST);
+                $vacancies->createInfos($_POST,$_POST);
                 break;
             default :
                 http_response_code(405);
@@ -118,7 +118,11 @@ switch (PATH[1]) {
     case 'editarvaga' :
         switch($request_method){
             case 'GET' :
-                $home->showEditVacancies();
+                if(PATH[2]){
+                    $home->showEditVacancies(PATH[2]);
+                }else{
+                    $home->redirect("/");
+                }
                 break;
             case 'POST' :
                 break;
@@ -172,6 +176,19 @@ switch (PATH[1]) {
         switch ($request_method){
             case 'POST' :
                 $vacancies->removeVacancy($_POST["id_vacancy"]);
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
+    case 'resumes' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/resume/resume.php';
+                break;
+            case 'POST' :
                 break;
             default :
                 http_response_code(405);
