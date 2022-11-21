@@ -47,7 +47,7 @@ $(()=>{
             con_password: $("input[name='con_password']").val()
         }
 
-        let creating_account = $.post("/cadastro", data, 'json');
+        let creating_account = $.post("/register", data, 'json');
 
         creating_account.done(function(response) {
             response = JSON.parse(response);

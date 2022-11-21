@@ -23,6 +23,10 @@
     background: transparent;
 }
 
+.element_slide .card-vaga{
+    width: 320px;
+}
+
 .area{
     width: 4rem;
     height: 3.5rem;

@@ -9,7 +9,7 @@
         <script src="/View/assets/js/cadEmpresa/main.js"></script>
     </head>
     <body>
-        <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.html");?>
+        <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.php");?>
         <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
         <?php include_once("cadastro.html");?>
         <?php include_once("informacoes.html");?>

@@ -12,94 +12,49 @@
 
     <main class="container">
         <div class="homeemalta">
-            <h3>Áreas em alta</h3>
+            <h3>Habilidades mais procuradas</h3>
             <img src="/View/assets/img/icons/homeemalta.svg">
         </div>
         <div class="slideemalta">
+            <?php foreach ($habilidadesEmAlta as $habilidades): ?>
             <div class="element_slide">
                 <div class="bg-color5 area">
                     <div>
                         <img src="/View/assets/img/icons/iconemalta.svg">
                     </div>
                 </div>
-                <h4 class="titleslide">FRONT-END</h4>
+                <h4 class="titleslide"><?php echo $habilidades['ability']?></h4>
             </div>
-            <div class="element_slide">
-                <div class="bg-color5 area">
-                    <div>
-                        <img src="/View/assets/img/icons/iconemalta.svg">
-                    </div>
-                </div>
-                <h4 class="titleslide">FRONT-END</h4>
-            </div>
-            <div class="element_slide">
-                <div class="bg-color5 area">
-                    <div>
-                        <img src="/View/assets/img/icons/iconemalta.svg">
-                    </div>
-                </div>
-                <h4 class="titleslide">FRONT-END</h4>
-            </div>
-            <div class="element_slide">
-                <div class="bg-color5 area">
-                    <div>
-                        <img src="/View/assets/img/icons/iconemalta.svg">
-                    </div>
-                </div>
-                <h4 class="titleslide">FRONT-END</h4>
-            </div>
-            <div class="element_slide">
-                <div class="bg-color5 area">
-                    <div>
-                        <img src="/View/assets/img/icons/iconemalta.svg">
-                    </div>
-                </div>
-                <h4 class="titleslide">FRONT-END</h4>
-            </div>
-            <div class="element_slide">
-                <div class="bg-color5 area">
-                    <div>
-                        <img src="/View/assets/img/icons/iconemalta.svg">
-                    </div>
-                </div>
-                <h4 class="titleslide">FRONT-END</h4>
-            </div>
-            <div class="element_slide">
-                <div class="bg-color5 area">
-                    <div>
-                        <img src="/View/assets/img/icons/iconemalta.svg">
-                    </div>
-                </div>
-                <h4 class="titleslide">FRONT-END</h4>
-            </div>
+            <?php endforeach; ?>
         </div>
     
         <div class="homeemalta">
             <h3>Top vagas</h3>
             <i class="fal fa-stars"></i>
         </div>
-        <div>
-            <div class="row vagas pt-0">
-                <div class="col-11 col-md-3">
-                    <div class="card-vaga">
+
+        <div class="slideemalta">
+            <?php foreach ($vagasEmAlta as $vaga): ?>
+                <div class="element_slide vagas">
+                    <a href="/hub/<?php echo $vaga["id_vacancy"]?>" class="card-vaga">
                         <div class="vaga-line-one">
                             <h2>Vaga para front-end</h2>
-                            <span>5/10</span>
+                            <span><?php //echo $vaga["qtd_total"]["qtd_max"]?>/<?php echo $vaga["qtd_max_cand"]; ?></span>
                         </div>
                         <div class="vaga-line-two">
                             <div class="vaga-hab">
                                 <h4>Habilidades obrigatórias:</h4>
                                 <div class="vaga-habs">
-                                    <span>HTML</span>
-                                    <span>CSS</span>                        
-                                    <span>JS</span>
+                                    <?php foreach ($vaga["vacancy_required_abilities"] as $key => $ability): ?>
+                                        <span><?php echo $ability["ability"]?></span>
+                                    <?php endforeach?>
                                 </div>
                             </div>
                             <h4>95%</h4>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     
         <div class="homeemalta">
@@ -108,23 +63,23 @@
         <div class="row vagas pt-0">
             <?php foreach ($vagas as $key => $vaga): ?>
             <div class="col-12 col-md-3">
-                <div class="card-vaga">
+                <a href="/hub/<?php echo $vaga["id_vacancy"]?>" class="card-vaga">
                     <div class="vaga-line-one">
                         <h2><?php echo $vaga["name"]; ?></h2>
-                        <span>1/<?php echo $vaga["qtd_max_cand"]; ?></span>
+                        <span><?php echo $vaga["qtd_total"][0]["qtd_max"]?>/<?php echo $vaga["qtd_max_cand"]; ?></span>
                     </div>
                     <div class="vaga-line-two">
                         <div class="vaga-hab">
                             <h4>Habilidades obrigatórias:</h4>
                             <div class="vaga-habs">
-                                <?php foreach (explode(";", $vaga["required_abilities"]) as $key => $ability): ?>
-                                    <span><?php echo $ability?></span>
+                                <?php foreach ($vaga["vacancy_required_abilities"] as $key => $ability): ?>
+                                    <span><?php echo $ability["ability"]?></span>
                                 <?php endforeach?>
                             </div>
                         </div>
                         <h4>95%</h4>
                     </div>
-                </div>
+                </a>
             </div>
             <?php endforeach; ?>
         </div>
