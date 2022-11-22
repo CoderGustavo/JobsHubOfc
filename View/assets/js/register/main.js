@@ -5,6 +5,38 @@ $(()=>{
         return false;
     });
 
+    $('#access_account').on("click", (e)=>{
+        e.preventDefault();
+
+        let email=$('[name="email"]').val()
+        let password=$('[name="password"]').val()
+
+        if(email&& password){
+            if(email){
+                
+            }
+            let data = {
+                email: $("input[name='email']").val(),
+                password: $("input[name='password']").val(),
+                con_password: $("input[name='con_password']").val()
+            }
+
+            let access_account = $.post("/logar", data, 'json');
+
+            access_account.done(function(response){
+                response = JSON.parse(response);
+                if(response.error){
+                    $(".error_message").html(response.error);
+                }else{
+                    window.location.href="/";
+                }
+            });
+        }else{
+            $('.error_message').text("Preencha os campos")   
+        }
+
+    });
+
     // Send form data to the server to create a new account
     $("button[type='submit']#create_account").on("click", (e)=>{
         e.preventDefault();
@@ -15,7 +47,7 @@ $(()=>{
             con_password: $("input[name='con_password']").val()
         }
 
-        let creating_account = $.post("/cadastro", data, 'json');
+        let creating_account = $.post("/register", data, 'json');
 
         creating_account.done(function(response) {
             response = JSON.parse(response);
@@ -26,14 +58,15 @@ $(()=>{
                 $(".getName").css("transform", "translateX(0)")
             }
         });
-
     });
     
     $("button[type='submit']#save_name").on("click", (e)=>{
         e.preventDefault();
+
         $(".name_user").html($("input[name='name']").val());
         $(".getName").css("transform", "translateX(-100%)");
         $(".getPhone").css("transform", "translateX(0)");
+
     });
 
     $("button[type='submit']#save_phone").on("click", (e)=>{

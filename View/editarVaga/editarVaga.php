@@ -10,7 +10,7 @@
     </head>
     <body>
         
-        <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.html");?>
+        <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.php");?>
         <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
         <?php foreach ($vagas as $key => $vaga):?>
         <?php include_once("cadastro.php");?>

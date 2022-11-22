@@ -7,7 +7,7 @@
     <script src="/View/assets/js/hub/main.js"></script>
 </head>
 <body>
-    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.html");?>
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.php");?>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
     <input type="hidden" name="id_vacancy" value="<?php echo $path[2]?>">
     <div class="hub">
@@ -25,17 +25,16 @@
             <div class="hab-obrigatorias">
                 <h5>Habilidades obrigatórias: </h5>
                 <div class="vaga-habs vaga-habs-hub">
-                    <?php foreach (explode(";", $vaga[0]["required_abilities"]) as $key => $ability): ?>
-                        <span><?php echo $ability?></span>
+                    <?php foreach ($vaga[0]["vacancy_required_abilities"] as $key => $ability): ?>
+                        <span><?php echo $ability["ability"]?></span>
                     <?php endforeach?>
-
                 </div>
             </div>
             <div class="hab-diferenciais">
                 <h5>Habilidades diferenciais: </h5>
                 <div class="vaga-habs vaga-habs-hub">
-                <?php foreach (explode(";", $vaga[0]["difference_abilities"]) as $key => $ability): ?>
-                        <span><?php echo $ability?></span>
+                    <?php foreach ($vaga[0]["vacancy_difference_abilities"] as $key => $ability): ?>
+                        <span><?php echo $ability["ability"]?></span>
                     <?php endforeach?>
                 </div>
             </div>

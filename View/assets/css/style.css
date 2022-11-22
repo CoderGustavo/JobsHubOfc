@@ -15,6 +15,9 @@ body{
 .header{
     position: fixed;
     top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999999;
 }
 
 .hero{
@@ -145,6 +148,8 @@ body{
     flex-direction: column;
     padding: 1rem;
     background-color: var(--color5op4);
+    color: var(--light1);
+    text-decoration: none;
 }
 
 .vagas h2{
@@ -213,10 +218,28 @@ body{
     display: flex;
     justify-content: space-between;
     padding: 0.3rem 0 0 0;
+    gap: .2rem;
 }
 
 .vaga-habs span{
     background-color: var(--dark2);
     padding: 0.3rem 0.6rem;
+    border-radius: 10px;
+}
+
+.navbar{
+    display: flex;
+    column-gap: 2rem;
+    align-items: center;
+}
+
+.navbar a{
+    color: var(--light1);
+    text-decoration: none;
+}
+
+.btn-call-to-action{
+    background-color: var(--color1);
+    padding: .5rem 2rem;
     border-radius: 10px;
 }

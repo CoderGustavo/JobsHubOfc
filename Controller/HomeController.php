@@ -5,7 +5,14 @@ class HomeController{
 
     function showHomePage(){
         $vagas = new VacancyController();
+        $utilities = new UtilitiesController();
+
         $vagas = $vagas->selectInfos();
+
+        $habilidadesEmAlta = $utilities->getHabilidadesEmAlta();
+
+        $vagasEmAlta = $utilities->getVagasEmAlta();
+
         require ROOT . '/View/home/index.php';
     }
 
@@ -18,13 +25,10 @@ class HomeController{
     }
 
     function showHubPage($idvaga=""){
-
-        $path= PATH;
         
         if($idvaga){
-            $vagas=new VacancyController();
-            $vagas=$vagas->selectInfos(true,"","*",$idvaga);
-            // print_r($vagas);
+            $vagas = new VacancyController();
+            $vaga = $vagas->selectInfos(true,"","*",$idvaga);
         }
 
 
@@ -32,8 +36,8 @@ class HomeController{
     }
 
     function showCompanyPage(){
-        $vagas = new VacancyController();
-        $vagas = $vagas->selectInfos();
+        // $vagas = new VacancyController();
+        // $vagas = $vagas->selectInfos(true, "", "*", "", "", PATH[2]);
         require ROOT . '/View/company/index.php';
     }
 
@@ -42,11 +46,26 @@ class HomeController{
         
         require ROOT . '/View/profile/index.php';
     }
+
+    function showLikesPage(){
+        $vagas = new VacancyController();
+        $utilities = new UtilitiesController();
+
+        $vagas = $vagas->selectInfos(true, "", "*", "", $_SESSION["user"]);
+
+        $habilidadesEmAlta = $utilities->getHabilidadesEmAlta();
+
+        require ROOT . '/View/likes/index.php';
+    }
     
     function showEditVacancies(){
        
         $vagas = new VacancyController();
+<<<<<<< HEAD
         $vagas = $vagas->selectInfos($re = true, "", "*", $id = "");
+=======
+        $vagas = $vagas->selectInfos(true, "", "*", $id);
+>>>>>>> 804b5f0cdb1545ad18a99fef0711548157636717
         $vaga = $vagas[0];
         require ROOT . '/View/editarVaga/editarVaga.php';
     }
