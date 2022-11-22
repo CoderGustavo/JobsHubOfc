@@ -27,7 +27,6 @@
                     <select style="display:none"  name="" id="" multiple placeholder="Select"></select>
                 </div>
             </div>
-            <script></script>
             <button type="submit" id="scholarities-btn-button" class="btn btn-rounded btn-d-style1">Próximo
             </button>
 

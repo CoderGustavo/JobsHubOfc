@@ -17,5 +17,8 @@ class User_vacancy{
     public function getTable(){ 
         return $this->table;
     }
+    public function getPk(){ 
+        return $this->pk;
+    }
 
 }

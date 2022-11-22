@@ -119,7 +119,8 @@ switch (PATH[1]) {
     case 'editevagas' :
             switch ($request_method){
                 case 'GET' :
-                    require __DIR__ . '/View/editarVaga/editarVaga.php';
+                        require __DIR__ . '/View/editarVaga/editarVaga.php';
+                        $home->showEditVacancies();
                     break;
                 case 'POST' :
     
@@ -134,6 +135,7 @@ switch (PATH[1]) {
     case'editarvaga' :
         switch($request_method){
             case 'GET' :
+                    
                 if(PATH[2]){
                     $home->showEditVacancies(PATH[2]);
                 }else{

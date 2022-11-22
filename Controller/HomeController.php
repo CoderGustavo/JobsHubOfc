@@ -43,9 +43,10 @@ class HomeController{
         require ROOT . '/View/profile/index.php';
     }
     
-    function showEditVacancies($id){
+    function showEditVacancies(){
+       
         $vagas = new VacancyController();
-        $vagas = $vagas->selectInfos($re = true, "", "*", $id);
+        $vagas = $vagas->selectInfos($re = true, "", "*", $id = "");
         $vaga = $vagas[0];
         require ROOT . '/View/editarVaga/editarVaga.php';
     }
