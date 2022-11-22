@@ -12,7 +12,7 @@ CREATE TABLE `users` (
 	`ra` varchar(255) UNIQUE,
 	`photo_profile` varchar(255),
 	`id_resume` int,
-	`Id_favorite_vacancy` int,
+	`id_favorite_vacancy` int,
 	`create_date` DATE, 
 	PRIMARY KEY (`id_user`)
 );
@@ -58,9 +58,7 @@ CREATE TABLE `vacancies` (
 
 CREATE TABLE `resumes` (
 	`id_resume` int NOT NULL AUTO_INCREMENT,
-	`id_scholarity` int,
-	`id_work_experiences` int,
-	`id_hability` int,
+	`id_user` int,
 	`create_date` DATE,
 	PRIMARY KEY (`id_resume`)
 );
@@ -80,7 +78,7 @@ CREATE TABLE `scholarities` (
 );
 
 CREATE TABLE `work_experiences` (
-	`id_work_experiences` int NOT NULL AUTO_INCREMENT,
+	`id_work_experience` int NOT NULL AUTO_INCREMENT,
 	`name_title` varchar(255) NOT NULL,
 	`company` varchar(255) NOT NULL,
 	`city` varchar(255) NOT NULL,
@@ -91,20 +89,20 @@ CREATE TABLE `work_experiences` (
 	`time_period_to` DATE NOT NULL,
 	`description` varchar(255) NOT NULL,
 	`no_experiences` int(1) NOT NULL,
-	PRIMARY KEY (`id_work_experiences`)
+	PRIMARY KEY (`id_work_experience`)
 );
 
 CREATE TABLE `faq` (
 	`id_faq` int NOT NULL AUTO_INCREMENT,
-	`id_user` int NOT NULL,
-	`id_company` int NOT NULL,
+	`id_user` int NULL,
+	`id_company` int NULL,
 	`description` varchar(255) NOT NULL,
 	`create_date` DATE, 
 	PRIMARY KEY (`id_faq`)
 );
 
 CREATE TABLE `users_vacancies` (
-	`id_users_vacancies` bigint NOT NULL AUTO_INCREMENT,
+	`id_users_vacancies` INT NOT NULL AUTO_INCREMENT,
 	`id_user` int NOT NULL,
 	`id_vacancy` int NOT NULL,
 	`result` varchar(255) NOT NULL,
@@ -113,11 +111,11 @@ CREATE TABLE `users_vacancies` (
 );
 
 CREATE TABLE `favorite_vacancy` (
-	`Id_favorite_vacancy` int NOT NULL AUTO_INCREMENT,
-	`Id_vacancy` int NOT NULL,
+	`id_favorite_vacancy` int NOT NULL AUTO_INCREMENT,
+	`id_vacancy` int NOT NULL,
 	`id_user` int NOT NULL,
 	`create_date` DATE, 
-	PRIMARY KEY (`Id_favorite_vacancy`)
+	PRIMARY KEY (`id_favorite_vacancy`)
 );
 
 CREATE TABLE `integration` (
@@ -125,8 +123,6 @@ CREATE TABLE `integration` (
 	`id_user` int NOT NULL,
 	`id_vacancy` int NOT NULL,
 	`id_company` int NOT NULL,
-	`user_email` varchar(255) NOT NULL,
-	`user_phone_number` varchar(255) NOT NULL,
 	`date_integration` date NOT NULL,
 	`time_integration` time NOT NULL,
 	`create_date` DATE, 
@@ -135,40 +131,13 @@ CREATE TABLE `integration` (
 
 CREATE TABLE `feedback` (
 	`id_feedback` int NOT NULL AUTO_INCREMENT,
-	`id_user` int,
-	`id_company` int,
-	`create_date` DATE, 
-	PRIMARY KEY (`id_feedback`)
-);
-
-CREATE TABLE `feedback_company` (
-	`id_feedback_company` int NOT NULL AUTO_INCREMENT,
-	`id_company` int NOT NULL,
+	`id_user` INT  NULL,
+	`id_company` INT NULL,
+	`id_vacancy` INT  NULL,
 	`text` TEXT(255) NOT NULL,
 	`star` int NOT NULL,
-	`id_feedback` int NOT NULL,
 	`create_date` DATE, 
-	PRIMARY KEY (`id_feedback_company`)
-);
-
-CREATE TABLE `feedback_vacancy` (
-	`id_feedback_vacancy` int NOT NULL AUTO_INCREMENT,
-	`id_vacancy` int NOT NULL,
-	`text` TEXT NOT NULL,
-	`star` int NOT NULL,
-	`id_feedback` int NOT NULL,
-	`create_date` DATE, 
-	PRIMARY KEY (`id_feedback_vacancy`)
-);
-
-CREATE TABLE `feedback_profile` (
-	`id_feedback_profile` int NOT NULL AUTO_INCREMENT,
-	`id_user` int NOT NULL,
-	`text` TEXT NOT NULL,
-	`star` int NOT NULL,
-	`id_feedback` int NOT NULL,
-	`create_date` DATE, 
-	PRIMARY KEY (`id_feedback_profile`)
+	PRIMARY KEY (`id_feedback`)
 );
 
 CREATE TABLE `courses` (
@@ -184,7 +153,7 @@ CREATE TABLE `courses` (
 
 CREATE TABLE `class` (
 	`id_class` int AUTO_INCREMENT,
-	`numer_class` int NOT NULL,
+	`numer_class` int NOT NULL,	
 	`topic_name` varchar(255) NOT NULL,
 	`description` varchar(255) NOT NULL,
 	`link_youtube` varchar(255) NOT NULL,
@@ -246,7 +215,7 @@ CREATE TABLE `resumes_scholarities`(
 
 CREATE TABLE `resumes_work_experiences`(
 	`id_resume_work_experience` INT AUTO_INCREMENT,
-	`id_work_experiences` INT,
+	`id_work_experience` INT,
 	`id_resume` INT,
 	PRIMARY KEY(`id_resume_work_experience`)
 );
@@ -262,7 +231,7 @@ ALTER TABLE `resumes_scholarities` ADD CONSTRAINT `resumes_scholarities_fk0`  FO
 
 ALTER TABLE `resumes_scholarities` ADD CONSTRAINT `resume_scholarity_fk1`   FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
 
-ALTER TABLE `resumes_work_experiences` ADD CONSTRAINT `resumes_work_experiences_fk0` FOREIGN KEY (`id_resume_work_experience`)  REFERENCES `work_experiences`(`id_work_experiences`);
+ALTER TABLE `resumes_work_experiences` ADD CONSTRAINT `resumes_work_experiences_fk0` FOREIGN KEY (`id_work_experience`)  REFERENCES `work_experiences`(`id_work_experience`);
 
 ALTER TABLE `resumes_work_experiences` ADD CONSTRAINT `resumes_work_experiences_fk1`  FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
 
@@ -286,27 +255,17 @@ ALTER TABLE `vacancy_difference_abilities` ADD CONSTRAINT `vacancy_difference_ab
 
 ALTER TABLE `vacancy_difference_abilities` ADD CONSTRAINT `vacancy_difference_abilities_fk1` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
 
-ALTER TABLE `feedback_company` ADD CONSTRAINT `feedback_company_fk0` FOREIGN KEY (`id_feedback`) REFERENCES `feedback`(`id_feedback`);
-
-ALTER TABLE `feedback_vacancy` ADD CONSTRAINT `feedback_vacancy_fk0` FOREIGN KEY (`id_feedback`) REFERENCES `feedback`(`id_feedback`);
-
-ALTER TABLE `feedback_profile` ADD CONSTRAINT `feedback_profile_fk0` FOREIGN KEY (`id_feedback`) REFERENCES `feedback`(`id_feedback`);
-
-ALTER TABLE `feedback_vacancy` ADD CONSTRAINT `feedback_vacancy_fk1` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
-
-ALTER TABLE `feedback_company` ADD CONSTRAINT `feedback_company_fk2` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
-
-ALTER TABLE `feedback_profile` ADD CONSTRAINT `feedback_profile_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
 ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
 
 ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk2` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
 
+ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk3` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
 ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
 
-ALTER TABLE `resumes` ADD CONSTRAINT `resume_sholarities_fk1` FOREIGN KEY (`id_scholarity`) REFERENCES `scholarities`(`id_scholarity`);
+ALTER TABLE `users` ADD CONSTRAINT `users_fk1` FOREIGN KEY (`id_favorite_vacancy`) REFERENCES `favorite_vacancy`(`id_favorite_vacancy`);
 
-ALTER TABLE `resumes` ADD CONSTRAINT `resume_work_experiences_fk1` FOREIGN KEY (`id_work_experiences`) REFERENCES `work_experiences`(`id_work_experiences`);
+ALTER TABLE `resumes` ADD CONSTRAINT `resume_users_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
 
 ALTER TABLE `faq` ADD CONSTRAINT `fq_fk01` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
 
