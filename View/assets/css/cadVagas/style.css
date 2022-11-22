@@ -72,3 +72,23 @@
     transform: translateX(100%);
     transition: .6s all;
 }
+#campo_vazio{
+    padding: 1rem;
+    font-size: 10pt;
+    color: red;
+}
+#campo_vazio1{
+    padding: 1rem;
+    font-size: 10pt;
+    color: red;
+}
+#campo_vazio2{
+    padding: 1rem;
+    font-size: 10pt;
+    color: red;
+}
+#campo_vazio3{
+    padding: 1rem;
+    font-size: 10pt;
+    color: red;
+}

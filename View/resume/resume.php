@@ -18,4 +18,5 @@
         <?php include_once("abilitys.php");?>
 
     </body>
+    <script src="/View/assets/js/resumes/dropdow.js"></script>
 </html>

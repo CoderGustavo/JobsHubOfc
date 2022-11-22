@@ -107,7 +107,7 @@ switch (PATH[1]) {
                 break;
             case 'POST' :
 
-                $vacancies->createInfos($_POST);
+                $vacancies->createInfos($_POST,$_POST);
                 break;
             default :
                 http_response_code(405);
@@ -115,10 +115,11 @@ switch (PATH[1]) {
                 break;
         }
         break;
+ 
     case 'editevagas' :
             switch ($request_method){
                 case 'GET' :
-                    require __DIR__ . '/View/editVaga/editVaga.php';
+                    require __DIR__ . '/View/editarVaga/editarVaga.php';
                     break;
                 case 'POST' :
     
@@ -198,19 +199,19 @@ switch (PATH[1]) {
                 break;
         }
         break;
-        case 'resumes' :
-            switch ($request_method){
-                case 'GET' :
-                    require __DIR__ . '/View/resume/resume.php';
-                    break;
-                case 'POST' :
-                    break;
-                default :
-                    http_response_code(405);
-                    $home->showError(405);
-                    break;
-            }
-            break;
+    case 'resumes' :
+        switch ($request_method){
+            case 'GET' :
+                require __DIR__ . '/View/resume/resume.php';
+                break;
+            case 'POST' :
+                break;
+            default :
+                http_response_code(405);
+                $home->showError(405);
+                break;
+        }
+        break;
     case 'cadastrocurriculo' :
         switch ($request_method){
             case 'GET' :

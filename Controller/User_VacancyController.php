@@ -45,7 +45,7 @@ class User_VacancyController{
         
     }
 
-    public function createInfos($infos){
+    public function createInfos($infos, $info_abilites){
         $a = "";
         $b = "";
         $index = 1;
