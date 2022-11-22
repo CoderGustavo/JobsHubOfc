@@ -68,7 +68,7 @@ CREATE TABLE `scholarities` (
 	`id_education_level` INT,
 	`study_field` varchar(255) NOT NULL,
 	`school_name` varchar(255) NOT NULL,
-	`id_resumes_address` int,
+	`id_address` INT NOT NULL,
 	`currently_enrolled` int(1) NOT NULL,
 	`time_period_from` DATE NOT NULL,
 	`time_period_to` DATE,
@@ -79,7 +79,7 @@ CREATE TABLE `work_experiences` (
 	`id_work_experience` int NOT NULL AUTO_INCREMENT,
 	`name_title` varchar(255) NOT NULL,
 	`company` varchar(255) NOT NULL,
-	`id_resumes_address` int,
+	`id_address` INT NOT NULL,
 	`corrently` int(1) NOT NULL,
 	`time_period_from` DATE NOT NULL,
 	`time_period_to` DATE NOT NULL,
@@ -223,17 +223,17 @@ CREATE TABLE `resumes_abilities`(
 	PRIMARY KEY(`id_resume_ability`)
 );
 
-CREATE TABLE `resumes_address`(
-	`id_resumes_address` int AUTO_INCREMENT,
-	`id_city` int,
-	`id_state` int,
-	`id_country` int,
-	PRIMARY KEY(`id_resumes_address`)
+CREATE TABLE `address`(
+	`id_address` int AUTO_INCREMENT,
+	`id_city` INT NOT NULL,
+	`id_state` INT NOT NULL,
+	`id_country` INT NOT NULL,
+	PRIMARY KEY(`id_address`)
 );
 
-ALTER TABLE `scholarities` ADD CONSTRAINT `scholarities_fk0`  FOREIGN KEY (`id_resumes_address`) REFERENCES `resumes_address`(`id_resumes_address`);
+ALTER TABLE `scholarities` ADD CONSTRAINT `scholarities_address_fk0`  FOREIGN KEY (`id_address`) REFERENCES `address`(`id_address`);
 
-ALTER TABLE `work_experiences` ADD CONSTRAINT `work_experiences_fk0`  FOREIGN KEY (`id_resumes_address`) REFERENCES `resumes_address`(`id_resumes_address`);
+ALTER TABLE `work_experiences` ADD CONSTRAINT `work_experiences_address_fk0`  FOREIGN KEY (`id_address`) REFERENCES `address`(`id_address`);
 
 ALTER TABLE `resumes_scholarities` ADD CONSTRAINT `resumes_scholarities_fk0`  FOREIGN KEY (`id_scholarity`) REFERENCES `scholarities`(`id_scholarity`);
 
