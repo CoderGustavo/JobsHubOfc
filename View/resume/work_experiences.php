@@ -1,34 +1,29 @@
 <div id="work_experiences" class="resume">
 
+    <div class="title-page">
+            <h1>Experiências de trabalho</h1>
+            <h2>Preencha os campos abaixo:</h2>
+    </div>
+
     <div class="inputs container">
 
         <div class="input-group">
-            <label for="">Quantidade Máxima de Candidatos</label>
-            <input type="text" id="max-cad" name="qtd_max_cand">
+            <label for="">Cargo</label>
+            <input type="text" name="name_title">
         </div>
 
         <div class="input-group">
-            <label for="">Quantidade Minima de Candidatos</label>
-            <input type="text" id="min-cad" name="qtd_min_cand">
-        </div>
-
-        <div class="input-group">
-            <label for="">Sálario Minimo</label>
-            <input type="text" id="min-salary" name="salary_min">
-        </div>
-
-        <div class="input-group">
-            <label for="">Sálario Máximo</label>
-            <input type="text" id="max-salary" name="salary_max">
+            <label for="">Companhia</label>
+            <input type="text" name="company">
         </div>
         
         <div class="input-group">
-            <label for="">Sálario Definido</label>
-            <input type="text" id="start-salary" name="salary_defined">
+            <label for="">Atualmente</label>
+            <input type="checkbox" name="corrently">
         </div>
 
     </div>
 
-    <button type="submit" id="cad-vaga-btn-button2" class="btn btn-rounded btn-d-style1">Próximo</button>
+    <button type="submit" id="work-btn-button" class="btn btn-rounded btn-d-style1">Próximo</button>
 
 </div>

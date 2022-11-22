@@ -91,7 +91,7 @@ CREATE TABLE `work_experiences` (
 	`time_period_to` DATE NOT NULL,
 	`description` varchar(255) NOT NULL,
 	`no_experiences` int(1) NOT NULL,
-	PRIMARY KEY (`id_work_experiences`)
+	PRIMARY KEY (`id_work_experiences`) 
 );
 
 CREATE TABLE `faq` (

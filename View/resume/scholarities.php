@@ -1,6 +1,6 @@
 <div class="resume" id="scholarities">
     <div class="title-page">
-            <h1>Curriculo</h1>
+            <h1>Escolaridade</h1>
             <h2>Preencha os campos abaixo: </h2>
     </div>
 
@@ -21,25 +21,10 @@
                 <input type="text" name="currently_enrolled"></input>
             </div>
 
-            <div class="input-group">
-                <div class="dropdown-mul-1">
-                <label for="">Habilidades</label>
-                    <select style="display:none"  name="" id="" multiple placeholder="Select">  
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                </div>
-            </div>
-
-                    <select style="display:none"  name="" id="" multiple placeholder="Select"></select>
-                </div>
-            </div>
-            <script></script>
-            <button type="submit" id="scholarities-btn-button" class="btn btn-rounded btn-d-style1">Próximo
-            </button>
-
         </div>
+        
+        <button type="submit" id="scholarities-btn-button" class="btn btn-rounded btn-d-style1">Próximo
+        </button>
+
 </div>
 

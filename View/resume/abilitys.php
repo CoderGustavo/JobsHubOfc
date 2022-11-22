@@ -1,4 +1,4 @@
-<div id="vecancy-type" class="cad-vaga">
+<div id="abilitys" class="resume">
 
     <div class="inputs container">
 

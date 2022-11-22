@@ -42,7 +42,46 @@
     height: 100vh;
     transition: .6s all;
 }
-#vecancy-type {
+#address {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
+#address-work {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
+#time {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
+#abilitys {
     transform: translateX(100%); 
     text-align: center;
     display: flex;

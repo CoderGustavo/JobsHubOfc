@@ -3,26 +3,34 @@ $(()=>{
     $("button[type='submit']#scholarities-btn-button").on("click", (e)=>{
         e.preventDefault();
 
-        $("#scholarities").css("transform", "translateX(100%)")
+        $("#scholarities").css("transform", "translateX(-100%)")
+        $("#address").css("transform", "translateX(0)")
+
+    });
+
+    $("button[type='submit']#address-btn-button").on("click", (e)=>{
+        e.preventDefault();
+
+        $("#address").css("transform", "translateX(-100%)")
+        $("#time").css("transform", "translateX(0)")
+
+    });
+
+    $("button[type='submit']#time-btn-button").on("click", (e)=>{
+        e.preventDefault();
+
+        $("#time").css("transform", "translateX(-100%)")
         $("#work_experiences").css("transform", "translateX(0)")
 
     });
 
-    $("button[type='submit']#cad-vaga-btn-button2").on("click", (e)=>{
-        e.preventDefault();
+    $("button[type='submit']#work-btn-button").on("click", (e)=>{
+      e.preventDefault();
 
-        $("#salary").css("transform", "translateX(-100%)")
-        $("#vecancy-type").css("transform", "translateX(0)")
+      $("#work_experiences").css("transform", "translateX(-100%)")
+      $("#address-work").css("transform", "translateX(0)")
 
-    });
-
-    $("button[type='submit']#cad-vaga-btn-button3").on("click", (e)=>{
-        e.preventDefault();
-
-        $("#vecancy-type").css("transform", "translateX(-100%)")
-        $("#date").css("transform", "translateX(0)")
-
-    });
+  });
     
     // $("button[type='submit']#cad-vaga-btn-button4").on("click", (e)=>{
 

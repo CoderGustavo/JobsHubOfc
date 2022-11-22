@@ -14,7 +14,10 @@
         <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.html");?>
         <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
         <?php include_once("scholarities.php");?>
+        <?php include_once("address.php");?>
+        <?php include_once("time.php");?>
         <?php include_once("work_experiences.php");?>
+        <?php include_once("address_work.php");?>
         <?php include_once("abilitys.php");?>
 
     </body>
