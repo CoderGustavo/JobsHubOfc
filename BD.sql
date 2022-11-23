@@ -29,7 +29,8 @@ CREATE TABLE `companies` (
 	`ceo` varchar(255),
 	`date_foundation` DATE ,
 	`link` varchar(255) ,
-	`create_date` DATE, 
+	`create_date` DATE,
+	`approved` INT(1), 
 	PRIMARY KEY (`id_company`)
 );
 
@@ -52,6 +53,7 @@ CREATE TABLE `vacancies` (
 	`open_date` DATE ,
 	`close_date` DATE,
 	`create_date` DATE,
+	`approved` INT(1),
 	`id_vacancy_status` int NOT NULL,
 	PRIMARY KEY (`id_vacancy`)
 );
@@ -230,6 +232,17 @@ CREATE TABLE `address`(
 	`id_country` INT NOT NULL,
 	PRIMARY KEY(`id_address`)
 );
+
+CREATE TABLE `users_company`(
+	`id_users_company` INT AUTO_INCREMENT,
+	`id_user` INT,
+	`id_company` INT,
+	PRIMARY KEY(`id_users_company`)
+);
+
+ALTER TABLE `users_company` ADD CONSTRAINT `users_company_fk0` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
+ALTER TABLE `users_company` ADD CONSTRAINT `users_company_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
 
 ALTER TABLE `scholarities` ADD CONSTRAINT `scholarities_address_fk0`  FOREIGN KEY (`id_address`) REFERENCES `address`(`id_address`);
 
