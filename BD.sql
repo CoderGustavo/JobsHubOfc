@@ -12,8 +12,9 @@ CREATE TABLE `users` (
 	`ra` varchar(255) UNIQUE,
 	`photo_profile` varchar(255),
 	`id_resume` int,
-	`id_favorite_vacancy` int,
-	`create_date` DATE, 
+	`create_date` DATE,
+	`removed` int(1),
+	`approved` INT(1), 
 	PRIMARY KEY (`id_user`)
 );
 
@@ -21,16 +22,17 @@ CREATE TABLE `companies` (
 	`id_company` int NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) ,
 	`cnpj` varchar(255) UNIQUE,
-	`email` varchar(255) NOT NULL UNIQUE,
-	`password` varchar(255) NOT NULL,
+	`email` varchar(255) NULL UNIQUE,
 	`phone_number` varchar(255)  UNIQUE,
 	`photo_profile` varchar(255) ,
-	`description` varchar(255) ,
+	`description` TEXT ,
 	`ceo` varchar(255),
 	`date_foundation` DATE ,
-	`link` varchar(255) ,
+	`link` TEXT ,
 	`create_date` DATE,
-	`approved` INT(1), 
+	`approved` INT(1),
+	`removed` int(1),
+	`fatec` INT(1),
 	PRIMARY KEY (`id_company`)
 );
 
@@ -43,8 +45,6 @@ CREATE TABLE `vacancies` (
 	`salary_max` FLOAT,
 	`salary_defined` int,
 	`vacancy_type` varchar(255) NOT NULL,
-	`id_vacancy_required_abilities` int ,
-	`id_vacancy_difference_abilities` int ,
 	`hours_day` TIME,
 	`hours_weeky` TIME,
 	`activity` TEXT,
@@ -55,6 +55,7 @@ CREATE TABLE `vacancies` (
 	`create_date` DATE,
 	`approved` INT(1),
 	`id_vacancy_status` int NOT NULL,
+	`removed` int(1), 
 	PRIMARY KEY (`id_vacancy`)
 );
 
@@ -62,6 +63,8 @@ CREATE TABLE `resumes` (
 	`id_resume` int NOT NULL AUTO_INCREMENT,
 	`id_user` int,
 	`create_date` DATE,
+	`about` VARCHAR(255),
+	`removed` int(1), 
 	PRIMARY KEY (`id_resume`)
 );
 
@@ -74,6 +77,7 @@ CREATE TABLE `scholarities` (
 	`currently_enrolled` int(1) NOT NULL,
 	`time_period_from` DATE NOT NULL,
 	`time_period_to` DATE,
+	`removed` int(1), 
 	PRIMARY KEY (`id_scholarity`)
 );
 
@@ -87,6 +91,7 @@ CREATE TABLE `work_experiences` (
 	`time_period_to` DATE NOT NULL,
 	`description` varchar(255) NOT NULL,
 	`no_experiences` int(1) NOT NULL,
+	`removed` int(1), 
 	PRIMARY KEY (`id_work_experience`)
 );
 
@@ -95,7 +100,8 @@ CREATE TABLE `faq` (
 	`id_user` int NULL,
 	`id_company` int NULL,
 	`description` varchar(255) NOT NULL,
-	`create_date` DATE, 
+	`create_date` DATE,
+	`removed` int(1), 
 	PRIMARY KEY (`id_faq`)
 );
 
@@ -104,7 +110,8 @@ CREATE TABLE `users_vacancies` (
 	`id_user` int NOT NULL,
 	`id_vacancy` int NOT NULL,
 	`result` varchar(255) NOT NULL,
-	`create_date` DATE, 
+	`create_date` DATE,
+	`removed` int(1),
 	PRIMARY KEY (`id_users_vacancies`)
 );
 
@@ -112,7 +119,8 @@ CREATE TABLE `favorite_vacancy` (
 	`id_favorite_vacancy` int NOT NULL AUTO_INCREMENT,
 	`id_vacancy` int NOT NULL,
 	`id_user` int NOT NULL,
-	`create_date` DATE, 
+	`create_date` DATE,
+	`removed` int(1), 
 	PRIMARY KEY (`id_favorite_vacancy`)
 );
 
@@ -123,7 +131,8 @@ CREATE TABLE `integration` (
 	`id_company` int NOT NULL,
 	`date_integration` date NOT NULL,
 	`time_integration` time NOT NULL,
-	`create_date` DATE, 
+	`create_date` DATE,
+	`removed` int(1),  
 	PRIMARY KEY (`id_integration`)
 );
 
@@ -134,7 +143,8 @@ CREATE TABLE `feedback` (
 	`id_vacancy` INT  NULL,
 	`text` TEXT(255) NOT NULL,
 	`star` int NOT NULL,
-	`create_date` DATE, 
+	`create_date` DATE,
+	`removed` int(1),  
 	PRIMARY KEY (`id_feedback`)
 );
 
@@ -145,6 +155,7 @@ CREATE TABLE `courses` (
 	`duration` TIME NOT NULL,
 	`price` FLOAT NOT NULL,
 	`id_class` int NOT NULL,
+	`removed` int(1), 
 	PRIMARY KEY (`id_course`)
 );
 
@@ -155,6 +166,7 @@ CREATE TABLE `class` (
 	`topic_name` varchar(255) NOT NULL,
 	`description` varchar(255) NOT NULL,
 	`link_youtube` varchar(255) NOT NULL,
+	`removed` int(1), 
 	PRIMARY KEY (`id_class`)
 );
 
@@ -162,6 +174,7 @@ CREATE TABLE `users_courses` (
 	`id_users_courses` int NOT NULL AUTO_INCREMENT,
 	`id_user` int NOT NULL,
 	`id_course` int NOT NULL,
+	`removed` int(1), 
 	PRIMARY KEY (`id_users_courses`)
 );
 
@@ -169,32 +182,36 @@ CREATE TABLE `vacancy_required_abilities` (
 	`id_required_ability` int AUTO_INCREMENT,
 	`id_vacancy` int,
 	`id_ability` int,
+	`removed` int(1), 
 	PRIMARY KEY (`id_required_ability`)
 );
 
 CREATE TABLE `abilities` (
 	`id_ability` int AUTO_INCREMENT,
 	`ability` varchar(255),
+	`removed` int(1),
 	PRIMARY KEY (`id_ability`)
 );
 
 CREATE TABLE `vacancy_difference_abilities` (
 	`id_difference_ability` int AUTO_INCREMENT,
-	`id_vacancy` int ,
+	`id_vacancy` int,
 	`id_ability` int,
+	`removed` int(1), 
 	PRIMARY KEY (`id_difference_ability`)
 );
 
 CREATE TABLE `vacancies_status` (
 	`id_vacancy_status` int  AUTO_INCREMENT,
-	`name` varchar(255) ,
+	`name` varchar(255),
 	PRIMARY KEY (`id_vacancy_status`)
 );
 
 CREATE TABLE `companies_vacancies` (
 	`id_companies_vacancies` int AUTO_INCREMENT,
-	`id_company` int ,
-	`id_vacancy` int ,
+	`id_company` int,
+	`id_vacancy` int,
+	`removed` int(1), 
 	PRIMARY KEY (`id_companies_vacancies`)
 );
 
@@ -208,6 +225,7 @@ CREATE TABLE `resumes_scholarities`(
 	`id_resume_scholarity` INT AUTO_INCREMENT,
 	`id_scholarity` INT,
 	`id_resume` INT,
+	`removed` int(1), 
 	PRIMARY KEY(`id_resume_scholarity`)
 );
 
@@ -215,6 +233,7 @@ CREATE TABLE `resumes_work_experiences`(
 	`id_resume_work_experience` INT AUTO_INCREMENT,
 	`id_work_experience` INT,
 	`id_resume` INT,
+	`removed` int(1), 
 	PRIMARY KEY(`id_resume_work_experience`)
 );
 
@@ -222,6 +241,7 @@ CREATE TABLE `resumes_abilities`(
 	`id_resume_ability` int AUTO_INCREMENT,
 	`id_ability` INT,
 	`id_resume` INT,
+	`removed` int(1), 
 	PRIMARY KEY(`id_resume_ability`)
 );
 
@@ -230,6 +250,7 @@ CREATE TABLE `address`(
 	`id_city` INT NOT NULL,
 	`id_state` INT NOT NULL,
 	`id_country` INT NOT NULL,
+	`removed` int(1), 
 	PRIMARY KEY(`id_address`)
 );
 
@@ -237,6 +258,7 @@ CREATE TABLE `users_company`(
 	`id_users_company` INT AUTO_INCREMENT,
 	`id_user` INT,
 	`id_company` INT,
+	`removed` int(1), 
 	PRIMARY KEY(`id_users_company`)
 );
 
@@ -284,8 +306,6 @@ ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk3` FOREIGN KEY (`id_vacancy`) 
 
 ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
 
-ALTER TABLE `users` ADD CONSTRAINT `users_fk1` FOREIGN KEY (`id_favorite_vacancy`) REFERENCES `favorite_vacancy`(`id_favorite_vacancy`);
-
 ALTER TABLE `resumes` ADD CONSTRAINT `resume_users_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
 
 ALTER TABLE `faq` ADD CONSTRAINT `fq_fk01` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
@@ -311,3 +331,37 @@ ALTER TABLE `courses` ADD CONSTRAINT `courses_fk0` FOREIGN KEY (`id_class`) REFE
 ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk0` FOREIGN KEY (`id_course`) REFERENCES `courses`(`id_course`);
 
 ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+
+
+
+INSERT INTO `jobshub`.`users` (`name`, `birth_date` , `email`, `password`, `phone_number`, `ra`, `create_date` ,`removed`) VALUES ('igor', '2003-09-24', 'igor.teodoro@fatec.sp.gov.br', '123456789', '19 99999-9999', '2781392213009', CURDATE() ,'0');
+
+INSERT INTO `jobshub`.`abilities` (`ability`, `removed`) VALUES ('Organizado', '0');
+INSERT INTO `jobshub`.`abilities` (`ability`, `removed`) VALUES ('Flexibidade', '0');
+INSERT INTO `jobshub`.`abilities` (`ability`, `removed`) VALUES ('Proativo', '0');
+INSERT INTO `jobshub`.`abilities` (`ability`, `removed`) VALUES ('Criatividade', '0');
+INSERT INTO `jobshub`.`abilities` (`ability`, `removed`) VALUES ('Boa comunicação', '0');
+
+INSERT INTO `jobshub`.`vacancies_status` (`name`) VALUES ('ABERTO');
+INSERT INTO `jobshub`.`vacancies_status` (`name`) VALUES ('FECHADA');
+INSERT INTO `jobshub`.`vacancies_status` (`name`) VALUES ('CANCELADA');
+INSERT INTO `jobshub`.`vacancies_status` (`name`) VALUES ('AGUARDANDO');
+
+INSERT INTO `jobshub`.`address` (`id_city`, `id_state`, `id_country`, `removed`) VALUES ('1', '1', '1', '0');
+INSERT INTO `jobshub`.`address` (`id_city`, `id_state`, `id_country`, `removed`) VALUES ('2', '2', '2', '0');
+
+INSERT INTO `jobshub`.`work_experiences` (`name_title`, `company`, `id_address`, `corrently`, `time_period_from`, `time_period_to`, `description`, `no_experiences`, `removed`) VALUES ('Suporte', 'Nubank', '1', '0', '2020-01-24', '2021-01-24', 'Help desk', '0', '0');
+INSERT INTO `jobshub`.`work_experiences` (`name_title`, `company`, `id_address`, `corrently`, `time_period_from`, `time_period_to`, `description`, `no_experiences`, `removed`) VALUES ('Analista de Sistema', 'Nubank', '1', '0', '2021-01-24', '2022-11-24', 'Analise e implementação de sistemas', '0', '0');
+
+INSERT INTO `jobshub`.`vacancies` (`name`, `short_desc`, `full_desc`, `salary_min`, `salary_max`, `salary_defined`, `vacancy_type`, `hours_day`, `hours_weeky`, `activity`, `qtd_max_cand`, `qtd_min_cand`, `open_date`, `close_date`, `create_date`, `approved`, `id_vacancy_status`, `removed`) VALUES ('Help desk', 'Help desk para colaboradores', 'Help desk para colaboradores e buscar formas de solucionar problemas', '500', '1000', '1000', 'Estagio', '7 :00:00', '20:00:00', 'dominio em software', '20', '5', '2022-11-24', '2022-11-30', '2022-11-24', '0', '3', '0');
+
+INSERT INTO `companies` (`id_company`, `name`, `cnpj`, `email`, `phone_number`, `photo_profile`, `description`, `ceo`, `date_foundation`, `link`, `create_date`, `approved`, `removed`, `fatec`) VALUES
+	(1, 'Nubank', '	24.410.913/0001-44', NULL, '4020-0185', NULL, 'Nubank é uma empresa startup brasileira pioneira no segmento de serviços financeiros, atuando como operadora de cartões de crédito e fintech com operações no Brasil, sediada em São Paulo e fundada em 6 de maio de 2013 por David Vélez, Cristina Junqueira e Edward Wible', 'David Vélez, Cristina Junqueira e Edward Wible', '2013-05-06', 'https://nubank.com.br/pedir/nu/?utm_source=google&utm_medium=cpc&utm_campaign=1784086961&utm_term=118905407472&utm_word=nubank&utm_content=502413793352&ad_position=&match_type=b&location=1031717&device=c&utm_keyword_id=aud-427394325571:kwd-488984618592&utm_placement=&extension=&geolocation=1031717&google_channel=google_brand&gclid=CjwKCAiAyfybBhBKEiwAgtB7fuJO37Om4MxQslZloogWBXwzJ1NZ_jB59crr_U8Ws-e4ib_uVVAfsRoCH4gQAvD_BwE', '2022-11-24', 0, 0, 0),
+	(2, 'IBM', '33.372.251/0001-56', NULL, NULL, NULL, 'A International Business Machines Corporation é uma empresa dos Estados Unidos voltada para a área de informática.', 'Arvind Krishna', '1911-06-16', 'https://www.ibm.com/us-en/', '2022-11-24', 0, 0, 0),
+	(3, 'Fatec Itapira - "Dr. Ogari de Castro Pacheco"', '62.823.257/0001-09', 'contato@fatecitapira.edu.br', '(19) 3843-1996', NULL, 'Faculdade', 'Centro Paulo Souza', '2022-11-24', 'https://www.fatecitapira.edu.br/index.html', '2022-11-24', 0, 0, 0);
+
+INSERT INTO `jobshub`.`companies_vacancies` (`id_company`, `id_vacancy`, `removed`) VALUES ('2', '1', '0');
+
+INSERT INTO `jobshub`.`education_levels` (`name`) VALUES ('Ensino Médio');
+INSERT INTO `jobshub`.`education_levels` (`name`) VALUES ('Ensino Superior');
+INSERT INTO `jobshub`.`education_levels` (`name`) VALUES ('Ensino Tecnico');
