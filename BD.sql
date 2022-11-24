@@ -109,7 +109,7 @@ CREATE TABLE `users_vacancies` (
 	`id_users_vacancies` INT NOT NULL AUTO_INCREMENT,
 	`id_user` int NOT NULL,
 	`id_vacancy` int NOT NULL,
-	`result` varchar(255) NOT NULL,
+	`id_vacancy_status` INT,
 	`create_date` DATE,
 	`removed` int(1),
 	PRIMARY KEY (`id_users_vacancies`)
@@ -122,18 +122,6 @@ CREATE TABLE `favorite_vacancy` (
 	`create_date` DATE,
 	`removed` int(1), 
 	PRIMARY KEY (`id_favorite_vacancy`)
-);
-
-CREATE TABLE `integration` (
-	`id_integration` int NOT NULL AUTO_INCREMENT,
-	`id_user` int NOT NULL,
-	`id_vacancy` int NOT NULL,
-	`id_company` int NOT NULL,
-	`date_integration` date NOT NULL,
-	`time_integration` time NOT NULL,
-	`create_date` DATE,
-	`removed` int(1),  
-	PRIMARY KEY (`id_integration`)
 );
 
 CREATE TABLE `feedback` (
@@ -316,15 +304,11 @@ ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk01`  FOREIGN KEY
 
 ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk02` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
 
+ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk03` FOREIGN KEY (`id_vacancy_status`) REFERENCES `vacancies_status`(`id_vacancy_status`);
+
 ALTER TABLE `favorite_vacancy` ADD CONSTRAINT `favorite_vacancy_fk01` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
 
 ALTER TABLE `favorite_vacancy` ADD CONSTRAINT `favorite_vacancy_fk02` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
-ALTER TABLE `integration` ADD CONSTRAINT `intregration_fk01` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
-ALTER TABLE `integration` ADD CONSTRAINT `intregration_fk02` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
-
-ALTER TABLE `integration` ADD CONSTRAINT `intregration_fk03` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
 
 ALTER TABLE `courses` ADD CONSTRAINT `courses_fk0` FOREIGN KEY (`id_class`) REFERENCES `class`(`id_class`);
 
@@ -333,8 +317,7 @@ ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk0` FOREIGN KEY (`id_
 ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
 
 
-
-INSERT INTO `jobshub`.`users` (`name`, `birth_date` , `email`, `password`, `phone_number`, `ra`, `create_date` ,`removed`) VALUES ('igor', '2003-09-24', 'igor.teodoro@fatec.sp.gov.br', '123456789', '19 99999-9999', '2781392213009', CURDATE() ,'0');
+INSERT INTO `jobshub`.`users` (`name`, `birth_date` , `email`, `password`, `phone_number`, `ra`, `create_date` ,`removed`,`approved`) VALUES ('igor', '2003-09-24', 'igor.teodoro@fatec.sp.gov.br', '123456789', '19 99999-9999', '2781392213009', CURDATE() ,'0','1');
 
 INSERT INTO `jobshub`.`abilities` (`ability`, `removed`) VALUES ('Organizado', '0');
 INSERT INTO `jobshub`.`abilities` (`ability`, `removed`) VALUES ('Flexibidade', '0');
@@ -365,3 +348,37 @@ INSERT INTO `jobshub`.`companies_vacancies` (`id_company`, `id_vacancy`, `remove
 INSERT INTO `jobshub`.`education_levels` (`name`) VALUES ('Ensino Médio');
 INSERT INTO `jobshub`.`education_levels` (`name`) VALUES ('Ensino Superior');
 INSERT INTO `jobshub`.`education_levels` (`name`) VALUES ('Ensino Tecnico');
+INSERT INTO `jobshub`.`education_levels` (`name`) VALUES ('Ensino Médio integrago Tecnico');
+
+INSERT INTO `jobshub`.`faq` (`id_user`, `id_company`, `description`, `create_date`, `removed`) VALUES ('1', '2', 'Empresa muito boa', '2022-11-24', '0');
+
+INSERT INTO `jobshub`.`favorite_vacancy` (`id_vacancy`, `id_user`, `create_date`, `removed`) VALUES ('1', '1', '2022-11-24', '0');
+
+INSERT INTO `jobshub`.`feedback` (`id_user`, `id_company`, `text`, `star`, `create_date`, `removed`) VALUES ('1', '2', 'Otima empressa', '5', '2022-11-24', '0');
+INSERT INTO `jobshub`.`feedback` (`id_user`, `id_company`, `text`, `star`, `create_date`, `removed`) VALUES ('1', '1', 'Empresa muito favorecida no mercado', '5', '2022-11-24', '0');
+INSERT INTO `jobshub`.`feedback` (`id_user`, `id_vacancy`, `text`, `star`, `create_date`, `removed`) VALUES ('1', '1', 'Uma otima area', '4', '2022-11-24', '0');
+
+INSERT INTO `jobshub`.`resumes` (`id_user`, `create_date`, `about`, `removed`) VALUES ('1', '2022-11-24', 'Meu curriculo', '0');
+
+INSERT INTO `jobshub`.`resumes_abilities` (`id_ability`, `id_resume`, `removed`) VALUES ('5', '1', '0');
+INSERT INTO `jobshub`.`resumes_abilities` (`id_ability`, `id_resume`, `removed`) VALUES ('4', '1', '0');
+INSERT INTO `jobshub`.`resumes_abilities` (`id_ability`, `id_resume`, `removed`) VALUES ('3', '1', '0');
+
+INSERT INTO `jobshub`.`scholarities` (`id_education_level`, `study_field`, `school_name`, `id_address`, `currently_enrolled`, `time_period_from`, `time_period_to`, `removed`) VALUES ('1', 'ensimo normal', 'Elvira Santos de Olvieira', '1', '0', '2018-02-02', '2018-12-12', '0');
+INSERT INTO `jobshub`.`scholarities` (`id_education_level`, `study_field`, `school_name`, `id_address`, `currently_enrolled`, `time_period_from`, `time_period_to`, `removed`) VALUES ('4', 'Desenvolvimento de sistemas', 'Etec João Maria Stevannatto', '2', '0', '2019-02-02', '2021-12-12', '0');
+
+INSERT INTO `jobshub`.`users_company` (`id_user`, `id_company`, `removed`) VALUES ('1', '3', '0');
+
+INSERT INTO `jobshub`.`users_vacancies` (`id_user`, `id_vacancy`, `id_vacancy_status`, `create_date`, `removed`) VALUES ('1', '1', '4', '2022-11-24', '0');
+
+INSERT INTO `jobshub`.`vacancy_difference_abilities` (`id_vacancy`, `id_ability`, `removed`) VALUES ('1', '5', '0');
+INSERT INTO `jobshub`.`vacancy_difference_abilities` (`id_vacancy`, `id_ability`, `removed`) VALUES ('1', '4', '0');
+INSERT INTO `jobshub`.`vacancy_difference_abilities` (`id_vacancy`, `id_ability`, `removed`) VALUES ('1', '3', '0');
+
+INSERT INTO `jobshub`.`vacancy_required_abilities` (`id_vacancy`, `id_ability`, `removed`) VALUES ('1', '5', '0');
+INSERT INTO `jobshub`.`vacancy_required_abilities` (`id_vacancy`, `id_ability`, `removed`) VALUES ('1', '1', '0');
+
+INSERT INTO `jobshub`.`resumes_scholarities` (`id_scholarity`, `id_resume`, `removed`) VALUES ('1', '1', '0');
+INSERT INTO `jobshub`.`resumes_scholarities` (`id_scholarity`, `id_resume`, `removed`) VALUES ('2', '1', '0');
+
+INSERT INTO `jobshub`.`resumes_work_experiences` (`id_work_experience`, `id_resume`, `removed`) VALUES ('1', '1', '0');
