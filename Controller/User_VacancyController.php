@@ -81,7 +81,7 @@ class User_VacancyController{
         
     }
     
-    public function selectInfos($re = true, $campos = "*", $id = ""){
+    public function selectInfos($re = true, $campos = "*", $id){
         $where = "";
 
         if($id) $where = "where $this->pk = :$this->pk";

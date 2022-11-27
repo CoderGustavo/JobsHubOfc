@@ -18,8 +18,8 @@
         </div>
         
         <div class="input-group">
-            <label for="">Atualmente</label>
-            <input type="checkbox" name="corrently">
+            <label for="checkbox">Atualmente trabalhando</label>
+            <input type="checkbox" id="checkbox" name="corrently">
         </div>
 
     </div>

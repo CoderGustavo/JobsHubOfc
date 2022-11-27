@@ -8,6 +8,7 @@ class UserController{
         $this->user = new Users();
         $this->conn = $this->user->getConnection();
         $this->table = $this->user->getTable();
+        $this->pk = $this->user->getPk();
     }
 
     public function login($email, $password){
@@ -18,7 +19,35 @@ class UserController{
         $query->bindParam(":pass", $password);
         $query->execute();
         $user = $query->fetch();
+
         if(Empty($user)){
+
+            $query1 = $this->conn->prepare("SELECT about FROM users JOIN resumes ON resumes.id_resume = users.id_resume WHERE users.$this->pk = :id");
+            $query1->bindParam(":id", $user['id_user']);
+            $query1->execute();
+            $user["about"] = $query1->fetch()["about"];
+
+            $query2 = $this->conn->prepare("SELECT COUNT(*) AS total_work_experiences FROM users 
+                JOIN resumes ON resumes.id_resume = users.id_resume
+                RIGHT JOIN resumes_work_experiences ON resumes_work_experiences.id_resume = resumes.id_resume
+                JOIN work_experiences ON work_experiences.id_work_experiences = resumes_work_experiences.id_work_experiences
+                WHERE users.$this->pk = :id");
+            $query2->bindParam(":id", $user['id_user']);
+            $query2->execute();
+            $user["total_work_experiences"] = $query2->fetch()["total_work_experiences"];
+
+            
+            $query3 = $this->conn->prepare("SELECT COUNT(*) AS total_abilities FROM users 
+                JOIN resumes ON resumes.id_resume = users.id_resume
+                RIGHT JOIN resumes_abilities ON resumes_abilities.id_resume = resumes.id_resume
+                JOIN abilities ON abilities.id_ability = resumes_abilities.id_ability
+                WHERE users.$this->pk = :id");
+            $query3->bindParam(":id", $user['id_user']);
+            $query3->execute();
+            $user["total_abilities"] = $query3->fetch()["total_abilities"];
+
+
+
             $res = array("error" => "Credenciais incorretas");
             echo json_encode($res);
         }else{

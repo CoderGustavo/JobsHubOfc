@@ -11,6 +11,7 @@ require_once(__DIR__ . '/Controller/UserController.php');
 require_once(__DIR__ . '/Controller/VacancyController.php');
 require_once(__DIR__ . '/Controller/ResumeController.php');
 require_once(__DIR__ . '/Controller/CompanyController.php');
+require_once(__DIR__ . '/Controller/UtilitiesController.php');
 
 // initialize classes below:
 $home = new HomeController();
@@ -33,7 +34,7 @@ switch (PATH[1]) {
     case '' :
         $home->showHomePage();
         break;
-    case 'logar' :
+    case 'login' :
         switch ($request_method){
             case 'GET' :
                 $home->showLoginPage();
@@ -49,7 +50,7 @@ switch (PATH[1]) {
                 break;
         }
         break;
-    case 'cadastro' :
+    case 'register' :
         switch ($request_method){
             case 'GET' :
                 $home->showRegisterPage();
@@ -119,7 +120,8 @@ switch (PATH[1]) {
     case 'editevagas' :
             switch ($request_method){
                 case 'GET' :
-                    require __DIR__ . '/View/editarVaga/editarVaga.php';
+                        require __DIR__ . '/View/editarVaga/editarVaga.php';
+                        $home->showEditVacancies();
                     break;
                 case 'POST' :
     
@@ -132,8 +134,10 @@ switch (PATH[1]) {
             }
             break;
     case'editarvaga' :
+    case 'editarvaga' :
         switch($request_method){
             case 'GET' :
+                    
                 if(PATH[2]){
                     $home->showEditVacancies(PATH[2]);
                 }else{
@@ -152,10 +156,15 @@ switch (PATH[1]) {
         // print_r($_SESSION['user']);
         $user->updateInfos($_SESSION["user"], $_POST);
         break;
-    case 'empresa' :
+    case 'company' :
         switch ($request_method){
             case 'GET' :
-                $home->showCompanyPage();
+                if(PATH[2]){
+                    $home->showCompanyPage(PATH[2]);
+                }
+                else{
+                    $home->redirect("/");
+                }
                 break;
             default :
                 http_response_code(405);
@@ -163,10 +172,10 @@ switch (PATH[1]) {
                 break;
         }
         break;
-    case 'mostrarvagas' :
+    case 'likes' :
         switch ($request_method){
             case 'GET' :
-                require __DIR__ . '/View/mosVaga/index.php';
+                $home->showLikesPage();
                 break;
             case 'POST' :
                 $vacancies->createInfos($_POST);
@@ -177,7 +186,7 @@ switch (PATH[1]) {
                 break;
         }
         break;
-    case 'perfil' :
+    case 'profile' :
         switch ($request_method){
             case 'GET' :
                 $home->showProfilePage();
@@ -233,11 +242,10 @@ switch (PATH[1]) {
         }
         break;
     case 'teste':
-    $buscando = "";
-    $vacancies->selectInfos($buscando);
-    break;
-   
-        default:
+        $buscando = "";
+        $vacancies->selectInfos($buscando);
+        break;
+    default:
         http_response_code(404);
         // require __DIR__ . '/View/404.php';
         break;

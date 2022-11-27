@@ -11,7 +11,7 @@ class Connection{
     }
 
     public function connection(){
-        $conn = new PDO("mysql:host=$this->urldb;dbname=$this->dbname", $this->usernamedb, $this->passworddb);
+        $conn = new PDO("mysql:host=$this->urldb;dbname=$this->dbname;charset=utf8mb4", $this->usernamedb, $this->passworddb);
         return $conn;
     }
 }

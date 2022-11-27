@@ -30,7 +30,23 @@ $(()=>{
       $("#work_experiences").css("transform", "translateX(-100%)")
       $("#address-work").css("transform", "translateX(0)")
 
-  });
+    });
+
+    $("button[type='submit']#address_work-btn-button").on("click", (e)=>{
+      e.preventDefault();
+
+      $("#address-work").css("transform", "translateX(-100%)")
+      $("#time_work").css("transform", "translateX(0)")
+
+    });
+
+    $("button[type='submit']#time_work-btn-button").on("click", (e)=>{
+      e.preventDefault();
+
+      $("#time_work").css("transform", "translateX(-100%)")
+      $("#abilitys").css("transform", "translateX(0)")
+
+    });
     
     // $("button[type='submit']#cad-vaga-btn-button4").on("click", (e)=>{
 

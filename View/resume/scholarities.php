@@ -17,8 +17,10 @@
             </div>
 
             <div class="input-group">
-                <label for="">Atualmente Matriculado</label>
-                <input type="text" name="currently_enrolled"></input>
+                <div class="checkbox">
+                    <label for="checkbox">Atualmente Matriculado</label>
+                    <input type="checkbox"  id="checkbox" name="currently_enrolled"></input>
+                </div>
             </div>
 
         </div>

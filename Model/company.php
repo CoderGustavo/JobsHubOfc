@@ -5,7 +5,7 @@ class Company{
 
     public function __construct(){
         include_once "connection.php";
-        $this->table = "company";
+        $this->table = "companies";
         $this->pk = "id_company";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
@@ -14,7 +14,6 @@ class Company{
     public function getConnection(){
         return $this->conn;
     }
-
 
     public function getTable(){ 
         return $this->table;

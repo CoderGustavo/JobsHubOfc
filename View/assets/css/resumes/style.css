@@ -81,6 +81,19 @@
     height: 100vh;
     transition: .6s all;
 }
+#time_work {
+    transform: translateX(100%); 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    transition: .6s all;
+}
 #abilitys {
     transform: translateX(100%); 
     text-align: center;
@@ -94,20 +107,9 @@
     height: 100vh;
     transition: .6s all;
 }
-#date {
-    transform: translateX(100%); 
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    flex-direction: column;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    transition: .6s all;
-}
+
+/*
 #vecancy-finish {
     transform: translateX(100%);
     transition: .6s all;
-}
+} */
