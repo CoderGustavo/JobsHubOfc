@@ -1,15 +1,10 @@
 <div id="time_work" class="resume">
 
     <div class="inputs container">
-
+        
         <div class="input-group">
             <label for="">Descrição</label>
             <input type="text" name="description">
-        </div>
-
-        <div class="input-group">
-            <label for="">Sem experiência</label>
-            <input type="checkbox" name="no_experiences">
         </div>
 
         <div class="input-group">

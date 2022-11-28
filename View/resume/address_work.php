@@ -2,6 +2,11 @@
 
     <div class="inputs container">
 
+        <div class="custom-checkbox">
+            <input type="checkbox" id="checkbox-3">
+            <label for="checkbox-3">Sem Experiência</label>
+        </div>
+
         <div class="input-group">
             <label for="">País</label>
             <input type="text" name="country">

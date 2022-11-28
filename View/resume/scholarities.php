@@ -16,11 +16,9 @@
                 <input type="text" name="school_name">
             </div>
 
-            <div class="input-group">
-                <div class="checkbox">
-                    <label for="checkbox">Atualmente Matriculado</label>
-                    <input type="checkbox"  id="checkbox" name="currently_enrolled"></input>
-                </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" id="checkbox-1">
+                <label for="checkbox-1">Atualmente Matriculado</label>
             </div>
 
         </div>

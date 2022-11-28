@@ -17,9 +17,9 @@
             <input type="text" name="company">
         </div>
         
-        <div class="input-group">
-            <label for="checkbox">Atualmente trabalhando</label>
-            <input type="checkbox" id="checkbox" name="corrently">
+        <div class="custom-checkbox">
+            <input type="checkbox" id="checkbox-2">
+            <label for="checkbox-2">Atualmente Trabalhando</label>
         </div>
 
     </div>
