@@ -61,11 +61,16 @@ class HomeController{
     function showEditVacancies(){
        
         $vagas = new VacancyController();
+<<<<<<< HEAD
 
         $vagas = $vagas->selectInfos($re = true, "", "*", $id = "");
 
         $vagas = $vagas->selectInfos(true, "", "*", $id);
 
+=======
+        $vagas = $vagas->selectInfos($re = true, "", "*", $id = "");
+        $vagas = $vagas->selectInfos(true, "", "*", $id);
+>>>>>>> 0872b59ce1c5cd9ce591c776059a18c2373e4ecb
         $vaga = $vagas[0];
         require ROOT . '/View/editarVaga/editarVaga.php';
     }

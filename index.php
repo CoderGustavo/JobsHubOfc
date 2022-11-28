@@ -116,7 +116,10 @@ switch (PATH[1]) {
                 break;
         }
         break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0872b59ce1c5cd9ce591c776059a18c2373e4ecb
  
     case 'editevagas' :
             switch ($request_method){
@@ -135,9 +138,13 @@ switch (PATH[1]) {
             }
             break;
     case'editarvaga' :
+<<<<<<< HEAD
 
     case 'editarvaga' :
         
+=======
+    case 'editarvaga' :
+>>>>>>> 0872b59ce1c5cd9ce591c776059a18c2373e4ecb
         switch($request_method){
             case 'GET' :
                     

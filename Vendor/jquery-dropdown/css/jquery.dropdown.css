@@ -141,8 +141,8 @@
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-  color: #333;
-  background-color: #fff
+  color: #fff;
+  background-color: var(--color1op8);
 }
 
 .dropdown-display-label:after,
@@ -262,7 +262,7 @@
   max-width: 100%;
   border-radius: 3px;
   background-repeat: repeat-x;
-  color: #333;
+  color: #fff;
   cursor: default;
   display: inline-block
 }
@@ -292,9 +292,9 @@
   left: 0;
   z-index: 1010;
   width: 100%;
-  color: #444;
+  color: #fff;
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: var(--color1op8);
   border: 1px solid #ccc;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
@@ -347,7 +347,7 @@
 
 .dropdown-option:focus,
 .dropdown-option:hover {
-  background-color: #efefef;
+  background-color: #efefef77;
   outline: 0
 }
 
