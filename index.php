@@ -116,7 +116,7 @@ switch (PATH[1]) {
                 break;
         }
         break;
-<<<<<<< HEAD
+
  
     case 'editevagas' :
             switch ($request_method){
@@ -135,9 +135,9 @@ switch (PATH[1]) {
             }
             break;
     case'editarvaga' :
-=======
+
     case 'editarvaga' :
->>>>>>> 804b5f0cdb1545ad18a99fef0711548157636717
+        
         switch($request_method){
             case 'GET' :
                     
