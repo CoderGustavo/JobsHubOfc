@@ -19,13 +19,13 @@ class HomeController{
     function showRegisterPage(){
         require ROOT . '/View/register/index.php';
     }
-    
+
     function showLoginPage(){
         require ROOT . '/View/login/index.php';
     }
 
     function showHubPage($idvaga=""){
-        
+
         if($idvaga){
             $vagas = new VacancyController();
             $vaga = $vagas->selectInfos(true,"","*",$idvaga);
@@ -43,7 +43,7 @@ class HomeController{
 
     function showProfilePage(){
         $user = $_SESSION["user"];
-        
+
         require ROOT . '/View/profile/index.php';
     }
 
@@ -57,11 +57,13 @@ class HomeController{
 
         require ROOT . '/View/likes/index.php';
     }
-    
+
     function showEditVacancies($id){
-       
+
         $vagas = new VacancyController();
+
         $vagas = $vagas->selectInfos(true, "", "*", $id);
+
         $vaga = $vagas[0];
         require ROOT . '/View/editarVaga/editarVaga.php';
     }

@@ -55,7 +55,7 @@
     minCountErrorMessage: '',
     limitCount: Infinity,
     limitCountErrorMessage: '',
-    input: '<input type="text" maxLength="20" placeholder="Search...">',
+    input: '<input type="text" maxLength="20" placeholder="Buscar...">',
     data: [],
     searchable: true,
     searchNoData: '<li style="color:#ddd">No Results.</li>',

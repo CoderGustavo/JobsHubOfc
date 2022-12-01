@@ -129,7 +129,39 @@ switch (PATH[1]) {
                 break;
         }
         break;
+<<<<<<< HEAD
     case 'editarvaga' :
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 0872b59ce1c5cd9ce591c776059a18c2373e4ecb
+ 
+    case 'editevagas' :
+            switch ($request_method){
+                case 'GET' :
+                        require __DIR__ . '/View/editarVaga/editarVaga.php';
+                        $home->showEditVacancies();
+                    break;
+                case 'POST' :
+    
+                    $vacancies->createInfos($_POST);
+                    break;
+                default :
+                    http_response_code(405);
+                    $home->showError(405);
+                    break;
+            }
+            break;
+    case'editarvaga' :
+<<<<<<< HEAD
+
+    case 'editarvaga' :
+        
+=======
+    case 'editarvaga' :
+>>>>>>> 0872b59ce1c5cd9ce591c776059a18c2373e4ecb
+>>>>>>> 7bacd3e23d16606dde657e349e1911fd8a88fec6
         switch($request_method){
             case 'GET' :
                 PATH[2] ? $home->showEditVacancies(PATH[2]) : $home->redirect("/");;
