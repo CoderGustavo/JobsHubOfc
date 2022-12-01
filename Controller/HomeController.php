@@ -58,14 +58,10 @@ class HomeController{
         require ROOT . '/View/likes/index.php';
     }
     
-    function showEditVacancies(){
+    function showEditVacancies($id){
        
         $vagas = new VacancyController();
-<<<<<<< HEAD
-        $vagas = $vagas->selectInfos($re = true, "", "*", $id = "");
-=======
         $vagas = $vagas->selectInfos(true, "", "*", $id);
->>>>>>> 804b5f0cdb1545ad18a99fef0711548157636717
         $vaga = $vagas[0];
         require ROOT . '/View/editarVaga/editarVaga.php';
     }

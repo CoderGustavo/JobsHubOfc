@@ -7,7 +7,7 @@
         <a href="/">Inicio</a>
         <a href="/courses">Cursos</a>
         <a href="/likes">Curtidas</a>
-        <?php if($_SESSION["user"]): ?>
+        <?php if(!empty($_SESSION["user"])): ?>
             <a href="/profile" class="btn-call-to-action">Perfil</a>
         <?php else: ?>
             <a href="/login" class="btn-call-to-action">Log in</a>

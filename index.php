@@ -20,14 +20,19 @@ $vacancies = new VacancyController();
 $resume = new ResumeController();
 $cadEmpresa = new CompanyController();
 
-// switch (PATH[1]) 
-//     case "login" :
-//     case "cadastro" :
-//         if($_SESSION['user']){
-//             header("Location: /");
-//         }
-//         break;
-// 
+switch (PATH[1]) {
+    case "login" :
+    case "cadastro" :
+        if(!empty($_SESSION['user'])) header("Location: /");
+        break;
+    // case "login" :
+    // case "cadastro" :
+    //     if(!$_SESSION['user']){
+    //         header("Location: /");
+    //     }
+    //     break;
+}
+
 
 switch (PATH[1]) {
     case '/' :
@@ -107,7 +112,15 @@ switch (PATH[1]) {
                 require __DIR__ . '/View/cadVaga/cadvaga.php';
                 break;
             case 'POST' :
+                switch (PATH[2]) {
+                    case 1:
+                        # code...
+                        break;
 
+                    default:
+                        # code...
+                        break;
+                }
                 $vacancies->createInfos($_POST,$_POST);
                 break;
             default :
@@ -116,38 +129,13 @@ switch (PATH[1]) {
                 break;
         }
         break;
-<<<<<<< HEAD
- 
-    case 'editevagas' :
-            switch ($request_method){
-                case 'GET' :
-                        require __DIR__ . '/View/editarVaga/editarVaga.php';
-                        $home->showEditVacancies();
-                    break;
-                case 'POST' :
-    
-                    $vacancies->createInfos($_POST);
-                    break;
-                default :
-                    http_response_code(405);
-                    $home->showError(405);
-                    break;
-            }
-            break;
-    case'editarvaga' :
-=======
     case 'editarvaga' :
->>>>>>> 804b5f0cdb1545ad18a99fef0711548157636717
         switch($request_method){
             case 'GET' :
-                    
-                if(PATH[2]){
-                    $home->showEditVacancies(PATH[2]);
-                }else{
-                    $home->redirect("/");
-                }
+                PATH[2] ? $home->showEditVacancies(PATH[2]) : $home->redirect("/");;
                 break;
             case 'POST' :
+                $vacancies->updateInfos($_POST, $id_vacancy);
                 break;
             default :
                 http_response_code(405);
@@ -162,12 +150,7 @@ switch (PATH[1]) {
     case 'company' :
         switch ($request_method){
             case 'GET' :
-                if(PATH[2]){
-                    $home->showCompanyPage(PATH[2]);
-                }
-                else{
-                    $home->redirect("/");
-                }
+                PATH[2] ? $home->showCompanyPage(PATH[2]) : $home->redirect("/");;
                 break;
             default :
                 http_response_code(405);
@@ -240,9 +223,14 @@ switch (PATH[1]) {
                 $home->showCadastroEmpresa();
                 break;
             case 'POST' :
-                $cadEmpresa->createInfos($_POST);
+                print_r($_POST);
+                print_r($_POST["photo_profile"]);
+                // $cadEmpresa->createInfos($_POST);
                 break;
         }
+        break;
+    case 'logout':
+            $user->logout();
         break;
     case 'teste':
         $buscando = "";
