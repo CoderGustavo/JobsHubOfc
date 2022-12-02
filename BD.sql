@@ -381,4 +381,5 @@ INSERT INTO `jobshub`.`vacancy_required_abilities` (`id_vacancy`, `id_ability`, 
 INSERT INTO `jobshub`.`resumes_scholarities` (`id_scholarity`, `id_resume`, `removed`) VALUES ('1', '1', '0');
 INSERT INTO `jobshub`.`resumes_scholarities` (`id_scholarity`, `id_resume`, `removed`) VALUES ('2', '1', '0');
 
+
 INSERT INTO `jobshub`.`resumes_work_experiences` (`id_work_experience`, `id_resume`, `removed`) VALUES ('1', '1', '0');

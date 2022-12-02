@@ -6,7 +6,7 @@
 }
 
 body{
-    color: var(--light1);   
+    color: var(--light1);
     background: linear-gradient(180deg, #110718 0%, #2D143F 80%);
     min-height: 100vh;
     padding-bottom: 74px;
@@ -55,11 +55,14 @@ body{
 }
 
 .input-buscar span{
-    color: var(--light1);
+    color: var(--light1) !important;
     position: absolute;
     bottom: .5rem;
     left: 1rem;
     transition: .5s all;
+    background-color: transparent !important;
+    cursor: auto !important;
+    opacity: 1 !important;
 }
 
 .nav_menu {
@@ -242,4 +245,8 @@ body{
     background-color: var(--color1);
     padding: .5rem 2rem;
     border-radius: 10px;
+}
+
+.error_message{
+    margin: 0;
 }

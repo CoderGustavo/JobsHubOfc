@@ -13,7 +13,7 @@ class VacancyController{
         $this->pk = $this->vacancy->getPk();
     }
     
-    public function updateInfos($userlogged, $infos, $id_vacancy){
+    public function updateInfos($infos, $id_vacancy){
         $a = "";
         $index = 1;
 

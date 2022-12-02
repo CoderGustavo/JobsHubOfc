@@ -6,7 +6,7 @@ class Users{
     public function __construct(){
         include_once "connection.php";
         $this->table = "users";
-        $this->table = "id_user";
+        $this->pk = "id_user";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
     }

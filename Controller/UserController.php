@@ -21,7 +21,9 @@ class UserController{
         $user = $query->fetch();
 
         if(Empty($user)){
-
+            $res = array("error" => "Credenciais incorretas");
+            echo json_encode($res);
+        }else{
             $query1 = $this->conn->prepare("SELECT about FROM users JOIN resumes ON resumes.id_resume = users.id_resume WHERE users.$this->pk = :id");
             $query1->bindParam(":id", $user['id_user']);
             $query1->execute();
@@ -46,11 +48,6 @@ class UserController{
             $query3->execute();
             $user["total_abilities"] = $query3->fetch()["total_abilities"];
 
-
-
-            $res = array("error" => "Credenciais incorretas");
-            echo json_encode($res);
-        }else{
             $_SESSION["user"] = $user;
             $res = array("success" => "Usuário logado");
             echo json_encode($res);
@@ -71,22 +68,30 @@ class UserController{
         $query->bindParam(":email", $email);
         $query->bindParam(":pass", $password);
 
+
         $queryLogin = $this->conn->prepare("SELECT * FROM $this->table where email = :email AND password = :pass");
         $queryLogin->bindParam(":email", $email);
         $queryLogin->bindParam(":pass", $password);
+
         
-        try {
-            $query->execute();
-        } catch (Throwable $th) {
-            $res = array("error" => $th->errorInfo[2]);
+        
+        $query->execute();
+        if($query->errorInfo()["2"]){
+            $res = array("error" => $query->errorInfo()["2"]);
             echo json_encode($res);
             return;
         }
 
         $queryLogin->execute();
+        if($queryLogin->errorInfo()["2"]){
+            $res = array("error" => $queryLogin->errorInfo()["2"]);
+            echo json_encode($res);
+            return;
+        }
+
         $_SESSION["user"] = $queryLogin->fetch();
 
-        $res = array("success" => "Usuário criado com sucesso!");
+        $res = array("success" => $query->errorInfo()["2"]);
         echo json_encode($res);
     }
 
@@ -141,6 +146,11 @@ class UserController{
             return;
         }
         
+    }
+
+    public function logout(){
+        unset($_SESSION["user"]);
+        header("location: /");
     }
 
 }

@@ -2,12 +2,12 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
     display: flex;
-    flex-direction: row;
-    align-items: end;
+    align-items: center;
     gap: .5rem;
 }
 
 .homeemalta h3{
+    font-size: 15pt !important;
     font-weight: 400;
     position: relative;
     top: 3px;

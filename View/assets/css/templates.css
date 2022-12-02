@@ -113,7 +113,7 @@
 /* Buttons Style */
 .btn{
     color: var(--light1);
-    padding: 1rem;
+    padding: 0.5rem;
     text-decoration: none;
     display: flex;
     justify-content: space-between;
@@ -343,4 +343,17 @@
 
 .ft-s-22{
     font-size: 22pt;
+}
+
+.gap-05{
+    gap: .5rem;
+}
+.gap-1{
+    gap: 1rem;
+}
+.gap-15{
+    gap: 1.5rem;
+}
+.gap-2{
+    gap: 2rem;
 }
