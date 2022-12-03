@@ -25,6 +25,9 @@ switch (PATH[1]) {
     case "cadastro" :
         if(!empty($_SESSION['user'])) header("Location: /");
         break;
+    case "hub" :
+        if(empty($_SESSION['user'])) header("Location: /login");
+        break;
     // case "login" :
     // case "cadastro" :
     //     if(!$_SESSION['user']){
@@ -32,6 +35,7 @@ switch (PATH[1]) {
     //     }
     //     break;
 }
+// print_r($_SESSION['user']);
 
 
 switch (PATH[1]) {
@@ -89,7 +93,7 @@ switch (PATH[1]) {
             case 'POST' :
                 if(PATH[2]){
                     if(PATH[2]=='like'){
-                        $_POST["id_user"]=$_SESSION["user"]["id_user"];
+                        $_POST["id_user"] = $_SESSION["user"]["id_user"];
                         $users_vancancies->createInfos($_POST);
                     }
                     else{
@@ -129,39 +133,7 @@ switch (PATH[1]) {
                 break;
         }
         break;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     case 'editarvaga' :
-=======
-<<<<<<< HEAD
->>>>>>> 43df1ce03087290cef0b2b2c0a631547e56c88be
-
-    case 'editevagas' :
-            switch ($request_method){
-                case 'GET' :
-                        require __DIR__ . '/View/editarVaga/editarVaga.php';
-                        $home->showEditVacancies();
-                    break;
-                case 'POST' :
-    
-                    $vacancies->createInfos($_POST);
-                    break;
-                default :
-                    http_response_code(405);
-                    $home->showError(405);
-                    break;
-            }
-            break;
-
-        
-    case 'editarvaga' :
-<<<<<<< HEAD
-
-=======
->>>>>>> 0872b59ce1c5cd9ce591c776059a18c2373e4ecb
->>>>>>> 7bacd3e23d16606dde657e349e1911fd8a88fec6
->>>>>>> 43df1ce03087290cef0b2b2c0a631547e56c88be
         switch($request_method){
             case 'GET' :
                 PATH[2] ? $home->showEditVacancies(PATH[2]) : $home->redirect("/");;

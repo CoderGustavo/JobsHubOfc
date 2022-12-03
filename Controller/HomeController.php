@@ -61,28 +61,15 @@ class HomeController{
     function showEditVacancies($id){
 
         $vagas = new VacancyController();
-<<<<<<< HEAD
-
-
-        $vagas = $vagas->selectInfos($re = true, "", "*", $id = "");
 
         $vagas = $vagas->selectInfos(true, "", "*", $id);
 
-
-        $vagas = $vagas->selectInfos($re = true, "", "*", $id = "");
-        $vagas = $vagas->selectInfos(true, "", "*", $id);
-
-=======
-
-        $vagas = $vagas->selectInfos(true, "", "*", $id);
-
->>>>>>> 43df1ce03087290cef0b2b2c0a631547e56c88be
         $vaga = $vagas[0];
         require ROOT . '/View/editarVaga/editarVaga.php';
     }
 
     function showCadastroCurriculo(){
-        require_once(ROOT . '/View/home/index.php');
+        require_once(ROOT . '/View/resumes/index.php');
     }
 
     function showCadastroEmpresa(){
