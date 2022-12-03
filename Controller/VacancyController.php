@@ -12,7 +12,7 @@ class VacancyController{
         $this->table = $this->vacancy->getTable();
         $this->pk = $this->vacancy->getPk();
     }
-    
+
     public function updateInfos($infos, $id_vacancy){
         $a = "";
         $index = 1;
@@ -44,7 +44,7 @@ class VacancyController{
             echo json_encode($res);
             return;
         }
-        
+
     }
 
     public function createInfos($infos){
@@ -80,9 +80,9 @@ class VacancyController{
             echo json_encode($res);
             return;
         }
-        
+
     }
-    
+
     public function selectInfos($re = true, $buscando = "", $campos = "*", $id = "", $user = "", $empresa = ""){
         if($empresa){
             $empresa = implode(" ", explode("-", trim($empresa)));
@@ -96,9 +96,9 @@ class VacancyController{
             $queryEmp->execute();
             if(!$queryEmp->fetch()) header("location: /");
         }
-        
+
         $where = "";
-        
+
         $whereUser = "JOIN users_vacancies on vacancies.$this->pk = users_vacancies.$this->pk WHERE users_vacancies.id_user = :id_user";
         $whereEmpresa = "WHERE id_company = :id_company";
 
@@ -106,18 +106,18 @@ class VacancyController{
         else if($id) $where = "where $this->pk = :$this->pk";
         else if($user) $where = $whereUser;
         else if($empresa) $where = $whereEmpresa;
-        
+
         $query = $this->conn->prepare("SELECT $campos FROM $this->table $where");
-        
+
         if($buscando && !$id) $query->bindParam(":buscando", $buscando);
         else if($id) $query->bindParam(":$this->pk", $id);
         else if($user) $query->bindParam(":id_user", $user["id_user"]);
         else if($empresa) $query->bindParam(":id_company", $empresa);
-        
+
         try {
             $query->execute();
             $res = $query->fetchAll();
-            
+
             foreach ($res as $key => $row) {
                 $query1= $this->conn->prepare("SELECT * FROM vacancy_required_abilities v LEFT JOIN abilities a ON v.id_ability = a.id_ability WHERE $this->pk = :id");
                 $query1->bindParam(":id", $row[$this->pk]);
@@ -132,7 +132,7 @@ class VacancyController{
                 $query3 = $this->conn->prepare("SELECT COUNT(*) AS qtd_max FROM users_vacancies WHERE $this->pk=:$this->pk");
                 $query3->bindParam(":$this->pk", $row[$this->pk]);
                 $query3->execute();
-                $res[$key]["qtd_total"] = $query3->fetchAll();
+                $res[$key]["qtd_total"] = $query3->fetchAll()[0]["qtd_max"];
             }
 
             if($re){

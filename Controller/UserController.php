@@ -11,7 +11,7 @@ class UserController{
         $this->pk = $this->user->getPk();
     }
 
-    public function login($email, $password){
+    public function login($email, $password, $re = false){
         $password = md5(sha1(md5(sha1($password))));
 
         $query = $this->conn->prepare("SELECT * FROM $this->table where email = :email AND password = :pass");
@@ -22,24 +22,30 @@ class UserController{
 
         if(Empty($user)){
             $res = array("error" => "Credenciais incorretas");
-            echo json_encode($res);
+            if($re){
+                return json_encode($res);
+            }else{
+                echo json_encode($res);
+            }
         }else{
             $query1 = $this->conn->prepare("SELECT about FROM users JOIN resumes ON resumes.id_resume = users.id_resume WHERE users.$this->pk = :id");
             $query1->bindParam(":id", $user['id_user']);
             $query1->execute();
+            print_r($query1->fetchAll());
             $user["about"] = $query1->fetch()["about"];
 
-            $query2 = $this->conn->prepare("SELECT COUNT(*) AS total_work_experiences FROM users 
+            $query2 = $this->conn->prepare("SELECT COUNT(*) AS total_work_experiences FROM users
                 JOIN resumes ON resumes.id_resume = users.id_resume
                 RIGHT JOIN resumes_work_experiences ON resumes_work_experiences.id_resume = resumes.id_resume
                 JOIN work_experiences ON work_experiences.id_work_experiences = resumes_work_experiences.id_work_experiences
                 WHERE users.$this->pk = :id");
             $query2->bindParam(":id", $user['id_user']);
             $query2->execute();
+            print_r($query2->fetchAll());
             $user["total_work_experiences"] = $query2->fetch()["total_work_experiences"];
 
-            
-            $query3 = $this->conn->prepare("SELECT COUNT(*) AS total_abilities FROM users 
+
+            $query3 = $this->conn->prepare("SELECT COUNT(*) AS total_abilities FROM users
                 JOIN resumes ON resumes.id_resume = users.id_resume
                 RIGHT JOIN resumes_abilities ON resumes_abilities.id_resume = resumes.id_resume
                 JOIN abilities ON abilities.id_ability = resumes_abilities.id_ability
@@ -50,7 +56,11 @@ class UserController{
 
             $_SESSION["user"] = $user;
             $res = array("success" => "Usuário logado");
-            echo json_encode($res);
+            if($re){
+                return json_encode($res);
+            }else{
+                echo json_encode($res);
+            }
         }
 
     }
@@ -69,29 +79,22 @@ class UserController{
         $query->bindParam(":pass", $password);
 
 
-        $queryLogin = $this->conn->prepare("SELECT * FROM $this->table where email = :email AND password = :pass");
-        $queryLogin->bindParam(":email", $email);
-        $queryLogin->bindParam(":pass", $password);
-
-        
-        
-        $query->execute();
+        print_r($query->execute());
         if($query->errorInfo()["2"]){
             $res = array("error" => $query->errorInfo()["2"]);
             echo json_encode($res);
             return;
         }
 
-        $queryLogin->execute();
-        if($queryLogin->errorInfo()["2"]){
-            $res = array("error" => $queryLogin->errorInfo()["2"]);
-            echo json_encode($res);
-            return;
-        }
+        $query1 = $this->conn->prepare("INSERT INTO resumes (id_user) VALUES (:id_user)");
+        $query1->bindParam(":id_user", $_SESSION['user']['id_user']);
 
-        $_SESSION["user"] = $queryLogin->fetch();
+        $query1->execute();
 
-        $res = array("success" => $query->errorInfo()["2"]);
+        $this->login($email, $password, true);
+
+
+        $res = array("success" => "Conta criada com sucesso!");
         echo json_encode($res);
     }
 
@@ -145,7 +148,7 @@ class UserController{
             echo json_encode($res);
             return;
         }
-        
+
     }
 
     public function logout(){

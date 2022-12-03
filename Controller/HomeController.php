@@ -69,11 +69,17 @@ class HomeController{
     }
 
     function showCadastroCurriculo(){
-        require_once(ROOT . '/View/home/index.php');
+        require_once(ROOT . '/View/resumes/index.php');
     }
 
     function showCadastroEmpresa(){
         require_once(ROOT . '/View/cadEmpresa/index.php');
+    }
+
+    function showCadastroVaga(){
+        $habilidades = new HabilityController();
+        $habilidades = $habilidades->selectInfos();
+        require ROOT . '/View/cadVaga/cadvaga.php';
     }
 
     function showError($error_code){

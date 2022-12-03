@@ -14,13 +14,13 @@
         <div class="container container-hub">
             <div class="title">
                 <h1><?php echo $vaga[0]["name"] ?></h1>
-                    <h4>Candidatos 0/<?php echo $vaga[0]["qtd_max_cand"] ?></h4>
+                    <h4>Candidatos <?php echo $vaga[0]['qtd_total'] . " / " . $vaga[0]['qtd_max_cand'] ?></h4>
             </div>
             <div class="sobre-vaga">
                 <h5>Sobre a vaga:</h5>
                 <p>
                     <?php echo $vaga[0]["full_desc"] ?>
-                </p> 
+                </p>
             </div>
             <div class="hab-obrigatorias">
                 <h5>Habilidades obrigatórias: </h5>
@@ -38,7 +38,7 @@
                     <?php endforeach?>
                 </div>
             </div>
-            <span class="title-combinacao">Esta vaga combina 95% com você</span>
+            <div class="title-combinacao">Esta vaga combina 95% com você</div>
             <div class="bar-combinacao"></div>
         </div>
     </div>

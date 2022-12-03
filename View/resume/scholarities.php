@@ -5,12 +5,12 @@
     </div>
 
         <div class="inputs container">
-            
+
             <div class="input-group">
-                <label for="">Campo de Estudo</label>
+                <label for="">Área de Estudo</label>
                 <input type="text" name="study_field">
             </div>
-            
+
             <div class="input-group">
                 <label for="">Nome da Escola</label>
                 <input type="text" name="school_name">
@@ -22,7 +22,7 @@
             </div>
 
         </div>
-        
+
         <button type="submit" id="scholarities-btn-button" class="btn btn-rounded btn-d-style1">Próximo
         </button>
 

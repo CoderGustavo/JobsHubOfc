@@ -6,7 +6,7 @@ $(()=>{
 
     $('#min-cad, #max-cad').mask('000.000', {reverse: true});
 
-    $('#phone_number_company').mask('(00) 00000-0000');
+    $('phone_number, #phone_number_company').mask('(00) 00000-0000');
 
     $('#date_foundation').mask('00/00/0000');
 
@@ -78,6 +78,8 @@ $(()=>{
 
     $('#access_account').on("click", (e)=>{
         e.preventDefault();
+
+        console.log("AAA");
 
         let email=$('[name="email"]').val()
         let password=$('[name="password"]').val()
@@ -193,7 +195,12 @@ $(()=>{
             return;
         }
 
-        if(!validaSENHA (data.senha)) {
+        if(data.password != data.con_password) {
+            $('.error_message').text("As senhas não coincidem!");
+            return;
+        }
+
+        if(!validaSENHA (data.password)) {
             $('.error_message').text("Digite uma SENHA forte!");
             return;
         }
@@ -271,20 +278,20 @@ $(()=>{
             phone_number: $("input[name='phone_number']").val()
         }
 
-        let telas = [".getPhone", ".confirmEmail"]
+        let telas = [".getPhone", ".getCep"]
 
         $(telas[0]).css("transform", "translateX(-160%)")
         $(telas[1]).css("transform", "translateX(-50%)")
     });
 
-    $("button[type='submit']#save_email").on("click", (e)=>{
-        e.preventDefault();
+    // $("button[type='submit']#save_email").on("click", (e)=>{
+    //     e.preventDefault();
 
-        let telas = [".confirmEmail", ".getCep"]
+    //     let telas = [".confirmEmail", ".getCep"]
 
-        $(telas[0]).css("transform", "translateX(-160%)")
-        $(telas[1]).css("transform", "translateX(-50%)")
-    });
+    //     $(telas[0]).css("transform", "translateX(-160%)")
+    //     $(telas[1]).css("transform", "translateX(-50%)")
+    // });
 
     $("button[type='submit']#save_end").on("click", (e)=>{
         e.preventDefault();

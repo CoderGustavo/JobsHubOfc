@@ -23,8 +23,14 @@
     background: transparent;
 }
 
+.el_vagas{
+    min-width: 320px;
+    max-width: 650px;
+    width: 100%;
+}
+
 .element_slide .card-vaga{
-    width: 320px;
+    width: 100%;
 }
 
 .area{

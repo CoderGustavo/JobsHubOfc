@@ -5,7 +5,7 @@ class Hability{
 
     public function __construct(){
         include_once "connection.php";
-        $this->table = "hability";
+        $this->table = "abilities";
         $this->pk = "id_hability";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
@@ -15,11 +15,11 @@ class Hability{
         return $this->conn;
     }
 
-    public function getTable(){ 
+    public function getTable(){
         return $this->table;
     }
 
-    public function getPk(){ 
+    public function getPk(){
         return $this->pk;
     }
 

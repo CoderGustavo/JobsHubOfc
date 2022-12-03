@@ -1,12 +1,21 @@
 let positionstart = 0;
 let positionend = 0;
 
-$(document).on('touchstart', function(e){
-    positionstart = e.touches[0].pageX;
+$(document).on('touchstart, mousedown', function(e){
+    if(e.pageX){
+        positionstart = e.pageX;
+    }else{
+        positionstart = e.touches[0].pageX;
+    }
 });
 
-$(document).on('touchend', function(e){
-    positionend = e.changedTouches[0].pageX;
+$(document).on('touchend, mouseup', function(e){
+    if(e.pageX){
+        positionend = e.pageX;
+    }else{
+        positionend = e.changedTouches[0].pageX;
+    }
+
     if (positionstart>positionend){
         $(".card-like").css({"left": "50%", "transform":"translate(-50%, -50%)"});
         setTimeout(() => {
@@ -18,7 +27,7 @@ $(document).on('touchend', function(e){
         setTimeout(() => {
             $(".card-like").css({"width":"100vw", "height":"110vh"})
         }, 300);
-        
+
         let data = {
             id_vacancy: $("input[name='id_vacancy']").val(),
         }

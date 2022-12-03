@@ -43,8 +43,8 @@ var json = {
     ]
     }
 
-    $('.dropdown-mul-1').dropdown({
+$('.dropdown-mul-1').dropdown({
     data: json.data,
     limitCount: 40,
     multipleMode: 'label'
-    });
+});

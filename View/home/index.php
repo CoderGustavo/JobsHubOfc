@@ -27,7 +27,7 @@
             </div>
             <?php endforeach; ?>
         </div>
-    
+
         <div class="homeemalta">
             <h3>Top vagas</h3>
             <i class="fal fa-stars"></i>
@@ -35,11 +35,11 @@
 
         <div class="slideemalta">
             <?php foreach ($vagasEmAlta as $vaga): ?>
-                <div class="element_slide vagas">
+                <div class="element_slide el_vagas vagas">
                     <a href="/hub/<?php echo $vaga["id_vacancy"]?>" class="card-vaga">
                         <div class="vaga-line-one">
                             <h2>Vaga para front-end</h2>
-                            <span><?php //echo $vaga["qtd_total"]["qtd_max"]?>/<?php echo $vaga["qtd_max_cand"]; ?></span>
+                            <span><?php echo $vaga["qtd_total"][0]["qtd_max"]?>/<?php echo $vaga["qtd_max_cand"]; ?></span>
                         </div>
                         <div class="vaga-line-two">
                             <div class="vaga-hab">
@@ -56,17 +56,17 @@
                 </div>
             <?php endforeach; ?>
         </div>
-    
+
         <div class="homeemalta">
             <h3>Todas as vagas</h3>
         </div>
         <div class="row vagas pt-0">
             <?php foreach ($vagas as $key => $vaga): ?>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6">
                 <a href="/hub/<?php echo $vaga["id_vacancy"]?>" class="card-vaga">
                     <div class="vaga-line-one">
                         <h2><?php echo $vaga["name"]; ?></h2>
-                        <span><?php echo $vaga["qtd_total"][0]["qtd_max"]?>/<?php echo $vaga["qtd_max_cand"]; ?></span>
+                        <span><?php echo $vaga["qtd_total"]?>/<?php echo $vaga["qtd_max_cand"]; ?></span>
                     </div>
                     <div class="vaga-line-two">
                         <div class="vaga-hab">
@@ -84,6 +84,6 @@
             <?php endforeach; ?>
         </div>
     </main>
-    
+
 </body>
 </html>

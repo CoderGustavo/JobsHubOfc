@@ -14,7 +14,7 @@
     <?php include_once("informacoes.html")?>
     <?php include_once("getName.html")?>
     <?php include_once("getPhone.html")?>
-    <?php include_once("confirm_email.html")?>
+    <!-- <?php include_once("confirm_email.html")?> -->
     <?php include_once("getCep.html")?>
     <?php include_once("finished.html")?>
 </body>
