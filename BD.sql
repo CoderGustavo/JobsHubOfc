@@ -91,7 +91,11 @@ CREATE TABLE `work_experiences` (
 	`time_period_to` DATE NOT NULL,
 	`description` varchar(255) NOT NULL,
 	`no_experiences` int(1) NOT NULL,
+<<<<<<< HEAD
 	`removed` int(1),
+=======
+	`removed` int(1),
+>>>>>>> 9c447e6ba50d244146e07c1dd7614f5f5222f409
 	PRIMARY KEY (`id_work_experience`)
 );
 
@@ -381,4 +385,5 @@ INSERT INTO `jobshub`.`vacancy_required_abilities` (`id_vacancy`, `id_ability`, 
 INSERT INTO `jobshub`.`resumes_scholarities` (`id_scholarity`, `id_resume`, `removed`) VALUES ('1', '1', '0');
 INSERT INTO `jobshub`.`resumes_scholarities` (`id_scholarity`, `id_resume`, `removed`) VALUES ('2', '1', '0');
 
-INSERT INTO `jobshub`.`resumes_work_experiences` (`id_work_experience`, `id_resume`, `removed`) VALUES ('1', '1', '0');
+
+INSERT INTO `jobshub`.`resumes_work_experiences` (`id_work_experience`, `id_resume`, `removed`) VALUES ('1', '1', '0');
