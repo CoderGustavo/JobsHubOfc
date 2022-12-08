@@ -6,6 +6,7 @@ class User_vacancy{
     public function __construct(){
         include_once "connection.php";
         $this->table = "users_vacancies";
+        $this->pk = "id_users_vancancies";
         $this->conn = new Connection();
         $this->conn = $this->conn->connection();
     }
@@ -13,11 +14,11 @@ class User_vacancy{
     public function getConnection(){
         return $this->conn;
     }
-    
-    public function getTable(){ 
+
+    public function getTable(){
         return $this->table;
     }
-    public function getPk(){ 
+    public function getPk(){
         return $this->pk;
     }
 

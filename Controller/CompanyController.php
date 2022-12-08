@@ -10,7 +10,7 @@ class CompanyController{
         $this->table = $this->company->getTable();
         $this->pk = $this->company->getPk();
     }
-    
+
     public function updateInfos($userlogged, $infos, $id_company){
         $a = "";
         $index = 1;
@@ -42,7 +42,7 @@ class CompanyController{
             echo json_encode($res);
             return;
         }
-        
+
     }
 
     public function createInfos($infos){
@@ -78,39 +78,43 @@ class CompanyController{
             echo json_encode($res);
             return;
         }
-        
+
     }
-    
-    public function selectInfos($re = true, $campos = "*", $id = ""){
-        $where = "";
 
-        if($id) $where = "where $this->pk = :$this->pk";
+    public function selectInfos($re = true, $campos = "*", $empresa = ""){
 
-        $query = $this->conn->prepare("SELECT $campos FROM $this->table $where");
+        if($empresa){
+            $empresa = implode(" ", explode("-", trim($empresa)));
 
-        if($id) $query->bindParam(":$this->pk", $id);
-        
-        try {
-            $query->execute();
-            $res = $query->fetchAll();
+            $queryEmpExist = $this->conn->prepare("SELECT $campos FROM companies WHERE NAME LIKE :name");
+            $queryEmpExist->bindParam(":name", $empresa);
+            $queryEmpExist->execute();
+
+            $queryEmp = $this->conn->prepare("SELECT $campos FROM companies WHERE id_company=:id");
+            $queryEmp->bindParam(":id", $queryEmpExist->fetch()["id_company"]);
+            $queryEmp->execute();
+
+            $res = $queryEmp->fetch();
+
+            if(empty($res)) header("location: /");
+
+            if($queryEmp->errorInfo()["2"]){
+                $res = array("error" => $queryEmp->errorInfo()["2"]);
+                echo json_encode($res);
+                return;
+            }
             if($re){
                 return $res;
             }else{
                 echo json_encode($res);
                 return;
             }
-        } catch (Throwable $th) {
-            $res = array("error" => $th);
-            if($re){
-                return $res;
-            }else{
-                echo json_encode($res);
-                return;
-            }
+
+
+
         }
-        
-    }
 
+    }
 }
 
 

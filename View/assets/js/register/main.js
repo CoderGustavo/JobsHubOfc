@@ -284,26 +284,27 @@ $(()=>{
         $(telas[1]).css("transform", "translateX(-50%)")
     });
 
-    // $("button[type='submit']#save_email").on("click", (e)=>{
-    //     e.preventDefault();
-
-    //     let telas = [".confirmEmail", ".getCep"]
-
-    //     $(telas[0]).css("transform", "translateX(-160%)")
-    //     $(telas[1]).css("transform", "translateX(-50%)")
-    // });
 
     $("button[type='submit']#save_end").on("click", (e)=>{
         e.preventDefault();
 
         let telas = [".getCep", ".finishedCad"]
 
-        $(telas[0]).css("transform", "translateX(-160%)")
-        $(telas[1]).css("transform", "translateX(-50%)")
+        let create_vacancy = $.post("/atualizarconta", dataUser,'json')
+        create_vacancy.done(function(response){
+            response = JSON.parse(response);
+            if(response.error){
+                $(".error_message").html(response.error);
+                return;
+            }
+            $(telas[0]).css("transform", "translateX(-160%)")
+            $(telas[1]).css("transform", "translateX(-50%)")
 
-        setTimeout(() => {
-            window.location = "/";
-        }, 2000);
+            setTimeout(() => {
+                window.location = "/login";
+            }, 2000);
+        });
+
     });
 
     $("button[type='submit']#cad-empresa-btn-button1").on("click", (e)=>{
@@ -353,8 +354,6 @@ $(()=>{
             ceo: $('[name="ceo"]').val(),
             date_foundation: date_foundation
         }
-
-        console.log(dataCompany);
 
         let create_vacancy = $.post("/cadastroempresa", dataCompany,'json')
         create_vacancy.done(function(response){

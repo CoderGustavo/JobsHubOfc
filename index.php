@@ -9,17 +9,23 @@ define("ROOT", $_SERVER['DOCUMENT_ROOT']);
 require_once(__DIR__ . '/Controller/HomeController.php');
 require_once(__DIR__ . '/Controller/UserController.php');
 require_once(__DIR__ . '/Controller/VacancyController.php');
+require_once(__DIR__ . '/Controller/VacancyDifferenceAbilityController.php');
+require_once(__DIR__ . '/Controller/VacancyRequiredAbilityController.php');
 require_once(__DIR__ . '/Controller/ResumeController.php');
 require_once(__DIR__ . '/Controller/CompanyController.php');
 require_once(__DIR__ . '/Controller/UtilitiesController.php');
 require_once(__DIR__ . '/Controller/HabilityController.php');
+require_once(__DIR__ . '/Controller/User_VacancyController.php');
 
 // initialize classes below:
 $home = new HomeController();
 $user = new UserController();
 $vacancies = new VacancyController();
+$vacancyDif = new VacancyDifferenceAbilityController();
+$vacancyReq = new VacancyRequiredAbilityController();
 $resume = new ResumeController();
 $cadEmpresa = new CompanyController();
+$users_vancancies = new User_VacancyController();
 
 switch (PATH[1]) {
     case "login" :
@@ -97,9 +103,6 @@ switch (PATH[1]) {
                         $_POST["id_user"] = $_SESSION["user"]["id_user"];
                         $users_vancancies->createInfos($_POST);
                     }
-                    else{
-
-                    }
                 }
                 else{
 
@@ -119,14 +122,18 @@ switch (PATH[1]) {
             case 'POST' :
                 switch (PATH[2]) {
                     case 1:
-                        # code...
+                        $vacancies->createInfos($_POST);
                         break;
-
+                    case 2:
+                        $vacancyDif->createInfos($_POST);
+                        break;
+                    case 3:
+                        $vacancyReq->createInfos($_POST);
+                        break;
                     default:
-                        # code...
+                        return json_encode(array("error" => "Tem o que fazer aqui n companheiro!"));
                         break;
                 }
-                $vacancies->createInfos($_POST,$_POST);
                 break;
             default :
                 http_response_code(405);
@@ -239,7 +246,7 @@ switch (PATH[1]) {
         break;
     case 'teste':
         $buscando = "";
-        $vacancies->selectInfos($buscando);
+        $utilities->getVagarForMe($buscando);
         break;
     default:
         http_response_code(404);

@@ -31,8 +31,7 @@ class UserController{
             $query1 = $this->conn->prepare("SELECT about FROM users JOIN resumes ON resumes.id_resume = users.id_resume WHERE users.$this->pk = :id");
             $query1->bindParam(":id", $user['id_user']);
             $query1->execute();
-            print_r($query1->fetchAll());
-            $user["about"] = $query1->fetch()["about"];
+            $user["about"] = "Sobre mim";
 
             $query2 = $this->conn->prepare("SELECT COUNT(*) AS total_work_experiences FROM users
                 JOIN resumes ON resumes.id_resume = users.id_resume
@@ -41,8 +40,7 @@ class UserController{
                 WHERE users.$this->pk = :id");
             $query2->bindParam(":id", $user['id_user']);
             $query2->execute();
-            print_r($query2->fetchAll());
-            $user["total_work_experiences"] = $query2->fetch()["total_work_experiences"];
+            $user["total_work_experiences"] = 0;
 
 
             $query3 = $this->conn->prepare("SELECT COUNT(*) AS total_abilities FROM users
@@ -52,10 +50,11 @@ class UserController{
                 WHERE users.$this->pk = :id");
             $query3->bindParam(":id", $user['id_user']);
             $query3->execute();
-            $user["total_abilities"] = $query3->fetch()["total_abilities"];
+            $user["total_abilities"] = 0;
 
             $_SESSION["user"] = $user;
             $res = array("success" => "Usuário logado");
+
             if($re){
                 return json_encode($res);
             }else{
@@ -79,20 +78,12 @@ class UserController{
         $query->bindParam(":pass", $password);
 
 
-        print_r($query->execute());
+        $query->execute();
         if($query->errorInfo()["2"]){
             $res = array("error" => $query->errorInfo()["2"]);
             echo json_encode($res);
             return;
         }
-
-        $query1 = $this->conn->prepare("INSERT INTO resumes (id_user) VALUES (:id_user)");
-        $query1->bindParam(":id_user", $_SESSION['user']['id_user']);
-
-        $query1->execute();
-
-        $this->login($email, $password, true);
-
 
         $res = array("success" => "Conta criada com sucesso!");
         echo json_encode($res);

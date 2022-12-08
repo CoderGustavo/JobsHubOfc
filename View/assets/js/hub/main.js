@@ -29,7 +29,7 @@ $(document).on('touchend, mouseup', function(e){
         }, 300);
 
         let data = {
-            id_vacancy: $("input[name='id_vacancy']").val(),
+            id_vacancy: $("[name='id_vacancy']").val(),
         }
         let user_vacancy = $.post("/hub/like", data, 'json')
         user_vacancy.done(function(response){

@@ -10,7 +10,7 @@ class User_VacancyController{
         $this->table = $this->user_vacancy->getTable();
         $this->pk = $this->user_vacancy->getPk();
     }
-    
+
     public function updateInfos($userlogged, $infos, $id_user_vacancy){
         $a = "";
         $index = 1;
@@ -42,10 +42,10 @@ class User_VacancyController{
             echo json_encode($res);
             return;
         }
-        
+
     }
 
-    public function createInfos($infos, $info_abilites){
+    public function createInfos($infos){
         $a = "";
         $b = "";
         $index = 1;
@@ -68,19 +68,18 @@ class User_VacancyController{
             $query->bindParam(":$key", $infos[$key]);
             $index++;
         }
-        try {
-            $query->execute();
-            $res = array("success" => "Dados criados com sucesso!");
-            echo json_encode($res);
-            return;
-        } catch (Throwable $th) {
-            $res = array("error" => $th);
+        $query->execute();
+        if($query->errorInfo()["2"]){
+            $res = array("error" => $query->errorInfo()["2"]);
             echo json_encode($res);
             return;
         }
-        
+        $res = array("success" => "Dados criados com sucesso!", "$this->pk" => $this->conn->lastInsertId());
+        echo json_encode($res);
+        return;
+
     }
-    
+
     public function selectInfos($re = true, $campos = "*", $id){
         $where = "";
 
@@ -89,7 +88,7 @@ class User_VacancyController{
         $query = $this->conn->prepare("SELECT $campos FROM $this->table $where");
 
         if($id) $query->bindParam(":$this->pk", $id);
-        
+
         try {
             $query->execute();
             $res = $query->fetchAll();
@@ -108,7 +107,7 @@ class User_VacancyController{
                 return;
             }
         }
-        
+
     }
 
 }

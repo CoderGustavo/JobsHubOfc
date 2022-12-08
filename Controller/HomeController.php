@@ -28,16 +28,18 @@ class HomeController{
 
         if($idvaga){
             $vagas = new VacancyController();
+            $path = PATH[2];
             $vaga = $vagas->selectInfos(true,"","*",$idvaga);
         }
-
 
         require ROOT . '/View/hub/index.php';
     }
 
     function showCompanyPage(){
-        // $vagas = new VacancyController();
-        // $vagas = $vagas->selectInfos(true, "", "*", "", "", PATH[2]);
+        $vagas = new VacancyController();
+        $vagas = $vagas->selectInfos(true, "", "*", "", "", PATH[2]);
+        $company = new CompanyController();
+        $company = $company->selectInfos(true, "*", PATH[2]);
         require ROOT . '/View/company/index.php';
     }
 

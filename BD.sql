@@ -55,6 +55,7 @@ CREATE TABLE `vacancies` (
 	`create_date` DATE,
 	`approved` INT(1),
 	`id_vacancy_status` int NOT NULL,
+	`id_company` int NOT NULL,
 	`removed` int(1),
 	PRIMARY KEY (`id_vacancy`)
 );
@@ -91,11 +92,7 @@ CREATE TABLE `work_experiences` (
 	`time_period_to` DATE NOT NULL,
 	`description` varchar(255) NOT NULL,
 	`no_experiences` int(1) NOT NULL,
-<<<<<<< HEAD
 	`removed` int(1),
-=======
-	`removed` int(1),
->>>>>>> 9c447e6ba50d244146e07c1dd7614f5f5222f409
 	PRIMARY KEY (`id_work_experience`)
 );
 
@@ -254,74 +251,7 @@ CREATE TABLE `users_company`(
 	PRIMARY KEY(`id_users_company`)
 );
 
-ALTER TABLE `users_company` ADD CONSTRAINT `users_company_fk0` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
-
-ALTER TABLE `users_company` ADD CONSTRAINT `users_company_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
-ALTER TABLE `scholarities` ADD CONSTRAINT `scholarities_address_fk0`  FOREIGN KEY (`id_address`) REFERENCES `address`(`id_address`);
-
-ALTER TABLE `work_experiences` ADD CONSTRAINT `work_experiences_address_fk0`  FOREIGN KEY (`id_address`) REFERENCES `address`(`id_address`);
-
-ALTER TABLE `resumes_scholarities` ADD CONSTRAINT `resumes_scholarities_fk0`  FOREIGN KEY (`id_scholarity`) REFERENCES `scholarities`(`id_scholarity`);
-
-ALTER TABLE `resumes_scholarities` ADD CONSTRAINT `resume_scholarity_fk1`   FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
-
-ALTER TABLE `resumes_work_experiences` ADD CONSTRAINT `resumes_work_experiences_fk0` FOREIGN KEY (`id_work_experience`)  REFERENCES `work_experiences`(`id_work_experience`);
-
-ALTER TABLE `resumes_work_experiences` ADD CONSTRAINT `resumes_work_experiences_fk1`  FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
-
-ALTER TABLE `resumes_abilities` ADD CONSTRAINT `resumes_abilities_fk0` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
-
-ALTER TABLE `resumes_abilities` ADD CONSTRAINT `resume_ability_fk1`  FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
-
-ALTER TABLE `scholarities` ADD CONSTRAINT `scholaritiesl_fk0` FOREIGN KEY (`id_education_level`) REFERENCES `education_levels`(`id_education_level`);
-
-ALTER TABLE `companies_vacancies` ADD CONSTRAINT `companies_vacancies_fk0` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
-
-ALTER TABLE `companies_vacancies` ADD CONSTRAINT `companies_vacancies_fk1` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
-
-ALTER TABLE `vacancies` ADD CONSTRAINT `vacancies_fk0` FOREIGN KEY (`id_vacancy_status`) REFERENCES `vacancies_status`(`id_vacancy_status`);
-
-ALTER TABLE `vacancy_required_abilities` ADD CONSTRAINT `vacancy_required_abilities_fk0` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
-
-ALTER TABLE `vacancy_required_abilities` ADD CONSTRAINT `vacancy_required_abilities_fk1` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
-
-ALTER TABLE `vacancy_difference_abilities` ADD CONSTRAINT `vacancy_difference_abilities_fk0` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
-
-ALTER TABLE `vacancy_difference_abilities` ADD CONSTRAINT `vacancy_difference_abilities_fk1` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
-
-ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
-ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk2` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
-
-ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk3` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
-
-ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
-
-ALTER TABLE `resumes` ADD CONSTRAINT `resume_users_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
-ALTER TABLE `faq` ADD CONSTRAINT `fq_fk01` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
-ALTER TABLE `faq` ADD CONSTRAINT `faq_fk02` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
-
-ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk01`  FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
-ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk02` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
-
-ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk03` FOREIGN KEY (`id_vacancy_status`) REFERENCES `vacancies_status`(`id_vacancy_status`);
-
-ALTER TABLE `favorite_vacancy` ADD CONSTRAINT `favorite_vacancy_fk01` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
-
-ALTER TABLE `favorite_vacancy` ADD CONSTRAINT `favorite_vacancy_fk02` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
-ALTER TABLE `courses` ADD CONSTRAINT `courses_fk0` FOREIGN KEY (`id_class`) REFERENCES `class`(`id_class`);
-
-ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk0` FOREIGN KEY (`id_course`) REFERENCES `courses`(`id_course`);
-
-ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
-
-
-INSERT INTO `jobshub`.`users` (`name`, `birth_date` , `email`, `password`, `phone_number`, `ra`, `create_date` ,`removed`,`approved`) VALUES ('igor', '2003-09-24', 'igor.teodoro@fatec.sp.gov.br', '123456789', '19 99999-9999', '2781392213009', CURDATE() ,'0','1');
+INSERT INTO `jobshub`.`users` (`name`, `birth_date` , `email`, `password`, `phone_number`, `ra`, `create_date` ,`removed`,`approved`) VALUES ('igor', '2003-09-24', 'igor.teodoro@fatec.sp.gov.br', 'ceb220926c10a27cdc9aa4dda9821403', '19 99999-9999', '2781392213009', CURDATE() ,'0','1');
 
 INSERT INTO `jobshub`.`abilities` (`ability`, `removed`) VALUES ('Organizado', '0');
 INSERT INTO `jobshub`.`abilities` (`ability`, `removed`) VALUES ('Flexibidade', '0');
@@ -340,7 +270,7 @@ INSERT INTO `jobshub`.`address` (`id_city`, `id_state`, `id_country`, `removed`)
 INSERT INTO `jobshub`.`work_experiences` (`name_title`, `company`, `id_address`, `corrently`, `time_period_from`, `time_period_to`, `description`, `no_experiences`, `removed`) VALUES ('Suporte', 'Nubank', '1', '0', '2020-01-24', '2021-01-24', 'Help desk', '0', '0');
 INSERT INTO `jobshub`.`work_experiences` (`name_title`, `company`, `id_address`, `corrently`, `time_period_from`, `time_period_to`, `description`, `no_experiences`, `removed`) VALUES ('Analista de Sistema', 'Nubank', '1', '0', '2021-01-24', '2022-11-24', 'Analise e implementação de sistemas', '0', '0');
 
-INSERT INTO `jobshub`.`vacancies` (`name`, `short_desc`, `full_desc`, `salary_min`, `salary_max`, `salary_defined`, `vacancy_type`, `hours_day`, `hours_weeky`, `activity`, `qtd_max_cand`, `qtd_min_cand`, `open_date`, `close_date`, `create_date`, `approved`, `id_vacancy_status`, `removed`) VALUES ('Help desk', 'Help desk para colaboradores', 'Help desk para colaboradores e buscar formas de solucionar problemas', '500', '1000', '1000', 'Estagio', '7 :00:00', '20:00:00', 'dominio em software', '20', '5', '2022-11-24', '2022-11-30', '2022-11-24', '0', '3', '0');
+INSERT INTO `jobshub`.`vacancies` (`name`, `short_desc`, `full_desc`, `salary_min`, `salary_max`, `salary_defined`, `vacancy_type`, `hours_day`, `hours_weeky`, `activity`, `qtd_max_cand`, `qtd_min_cand`, `open_date`, `close_date`, `create_date`, `approved`, `id_vacancy_status`, `removed`, `id_company`) VALUES ('Help desk', 'Help desk para colaboradores', 'Help desk para colaboradores e buscar formas de solucionar problemas', '500', '1000', '1000', 'Estagio', '7 :00:00', '20:00:00', 'dominio em software', '20', '5', '2022-11-24', '2022-11-30', '2022-11-24', '0', '3', '0', '1');
 
 INSERT INTO `companies` (`id_company`, `name`, `cnpj`, `email`, `phone_number`, `photo_profile`, `description`, `ceo`, `date_foundation`, `link`, `create_date`, `approved`, `removed`, `fatec`) VALUES
 	(1, 'Nubank', '	24.410.913/0001-44', NULL, '4020-0185', NULL, 'Nubank é uma empresa startup brasileira pioneira no segmento de serviços financeiros, atuando como operadora de cartões de crédito e fintech com operações no Brasil, sediada em São Paulo e fundada em 6 de maio de 2013 por David Vélez, Cristina Junqueira e Edward Wible', 'David Vélez, Cristina Junqueira e Edward Wible', '2013-05-06', 'https://nubank.com.br/pedir/nu/?utm_source=google&utm_medium=cpc&utm_campaign=1784086961&utm_term=118905407472&utm_word=nubank&utm_content=502413793352&ad_position=&match_type=b&location=1031717&device=c&utm_keyword_id=aud-427394325571:kwd-488984618592&utm_placement=&extension=&geolocation=1031717&google_channel=google_brand&gclid=CjwKCAiAyfybBhBKEiwAgtB7fuJO37Om4MxQslZloogWBXwzJ1NZ_jB59crr_U8Ws-e4ib_uVVAfsRoCH4gQAvD_BwE', '2022-11-24', 0, 0, 0),
@@ -387,3 +317,71 @@ INSERT INTO `jobshub`.`resumes_scholarities` (`id_scholarity`, `id_resume`, `rem
 
 
 INSERT INTO `jobshub`.`resumes_work_experiences` (`id_work_experience`, `id_resume`, `removed`) VALUES ('1', '1', '0');
+
+ALTER TABLE `users_company` ADD CONSTRAINT `users_company_fk0` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
+ALTER TABLE `users_company` ADD CONSTRAINT `users_company_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+
+ALTER TABLE `scholarities` ADD CONSTRAINT `scholarities_address_fk0`  FOREIGN KEY (`id_address`) REFERENCES `address`(`id_address`);
+
+ALTER TABLE `work_experiences` ADD CONSTRAINT `work_experiences_address_fk0`  FOREIGN KEY (`id_address`) REFERENCES `address`(`id_address`);
+
+ALTER TABLE `resumes_scholarities` ADD CONSTRAINT `resumes_scholarities_fk0`  FOREIGN KEY (`id_scholarity`) REFERENCES `scholarities`(`id_scholarity`);
+
+ALTER TABLE `resumes_scholarities` ADD CONSTRAINT `resume_scholarity_fk1`   FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
+
+ALTER TABLE `resumes_work_experiences` ADD CONSTRAINT `resumes_work_experiences_fk0` FOREIGN KEY (`id_work_experience`)  REFERENCES `work_experiences`(`id_work_experience`);
+
+ALTER TABLE `resumes_work_experiences` ADD CONSTRAINT `resumes_work_experiences_fk1`  FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
+
+ALTER TABLE `resumes_abilities` ADD CONSTRAINT `resumes_abilities_fk0` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
+
+ALTER TABLE `resumes_abilities` ADD CONSTRAINT `resume_ability_fk1`  FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
+
+ALTER TABLE `scholarities` ADD CONSTRAINT `scholaritiesl_fk0` FOREIGN KEY (`id_education_level`) REFERENCES `education_levels`(`id_education_level`);
+
+ALTER TABLE `companies_vacancies` ADD CONSTRAINT `companies_vacancies_fk0` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
+ALTER TABLE `companies_vacancies` ADD CONSTRAINT `companies_vacancies_fk1` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `vacancies` ADD CONSTRAINT `vacancies_fk0` FOREIGN KEY (`id_vacancy_status`) REFERENCES `vacancies_status`(`id_vacancy_status`);
+
+ALTER TABLE `vacancies` ADD CONSTRAINT `vacancies_fk1` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
+ALTER TABLE `vacancy_required_abilities` ADD CONSTRAINT `vacancy_required_abilities_fk0` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `vacancy_required_abilities` ADD CONSTRAINT `vacancy_required_abilities_fk1` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
+
+ALTER TABLE `vacancy_difference_abilities` ADD CONSTRAINT `vacancy_difference_abilities_fk0` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `vacancy_difference_abilities` ADD CONSTRAINT `vacancy_difference_abilities_fk1` FOREIGN KEY (`id_ability`) REFERENCES `abilities`(`id_ability`);
+
+ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+
+ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk2` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
+ALTER TABLE `feedback` ADD CONSTRAINT `feedback_fk3` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `users` ADD CONSTRAINT `users_fk0` FOREIGN KEY (`id_resume`) REFERENCES `resumes`(`id_resume`);
+
+ALTER TABLE `resumes` ADD CONSTRAINT `resume_users_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+
+ALTER TABLE `faq` ADD CONSTRAINT `fq_fk01` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+
+ALTER TABLE `faq` ADD CONSTRAINT `faq_fk02` FOREIGN KEY (`id_company`) REFERENCES `companies`(`id_company`);
+
+ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk01`  FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+
+ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk02` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `users_vacancies` ADD CONSTRAINT `users_vacancies_fk03` FOREIGN KEY (`id_vacancy_status`) REFERENCES `vacancies_status`(`id_vacancy_status`);
+
+ALTER TABLE `favorite_vacancy` ADD CONSTRAINT `favorite_vacancy_fk01` FOREIGN KEY (`id_vacancy`) REFERENCES `vacancies`(`id_vacancy`);
+
+ALTER TABLE `favorite_vacancy` ADD CONSTRAINT `favorite_vacancy_fk02` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);
+
+ALTER TABLE `courses` ADD CONSTRAINT `courses_fk0` FOREIGN KEY (`id_class`) REFERENCES `class`(`id_class`);
+
+ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk0` FOREIGN KEY (`id_course`) REFERENCES `courses`(`id_course`);
+
+ALTER TABLE `users_courses` ADD CONSTRAINT `users_courses_fk1` FOREIGN KEY (`id_user`) REFERENCES `users`(`id_user`);

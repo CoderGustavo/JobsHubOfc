@@ -9,7 +9,7 @@
         <script src="/View/assets/js/editVaga/main.js"></script>
     </head>
     <body>
-        
+
         <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.php");?>
         <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php");?>
         <?php foreach ($vagas as $key => $vaga):?>

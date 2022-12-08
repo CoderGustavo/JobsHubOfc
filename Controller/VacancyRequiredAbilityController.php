@@ -2,12 +2,12 @@
 
 use LDAP\Result;
 
-class VacancyController{
+class VacancyRequiredAbilityController{
     protected $vacancies, $table, $conn, $pk;
 
     public function __construct(){
-        include_once ROOT."/Model/vacancy.php";
-        $this->vacancy = new Vacancy();
+        include_once ROOT."/Model/vacancy_required_abilities.php";
+        $this->vacancy = new VacancyRequiredAbilities();
         $this->conn = $this->vacancy->getConnection();
         $this->table = $this->vacancy->getTable();
         $this->pk = $this->vacancy->getPk();
@@ -70,14 +70,13 @@ class VacancyController{
             $query->bindParam(":$key", $infos[$key]);
             $index++;
         }
-
         $query->execute();
         if($query->errorInfo()["2"]){
             $res = array("error" => $query->errorInfo()["2"]);
             echo json_encode($res);
             return;
         }
-        $res = array("success" => "Dados criados com sucesso!", "id_vaga" => $this->conn->lastInsertId());
+        $res = array("success" => "Dados criados com sucesso!", "$this->pk" => $this->conn->lastInsertId());
         echo json_encode($res);
         return;
 
@@ -94,8 +93,7 @@ class VacancyController{
             $queryEmp = $this->conn->prepare("SELECT * FROM companies WHERE id_company=:id");
             $queryEmp->bindParam(":id", $queryEmpExist->fetch()["id_company"]);
             $queryEmp->execute();
-            $empresa = $queryEmp->fetch()["id_company"];
-            if(empty($empresa)) header("location: /");
+            if(!$queryEmp->fetch()) header("location: /");
         }
 
         $where = "";

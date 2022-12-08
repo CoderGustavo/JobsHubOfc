@@ -5,19 +5,20 @@
     <link rel="stylesheet" href="/View/assets/css/profile/style.css">
 </head>
 <body>
+    <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/header-fixed.php");?>
     <?php include_once($_SERVER['DOCUMENT_ROOT']."/View/assets/templates/navbar-mobile.php"); ?>
     <div class="hero hero-profile">
         <div class="perfil-informacao container">
             <div class="nome-foto">
                 <img src="/View/assets/img/paisagem.png" alt="Foto Perfil">
-                <h1><?php echo $user["name"]; ?> aaaa</h1>
+                <h1><?php echo $user["name"]; ?></h1>
             </div>
             <div class="cards-right">
                 <div class="container-informacoes">
                     <span>Jacutinga - MG/Brasil</span>
                     <span>Experiências: <?php echo $user["total_work_experiences"]; ?> </span>
                     <span>Habilidades: <?php echo $user["total_abilities"]; ?> </span>
-                    <span>Avaliação: <?php echo $user["total_stars"]; ?> <i class="fas fa-star"></i></span>
+                    <span>Avaliação: 0 <i class="fas fa-star"></i></span>
                 </div>
                 <div class="card-seguir">
                     <a href="#">Seguir</a>
@@ -36,13 +37,16 @@
                     Informações Gerais
                 </a>
                 <a href="#profile-<?php echo $vaga["id_vacancy"]?>">
-                    Informações Gerais
+                    Experiencias
                 </a>
                 <a href="#profile-<?php echo $vaga["id_vacancy"]?>">
-                    Informações Gerais
+                    Habilidades
                 </a>
                 <a href="#profile-<?php echo $vaga["id_vacancy"]?>">
-                    Informações Gerais
+                    Escolaridade
+                </a>
+                <a href="/logout">
+                    Sair
                 </a>
             </div>
         </div>
@@ -53,8 +57,8 @@
             a massa vulputate tempus. Praesent quis nisl a metus sagit
             tis rhoncus. Mauris sit amet rutrum ipsum, vel placerat sem
             Nunc luctus faucibus dapibus. Morbi at elit at tellus venena
-            tis gravida. Quisque cursus rhoncus fringilla.</p> 
-    
+            tis gravida. Quisque cursus rhoncus fringilla.</p>
+
             <p>Cras dui neque, interdum ac aliquet vitae, dapibus vel quam
             Nullam neque nisi, sollicitudin ut metus a, efficitur ultrices
             elit. Integer mauris sapien, porta molestie sollicitudin vel </p>
